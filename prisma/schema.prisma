@@ -1,0 +1,123 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  email     String?  @unique
+  password  String
+  name      String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model News {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  title      String
+  excerpt    String
+  content    String
+  author     String
+  date       String
+  image      String
+  isFeatured Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Character {
+  id             String          @id
+  slug           String          @unique
+  name           String
+  racingNumber   String?
+  title          String
+  tagline        String
+  category       String
+  categoryLabel  String
+  modelFile      String
+  coverUrl       String?
+  gameCoverUrl   String?
+  defaultSkinId  String?
+  scale          Float           @default(0.95)
+  positionOffset String?         // JSON array string e.g. "[0,0,0]"
+  rotationOffset String?         // JSON array string
+  topSpeed       Int             @default(200)
+  sponsor        String
+  engineType     String
+  voiceQuote     String?
+  soundEffect    String?
+  bio            String
+  funFact        String
+  primaryColor   String          @default("#E11D2A")
+  accentColor    String          @default("#FFC700")
+  skins          CharacterSkin[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model CharacterSkin {
+  id           String    @id @default(cuid())
+  characterId  String
+  character    Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  skinId       String
+  name         String
+  modelFile    String
+  previewColor String
+  description  String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model TrackCircuit {
+  id           String   @id
+  name         String
+  surfaceType  String
+  description  String
+  image        String
+  ambientColor String   @default("#E11D2A")
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model GameSpec {
+  id          String   @id
+  title       String
+  releaseYear Int
+  developer   String
+  publisher   String
+  genre       String
+  steamAppId  String
+  steamUrl    String
+  coverUrl    String
+  summary     String
+  os          String
+  processor   String
+  memory      String
+  graphics    String
+  directx     String
+  storage     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model GameplayVideo {
+  id          String   @id
+  title       String
+  category    String
+  youtubeId   String
+  duration    String
+  game        String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
