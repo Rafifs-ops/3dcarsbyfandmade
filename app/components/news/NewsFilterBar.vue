@@ -4,7 +4,7 @@
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightning-yellow/10 border border-lightning-yellow/30 text-lightning-yellow text-xs font-chakra tracking-widest uppercase mb-2">
           <BootstrapIcon name="newspaper" />
-          <span>Pusat Berita & Komunitas Steam</span>
+          <span>NEWS</span>
         </div>
         <h1 class="text-3xl sm:text-5xl font-russo text-pure-white tracking-wide">
           COMMUNITY NEWS & UPDATES

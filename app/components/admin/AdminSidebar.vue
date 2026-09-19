@@ -76,10 +76,10 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Dashboard Overview', path: '/admin', icon: 'grid-1x2-fill' },
-  { label: 'Kelola Berita (News)', path: '/admin/news', icon: 'newspaper' },
-  { label: 'Kelola Karakter', path: '/admin/characters', icon: 'car-front-fill' },
-  { label: 'Kelola Sirkuit (Tracks)', path: '/admin/tracks', icon: 'flag-fill' },
-  { label: 'Spesifikasi Game', path: '/admin/specs', icon: 'cpu-fill' },
+  { label: 'News', path: '/admin/news', icon: 'newspaper' },
+  { label: 'Characters', path: '/admin/characters', icon: 'car-front-fill' },
+  { label: 'Tracks', path: '/admin/tracks', icon: 'flag-fill' },
+  { label: 'Games', path: '/admin/specs', icon: 'cpu-fill' },
   { label: 'Video Gameplay', path: '/admin/gameplay', icon: 'play-btn-fill' }
 ]
 

@@ -35,21 +35,13 @@
         <div class="flex flex-wrap items-center gap-4 pt-2">
 
           <!-- Steam CTA Button Cars 2 -->
-          <a href="https://store.steampowered.com/app/301760/DisneyPixar_Cars_2/" target="_blank"
+          <NuxtLink to="/identity"
             rel="noopener noreferrer"
             class="btn-racing-skew px-7 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.55)] border border-rust-red-light/50 flex items-center gap-2.5 group transition-all cursor-pointer">
             <BootstrapIcon name="steam" class="text-xl" />
-            <span>Get Cars 2 on Steam</span>
+            <span>Get The Games On Steam</span>
             <BootstrapIcon name="arrow-right" class="group-hover:translate-x-1 transition-transform" />
-          </a>
-
-          <!-- Cars 1 CTA Button -->
-          <a href="https://store.steampowered.com/app/288580/DisneyPixar_Cars/" target="_blank"
-            rel="noopener noreferrer"
-            class="btn-racing-skew px-6 py-4 rounded bg-carbon-gray hover:bg-carbon-gray-light text-pure-white font-chakra font-bold text-sm tracking-wider uppercase border border-white/15 hover:border-lightning-yellow/60 flex items-center gap-2 transition-all shadow-lg cursor-pointer">
-            <BootstrapIcon name="trophy-fill" class="text-lightning-yellow text-base" />
-            <span>Cars (2006) Classic</span>
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- Feature Pills -->
@@ -181,7 +173,6 @@
 
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue'
-import gsap from 'gsap'
 import { useCarAudio } from '~/composables/useCarAudio'
 import CarSkeleton3D from '~/components/CarSkeleton3D.vue'
 import CarSkeletonLoader from '~/components/CarSkeletonLoader.vue'

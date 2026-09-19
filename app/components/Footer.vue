@@ -17,22 +17,6 @@
             Springs.
           </p>
 
-          <!-- Steam Badge Link -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="https://store.steampowered.com/app/288580/DisneyPixar_Cars/" target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-carbon-gray hover:bg-carbon-gray-light border border-white/10 text-pure-white text-xs font-chakra transition-all">
-              <BootstrapIcon name="steam" class="text-lightning-yellow" />
-              <span>Cars (2006) on Steam</span>
-            </a>
-
-            <a href="https://store.steampowered.com/app/301760/DisneyPixar_Cars_2/" target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-carbon-gray hover:bg-carbon-gray-light border border-white/10 text-pure-white text-xs font-chakra transition-all">
-              <BootstrapIcon name="steam" class="text-rust-red" />
-              <span>Cars 2 (2011) on Steam</span>
-            </a>
-          </div>
         </div>
 
         <!-- Navigation Links -->

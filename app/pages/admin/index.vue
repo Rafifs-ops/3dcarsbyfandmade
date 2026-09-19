@@ -98,13 +98,13 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-dinoco-blue/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Game Specs</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">Game</span>
           <div class="w-10 h-10 rounded-xl bg-dinoco-blue/10 text-dinoco-blue flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="cpu-fill" />
           </div>
         </div>
         <div class="mt-4 flex items-baseline justify-between">
-          <span class="text-3xl font-russo text-white">2 Games</span>
+          <span class="text-3xl font-russo text-white">2</span>
           <span class="text-xs font-chakra text-dinoco-blue flex items-center gap-1">
             <span>Kelola</span>
             <BootstrapIcon name="arrow-right" />
@@ -145,7 +145,7 @@
         </div>
         <div>
           <h4 class="font-chakra font-bold text-sm text-white group-hover:text-lightning-yellow">Tambah Berita Baru</h4>
-          <p class="text-[11px] text-muted-silver">Tulis artikel dengan WYSIWYG</p>
+          <p class="text-[11px] text-muted-silver">Tulis artikel / berita</p>
         </div>
       </NuxtLink>
 
@@ -171,7 +171,7 @@
         </div>
         <div>
           <h4 class="font-chakra font-bold text-sm text-white group-hover:text-emerald-400">Tambah Sirkuit</h4>
-          <p class="text-[11px] text-muted-silver">Deskripsi WYSIWYG & ambience</p>
+          <p class="text-[11px] text-muted-silver">Deskripsi map sirkuit dan tambah gambar</p>
         </div>
       </NuxtLink>
 
