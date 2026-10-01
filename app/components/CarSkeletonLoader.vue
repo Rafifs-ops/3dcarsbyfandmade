@@ -161,8 +161,8 @@ withDefaults(defineProps<{
 }>(), {
   primaryColor: '#E11D2A',
   accentColor: '#FFC700',
-  title: 'MEMUAT MODEL 3D...',
-  subtitle: 'Inisialisasi Rangka Skeleton & Geometri 3D',
+  title: 'LOADING 3D MODEL...',
+  subtitle: 'Initializing Skeleton Frame & 3D Geometry',
   minimal: false
 })
 </script>

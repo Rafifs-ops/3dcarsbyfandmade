@@ -2,17 +2,17 @@
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Top Nav / Breadcrumbs -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/admin/tracks"
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Sirkuit</span>
+        <span>Back to Track List</span>
       </NuxtLink>
 
-      <span class="text-xs font-chakra text-emerald-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Edit Sirkuit #{{ id }}
+      <span class="text-xs font-chakra text-emerald-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 truncate max-w-[60%]">
+        Edit Track #{{ id }}
       </span>
     </div>
 
@@ -22,10 +22,10 @@
       <div class="border-b border-white/10 pb-4 flex items-center justify-between">
         <div>
           <h1 class="text-2xl font-russo text-white">
-            EDIT SIRKUIT
+            EDIT TRACK
           </h1>
           <p class="text-xs text-muted-silver font-chakra">
-            Perbarui data sirkuit dan edit narasi deskripsi dengan WYSIWYG editor.
+            Update track data and edit narrative description with WYSIWYG editor.
           </p>
         </div>
 
@@ -35,14 +35,14 @@
           class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white text-xs font-chakra flex items-center gap-1.5 transition-colors"
         >
           <BootstrapIcon name="eye" />
-          <span>Lihat Carousel</span>
+          <span>View Carousel</span>
         </NuxtLink>
       </div>
 
       <!-- Name & ID -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Nama Sirkuit *</label>
+          <label class="block text-muted-silver uppercase font-bold">Track Name *</label>
           <input
             v-model="form.name"
             type="text"
@@ -52,7 +52,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Tipe Permukaan (Surface Type) *</label>
+          <label class="block text-muted-silver uppercase font-bold">Surface Type *</label>
           <input
             v-model="form.surfaceType"
             type="text"
@@ -62,7 +62,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Warna Ambience</label>
+          <label class="block text-muted-silver uppercase font-bold">Ambient Color</label>
           <div class="flex items-center gap-2">
             <input
               v-model="form.ambientColor"
@@ -80,7 +80,7 @@
 
       <!-- Image URL & Preview -->
       <div class="space-y-2 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">URL Gambar Sirkuit (Background Photo) *</label>
+        <label class="block text-muted-silver uppercase font-bold">Track Image URL (Background Photo) *</label>
         <input
           v-model="form.image"
           type="url"
@@ -97,8 +97,8 @@
       <!-- WYSIWYG Description Editor -->
       <div class="space-y-2 font-chakra text-xs">
         <label class="block text-muted-silver uppercase font-bold flex items-center justify-between">
-          <span>Deskripsi Sirkuit (WYSIWYG Rich-Text Editor) *</span>
-          <span class="text-[10px] text-emerald-400 font-normal">Format visual & styling didukung</span>
+          <span>Track Description (WYSIWYG Rich-Text Editor) *</span>
+          <span class="text-[10px] text-emerald-400 font-normal">Visual formatting & styling supported</span>
         </label>
         <AdminWysiwygEditor
           v-model="form.description"
@@ -111,7 +111,7 @@
           to="/admin/tracks"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -121,7 +121,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan Perubahan...' : 'Perbarui Sirkuit' }}</span>
+          <span>{{ isSubmitting ? 'Saving Changes...' : 'Update Track' }}</span>
         </button>
       </div>
 
@@ -157,7 +157,7 @@ const form = reactive({
 
 const handleSubmit = async () => {
   if (!form.name || !form.description) {
-    toastError('Validasi Gagal', 'Nama dan deskripsi sirkuit wajib diisi!')
+    toastError('Validation Failed', 'Track name and description are required!')
     return
   }
 
@@ -167,16 +167,16 @@ const handleSubmit = async () => {
       method: 'PUT',
       body: form
     })
-    success('Berhasil!', `Sirkuit "${form.name}" berhasil diperbarui.`)
+    success('Success!', `Track "${form.name}" has been successfully updated.`)
     router.push('/admin/tracks')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat memperbarui sirkuit.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while updating the track.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: `Edit Sirkuit - ${form.name || id} - Cars CMS`
+  title: `Edit Track - ${form.name || id} - Cars CMS`
 })
 </script>

@@ -57,8 +57,8 @@ const filteredNews = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Berita Komunitas & Update - Disney Pixar Cars Steam',
-  description: 'Pembaruan terkini turnamen Piston Cup, mod tekstur HD 4K, panduan Steam Deck 60FPS, dan berita komunitas game Disney Pixar Cars di Steam.',
+  title: 'Community News & Updates - Disney Pixar Cars Steam',
+  description: 'Latest updates on Piston Cup tournaments, HD 4K texture mods, Steam Deck 60FPS guides, and community news for Disney Pixar Cars on Steam.',
   ogTitle: 'Disney Pixar Cars Community News'
 })
 </script>

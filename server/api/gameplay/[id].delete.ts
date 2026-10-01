@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Video Gameplay diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'Gameplay video ID is required.' })
   }
 
   const existing = await prisma.gameplayVideo.findUnique({
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Video gameplay tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'Gameplay video not found.' })
   }
 
   await prisma.gameplayVideo.delete({
@@ -23,6 +23,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Video gameplay berhasil dihapus'
+    message: 'Gameplay video deleted successfully'
   }
 })

@@ -10,7 +10,7 @@
       </NuxtLink>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+      <nav class="hidden lg:flex items-center gap-1 lg:gap-2">
         <NuxtLink to="/" class="px-3.5 py-2 rounded-lg text-sm font-chakra font-medium tracking-wide transition-all"
           :class="$route.path === '/' ? 'text-lightning-yellow bg-white/5 shadow-[inset_0_-2px_0_#FFC700]' : 'text-muted-silver hover:text-white hover:bg-white/5'">
           <BootstrapIcon name="speedometer2" class="mr-1.5 text-xs text-rust-red" />
@@ -37,12 +37,12 @@
           News
         </NuxtLink>
 
-        <NuxtLink to="/identity"
-          class="px-3.5 py-2 rounded-lg text-sm font-chakra font-medium tracking-wide transition-all"
-          :class="$route.path === '/identity' ? 'text-lightning-yellow bg-white/5 shadow-[inset_0_-2px_0_#FFC700]' : 'text-muted-silver hover:text-white hover:bg-white/5'">
-          <BootstrapIcon name="controller" class="mr-1.5 text-xs text-dinoco-blue" />
-          Games
-        </NuxtLink>
+ <NuxtLink to="/game"
+           class="px-3.5 py-2 rounded-lg text-sm font-chakra font-medium tracking-wide transition-all"
+           :class="$route.path === '/game' ? 'text-lightning-yellow bg-white/5 shadow-[inset_0_-2px_0_#FFC700]' : 'text-muted-silver hover:text-white hover:bg-white/5'">
+           <BootstrapIcon name="controller" class="mr-1.5 text-xs text-dinoco-blue" />
+           Games
+         </NuxtLink>
       </nav>
 
       <!-- Right Header Actions (Audio Mute Toggle & Steam CTA) -->
@@ -65,7 +65,7 @@
       </div>
 
       <!-- Mobile Hamburger Button -->
-      <div class="flex md:hidden items-center gap-2">
+      <div class="flex lg:hidden items-center gap-2">
         <button @click="toggleMute" class="p-2 rounded-lg bg-carbon-gray text-muted-silver text-sm">
           <BootstrapIcon :name="isMuted ? 'volume-mute-fill' : 'volume-up-fill'"
             :class="isMuted ? 'text-rust-red' : 'text-lightning-yellow'" />
@@ -82,7 +82,7 @@
 
     <!-- Mobile Drawer Menu -->
     <div v-if="isMobileMenuOpen"
-      class="md:hidden bg-asphalt-black/95 border-b border-white/10 px-4 pt-3 pb-6 flex flex-col gap-2 backdrop-blur-xl animate-fadeIn">
+      class="lg:hidden bg-asphalt-black/95 border-b border-white/10 px-4 pt-3 pb-6 max-h-[calc(100dvh-5rem)] overflow-y-auto flex flex-col gap-2 backdrop-blur-xl animate-fadeIn">
       <NuxtLink to="/" @click="isMobileMenuOpen = false"
         class="px-4 py-3 rounded-lg text-sm font-chakra font-medium tracking-wide flex items-center gap-2"
         :class="$route.path === '/' ? 'text-lightning-yellow bg-white/10' : 'text-muted-silver hover:bg-white/5'">
@@ -111,12 +111,12 @@
         Community News
       </NuxtLink>
 
-      <NuxtLink to="/identity" @click="isMobileMenuOpen = false"
-        class="px-4 py-3 rounded-lg text-sm font-chakra font-medium tracking-wide flex items-center gap-2"
-        :class="$route.path === '/identity' ? 'text-lightning-yellow bg-white/10' : 'text-muted-silver hover:bg-white/5'">
-        <BootstrapIcon name="cpu-fill" class="text-dinoco-blue" />
-        Game Specs
-      </NuxtLink>
+       <NuxtLink to="/game" @click="isMobileMenuOpen = false"
+         class="px-4 py-3 rounded-lg text-sm font-chakra font-medium tracking-wide flex items-center gap-2"
+         :class="$route.path === '/game' ? 'text-lightning-yellow bg-white/10' : 'text-muted-silver hover:bg-white/5'">
+         <BootstrapIcon name="cpu-fill" class="text-dinoco-blue" />
+         Game Specs
+       </NuxtLink>
 
       <div class="pt-3 border-t border-white/10 mt-2">
         <a href="https://store.steampowered.com/app/301760/DisneyPixar_Cars_2/" target="_blank"

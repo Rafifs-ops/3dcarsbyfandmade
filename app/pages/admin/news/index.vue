@@ -6,10 +6,10 @@
       <div>
         <h1 class="text-2xl sm:text-3xl font-russo text-white flex items-center gap-2">
           <BootstrapIcon name="newspaper" class="text-lightning-yellow" />
-          <span>KELOLA BERITA (NEWS)</span>
+          <span>MANAGE NEWS</span>
         </h1>
         <p class="text-xs sm:text-sm text-muted-silver font-inter">
-          Publikasikan artikel, panduan modifikasi, turnamen komunitas, dan update patch.
+          Publish articles, modification guides, community tournaments, and patch updates.
         </p>
       </div>
 
@@ -18,7 +18,7 @@
         class="btn-racing-skew px-5 py-2.5 rounded-xl bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light text-white text-xs font-chakra font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg hover:shadow-rust-red/40 transition-all self-start sm:self-auto"
       >
         <BootstrapIcon name="plus-lg" />
-        <span>Tambah Berita</span>
+        <span>Add News</span>
       </NuxtLink>
     </div>
 
@@ -31,7 +31,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Cari judul atau penulis berita..."
+          placeholder="Search by title or author..."
           class="w-full pl-10 pr-4 py-2 rounded-xl bg-black/40 border border-white/10 text-xs font-chakra text-white placeholder:text-muted-silver focus:outline-none focus:border-lightning-yellow/50 transition-colors"
         />
       </div>
@@ -45,7 +45,7 @@
             : 'bg-black/30 border-white/10 text-muted-silver hover:text-white'"
         >
           <BootstrapIcon name="star-fill" />
-          <span>Featured Saja</span>
+          <span>Featured Only</span>
         </button>
       </div>
     </div>
@@ -57,11 +57,11 @@
           <thead>
             <tr class="bg-black/50 border-b border-white/10 text-muted-silver uppercase tracking-wider">
               <th class="py-3.5 px-4 w-20">Cover</th>
-              <th class="py-3.5 px-4">Judul & Cuplikan</th>
-              <th class="py-3.5 px-4">Penulis</th>
-              <th class="py-3.5 px-4">Tanggal</th>
+              <th class="py-3.5 px-4">Title & Excerpt</th>
+              <th class="py-3.5 px-4">Author</th>
+              <th class="py-3.5 px-4">Date</th>
               <th class="py-3.5 px-4 text-center">Status</th>
-              <th class="py-3.5 px-4 text-right">Aksi</th>
+              <th class="py-3.5 px-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-white/5 text-white">
@@ -84,9 +84,11 @@
               </td>
 
               <!-- Title & Excerpt -->
-              <td class="py-3.5 px-4 max-w-md">
-                <p class="font-bold text-sm text-pure-white truncate">{{ item.title }}</p>
-                <p class="text-xs text-muted-silver truncate font-inter">{{ item.excerpt }}</p>
+              <td class="py-3.5 px-4">
+                <div class="max-w-md">
+                  <p class="font-bold text-sm text-pure-white truncate">{{ item.title }}</p>
+                  <p class="text-xs text-muted-silver truncate font-inter">{{ item.excerpt }}</p>
+                </div>
               </td>
 
               <!-- Author -->
@@ -119,7 +121,7 @@
                     :to="`/news/${item.slug || item.id}`"
                     target="_blank"
                     class="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white transition-colors"
-                    title="Lihat Pratinjau"
+                    title="View Preview"
                   >
                     <BootstrapIcon name="eye" />
                   </NuxtLink>
@@ -127,7 +129,7 @@
                   <NuxtLink
                     :to="`/admin/news/${item.id}`"
                     class="p-2 rounded-lg bg-dinoco-blue/20 hover:bg-dinoco-blue text-dinoco-blue hover:text-white transition-colors"
-                    title="Edit Berita"
+                    title="Edit Article"
                   >
                     <BootstrapIcon name="pencil-square" />
                   </NuxtLink>
@@ -135,7 +137,7 @@
                   <button
                     @click="confirmDelete(item)"
                     class="p-2 rounded-lg bg-rust-red/20 hover:bg-rust-red text-rust-red-light hover:text-white transition-colors"
-                    title="Hapus Berita"
+                    title="Delete Article"
                   >
                     <BootstrapIcon name="trash-fill" />
                   </button>
@@ -146,7 +148,7 @@
             <tr v-if="filteredList.length === 0">
               <td colspan="6" class="py-12 text-center text-muted-silver">
                 <BootstrapIcon name="newspaper" class="text-3xl text-muted-silver/40 mb-2 block mx-auto" />
-                <p>Tidak ada berita yang sesuai dengan pencarian.</p>
+                <p>No news articles match your search.</p>
               </td>
             </tr>
           </tbody>
@@ -157,15 +159,15 @@
     <!-- Delete Confirmation Modal -->
     <AdminModal
       v-model="deleteModal"
-      title="Hapus Artikel Berita"
-      confirm-text="Hapus Berita"
+      title="Delete News Article"
+      confirm-text="Delete Article"
       confirm-type="danger"
       :loading="isDeleting"
       @confirm="handleDelete"
     >
       <p>
-        Apakah Anda yakin ingin menghapus berita <strong class="text-white">"{{ selectedItem?.title }}"</strong>?
-        Tindakan ini tidak dapat dibatalkan.
+        Are you sure you want to delete article <strong class="text-white">"{{ selectedItem?.title }}"</strong>?
+        This action cannot be undone.
       </p>
     </AdminModal>
 
@@ -212,17 +214,17 @@ const handleDelete = async () => {
     await $fetch(`/api/news/${selectedItem.value.id}`, {
       method: 'DELETE'
     })
-    success('Berita Dihapus', `Artikel "${selectedItem.value.title}" berhasil dihapus.`)
+    success('Article Deleted', `Article "${selectedItem.value.title}" has been successfully deleted.`)
     deleteModal.value = false
     await refresh()
   } catch (err: any) {
-    toastError('Gagal Menghapus', err?.message || 'Terjadi kesalahan saat menghapus berita.')
+    toastError('Delete Failed', err?.message || 'An error occurred while deleting the article.')
   } finally {
     isDeleting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Kelola Berita - Disney Pixar Cars CMS'
+  title: 'Manage News - Disney Pixar Cars CMS'
 })
 </script>

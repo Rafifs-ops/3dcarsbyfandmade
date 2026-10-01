@@ -42,7 +42,7 @@
         />
         <div class="flex-1 min-w-0">
           <p class="text-white text-xs font-chakra truncate">{{ filename }}</p>
-          <p class="text-muted-silver text-[11px] font-chakra">{{ modelValue }}</p>
+          <p class="text-muted-silver text-[11px] font-chakra break-all">{{ modelValue }}</p>
         </div>
       </template>
 
@@ -53,7 +53,7 @@
         </div>
         <div class="flex-1 min-w-0">
           <p class="text-white text-xs font-chakra truncate">{{ filename }}</p>
-          <p class="text-muted-silver text-[11px] font-chakra">{{ modelValue }}</p>
+          <p class="text-muted-silver text-[11px] font-chakra break-all">{{ modelValue }}</p>
         </div>
       </template>
     </div>
@@ -133,10 +133,10 @@ async function handleFileSelect(e: Event) {
 
     if (result.success && result.path) {
       emit('update:modelValue', result.path)
-      success('Upload Berhasil', `${file.name} → ${result.path}`)
+      success('Upload Successful', `${file.name} → ${result.path}`)
     }
   } catch (err: any) {
-    toastError('Upload Gagal', err?.data?.statusMessage || err?.message || 'Gagal mengupload file.')
+    toastError('Upload Failed', err?.data?.statusMessage || err?.message || 'Failed to upload file.')
   } finally {
     isUploading.value = false
   }

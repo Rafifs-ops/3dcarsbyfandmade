@@ -2,16 +2,16 @@
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Top Nav / Breadcrumbs -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/admin/gameplay"
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Video</span>
+        <span>Back to Video List</span>
       </NuxtLink>
 
-      <span class="text-xs font-chakra text-purple-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
+      <span class="text-xs font-chakra text-purple-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 truncate max-w-[60%]">
         Edit Video #{{ id }}
       </span>
     </div>
@@ -22,10 +22,10 @@
       <div class="border-b border-white/10 pb-4 flex items-center justify-between">
         <div>
           <h1 class="text-2xl font-russo text-white">
-            EDIT VIDEO GAMEPLAY
+            EDIT GAMEPLAY VIDEO
           </h1>
           <p class="text-xs text-muted-silver font-chakra">
-            Perbarui data cuplikan YouTube, kategori, dan deskripsi mode game.
+            Update YouTube clip data, categories, and game mode description.
           </p>
         </div>
 
@@ -35,14 +35,14 @@
           class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white text-xs font-chakra flex items-center gap-1.5 transition-colors"
         >
           <BootstrapIcon name="youtube" class="text-rust-red" />
-          <span>Lihat di YouTube</span>
+          <span>View on YouTube</span>
         </a>
       </div>
 
       <!-- Title & ID -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5 sm:col-span-2">
-          <label class="block text-muted-silver uppercase font-bold">Judul Video *</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Title *</label>
           <input
             v-model="form.title"
             type="text"
@@ -62,7 +62,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Kategori Video</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Category</label>
           <select
             v-model="form.category"
             class="w-full px-4 py-2.5 rounded-xl bg-black/50 border border-white/15 text-white text-xs focus:outline-none focus:border-purple-400"
@@ -76,7 +76,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Game Asosiasi</label>
+          <label class="block text-muted-silver uppercase font-bold">Associated Game</label>
           <input
             v-model="form.game"
             type="text"
@@ -85,7 +85,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Durasi Video (MM:SS)</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Duration (MM:SS)</label>
           <input
             v-model="form.duration"
             type="text"
@@ -96,7 +96,7 @@
 
       <!-- Description -->
       <div class="space-y-1.5 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">Deskripsi Cuplikan</label>
+        <label class="block text-muted-silver uppercase font-bold">Clip Description</label>
         <textarea
           v-model="form.description"
           rows="3"
@@ -110,7 +110,7 @@
           to="/admin/gameplay"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -120,7 +120,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Perbarui Video' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Update Video' }}</span>
         </button>
       </div>
 
@@ -156,7 +156,7 @@ const form = reactive({
 
 const handleSubmit = async () => {
   if (!form.title || !form.youtubeId) {
-    toastError('Validasi Gagal', 'Judul dan ID YouTube wajib diisi!')
+    toastError('Validation Failed', 'Title and YouTube ID are required!')
     return
   }
 
@@ -166,16 +166,16 @@ const handleSubmit = async () => {
       method: 'PUT',
       body: form
     })
-    success('Berhasil!', `Video "${form.title}" berhasil diperbarui.`)
+    success('Success!', `Video "${form.title}" has been successfully updated.`)
     router.push('/admin/gameplay')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat memperbarui video.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while updating the video.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: `Edit Video Gameplay - ${form.title || id} - Cars CMS`
+  title: `Edit Gameplay Video - ${form.title || id} - Cars CMS`
 })
 </script>

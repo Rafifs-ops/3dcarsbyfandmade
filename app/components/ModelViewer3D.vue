@@ -43,14 +43,14 @@
     <Transition name="fade">
       <div
         v-if="isLoading"
-        class="absolute top-4 left-4 z-10 pointer-events-none flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg"
+        class="absolute top-4 left-4 z-10 pointer-events-none max-w-[65%] flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg"
       >
-        <span class="relative flex h-2 w-2">
+        <span class="relative flex h-2 w-2 shrink-0">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lightning-yellow opacity-75" />
           <span class="relative inline-flex rounded-full h-2 w-2 bg-lightning-yellow" />
         </span>
-        <span class="text-[11px] font-chakra font-bold text-white tracking-wider">
-          SKELETON CHASSIS AKTIF • MEMUAT MODEL 3D...
+        <span class="text-[11px] font-chakra font-bold text-white tracking-wider truncate">
+          SKELETAL CHASSIS ACTIVE • LOADING 3D MODEL...
         </span>
       </div>
     </Transition>
@@ -105,13 +105,17 @@
         <TresGroup ref="modelGroupRef">
           <Suspense @resolve="isLoading = false" @fallback="isLoading = true">
             <template #default>
-              <GLTFModel
-                :key="modelPath"
-                :path="modelPath"
-                :scale="scale || 1.0"
+              <TresGroup
                 :position="positionOffset || [0, 0, 0]"
-                cast-shadow
-              />
+                :rotation="rotationOffset || [0, 0, 0]"
+              >
+                <GLTFModel
+                  ref="gltfRef"
+                  :key="modelPath"
+                  :path="modelPath"
+                  cast-shadow
+                />
+              </TresGroup>
             </template>
             <template #fallback>
               <CarSkeleton3D
@@ -136,6 +140,7 @@
 
 <script setup lang="ts">
 import { ref, shallowRef, watch } from 'vue'
+import { Box3, Vector3 } from 'three'
 import gsap from 'gsap'
 import CarSkeleton3D from '~/components/CarSkeleton3D.vue'
 import CarSkeletonLoader from '~/components/CarSkeletonLoader.vue'
@@ -146,12 +151,51 @@ const props = withDefaults(defineProps<{
   accentColor?: string
   scale?: number
   positionOffset?: [number, number, number]
+  rotationOffset?: [number, number, number]
 }>(), {
   primaryColor: '#E11D2A',
   accentColor: '#FFC700',
   scale: 1.0,
-  positionOffset: () => [0, 0, 0]
+  positionOffset: () => [0, 0, 0],
+  rotationOffset: () => [0, 0, 0]
 })
+
+const TARGET_MAX_DIM = 4.6
+
+const gltfRef = ref<any>(null)
+
+function normalizeModel(scene: any) {
+  if (!scene) return
+
+  scene.updateMatrixWorld(true)
+  const box = new Box3().setFromObject(scene)
+  if (box.isEmpty()) return
+
+  const size = box.getSize(new Vector3())
+  const center = box.getCenter(new Vector3())
+  const maxDim = Math.max(size.x, size.y, size.z) || 1
+  const fit = (TARGET_MAX_DIM * (props.scale || 1)) / maxDim
+
+  const origin = { x: scene.position.x, y: scene.position.y, z: scene.position.z }
+  scene.scale.multiplyScalar(fit)
+  scene.position.set(
+    -fit * (center.x - origin.x),
+    -fit * (center.y - origin.y),
+    -fit * (center.z - origin.z)
+  )
+}
+
+watch(
+  () => {
+    const instance = (gltfRef.value as any)?.instance
+    const gltf = instance?.value ?? instance
+    return gltf?.scene ?? null
+  },
+  (scene) => {
+    if (scene) normalizeModel(scene)
+  },
+  { immediate: true, flush: 'post' }
+)
 
 const autoRotate = ref<boolean>(true)
 const resetTrigger = ref<number>(0)

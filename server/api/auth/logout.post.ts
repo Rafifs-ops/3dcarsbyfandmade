@@ -4,7 +4,7 @@ export default defineEventHandler((event) => {
 
   return {
     success: true,
-    message: 'Logout berhasil',
+    message: 'Logout successful',
     isLogin: false,
     user: null
   }

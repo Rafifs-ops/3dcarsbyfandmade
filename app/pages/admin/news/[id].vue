@@ -2,17 +2,17 @@
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Top Nav / Breadcrumbs -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/admin/news"
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Berita</span>
+        <span>Back to News List</span>
       </NuxtLink>
 
-      <span class="text-xs font-chakra text-lightning-yellow uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Edit Berita #{{ id }}
+      <span class="text-xs font-chakra text-lightning-yellow uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 truncate max-w-[60%]">
+        Edit Article #{{ id }}
       </span>
     </div>
 
@@ -22,10 +22,10 @@
       <div class="border-b border-white/10 pb-4 flex items-center justify-between">
         <div>
           <h1 class="text-2xl font-russo text-white">
-            EDIT BERITA
+            EDIT ARTICLE
           </h1>
           <p class="text-xs text-muted-silver font-chakra">
-            Perbarui detail artikel dan ubah format menggunakan WYSIWYG editor.
+            Update article details and edit formatting using the WYSIWYG editor.
           </p>
         </div>
 
@@ -35,14 +35,14 @@
           class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white text-xs font-chakra flex items-center gap-1.5 transition-colors"
         >
           <BootstrapIcon name="eye" />
-          <span>Lihat Publik</span>
+          <span>View Public</span>
         </NuxtLink>
       </div>
 
       <!-- Title & Slug -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5 sm:col-span-2">
-          <label class="block text-muted-silver uppercase font-bold">Judul Berita *</label>
+          <label class="block text-muted-silver uppercase font-bold">News Title *</label>
           <input
             v-model="form.title"
             type="text"
@@ -62,7 +62,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Penulis (Author)</label>
+          <label class="block text-muted-silver uppercase font-bold">Author</label>
           <input
             v-model="form.author"
             type="text"
@@ -74,7 +74,7 @@
       <!-- Date & Featured Checkbox -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs items-center">
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Tanggal Publikasi</label>
+          <label class="block text-muted-silver uppercase font-bold">Publication Date</label>
           <input
             v-model="form.date"
             type="date"
@@ -89,14 +89,14 @@
               type="checkbox"
               class="w-4 h-4 rounded bg-black/50 border-white/20 text-rust-red focus:ring-rust-red"
             />
-            <span class="text-white font-bold uppercase tracking-wider">Jadikan Artikel Unggulan (Featured)</span>
+            <span class="text-white font-bold uppercase tracking-wider">Make Featured Article</span>
           </label>
         </div>
       </div>
 
       <!-- Image URL & Preview -->
       <div class="space-y-2 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">URL Gambar Sampul (Cover Image)</label>
+        <label class="block text-muted-silver uppercase font-bold">Cover Image URL</label>
         <input
           v-model="form.image"
           type="url"
@@ -112,7 +112,7 @@
 
       <!-- Excerpt -->
       <div class="space-y-1.5 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">Ringkasan / Cuplikan Singkat (Excerpt)</label>
+        <label class="block text-muted-silver uppercase font-bold">Excerpt / Short Summary</label>
         <textarea
           v-model="form.excerpt"
           rows="2"
@@ -123,8 +123,8 @@
       <!-- WYSIWYG Content Editor -->
       <div class="space-y-2 font-chakra text-xs">
         <label class="block text-muted-silver uppercase font-bold flex items-center justify-between">
-          <span>Isi Konten Berita Lengkap (WYSIWYG Rich-Text Editor) *</span>
-          <span class="text-[10px] text-lightning-yellow font-normal">Format visual, list, heading & styling didukung</span>
+          <span>News Content (WYSIWYG Rich-Text Editor) *</span>
+          <span class="text-[10px] text-lightning-yellow font-normal">Visual formatting, lists, headings & styling supported</span>
         </label>
         <AdminWysiwygEditor
           v-model="form.content"
@@ -137,7 +137,7 @@
           to="/admin/news"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -147,7 +147,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan Perubahan...' : 'Perbarui Berita' }}</span>
+          <span>{{ isSubmitting ? 'Saving Changes...' : 'Update Article' }}</span>
         </button>
       </div>
 
@@ -186,7 +186,7 @@ const form = reactive({
 
 const handleSubmit = async () => {
   if (!form.title || !form.content) {
-    toastError('Validasi Gagal', 'Judul dan konten berita wajib diisi!')
+    toastError('Validation Failed', 'Title and news content are required!')
     return
   }
 
@@ -196,16 +196,16 @@ const handleSubmit = async () => {
       method: 'PUT',
       body: form
     })
-    success('Berhasil!', 'Artikel berita berhasil diperbarui.')
+    success('Success!', 'Article has been successfully updated.')
     router.push('/admin/news')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat memperbarui berita.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while updating the article.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: `Edit Berita - ${form.title || id} - Cars CMS`
+  title: `Edit Article - ${form.title || id} - Cars CMS`
 })
 </script>

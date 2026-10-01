@@ -8,11 +8,11 @@
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Video</span>
+        <span>Back to Video List</span>
       </NuxtLink>
 
       <span class="text-xs font-chakra text-purple-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Tambah Video Baru
+        Add New Video
       </span>
     </div>
 
@@ -21,17 +21,17 @@
       
       <div class="border-b border-white/10 pb-4">
         <h1 class="text-2xl font-russo text-white">
-          TAMBAH VIDEO GAMEPLAY
+          ADD GAMEPLAY VIDEO
         </h1>
         <p class="text-xs text-muted-silver font-chakra">
-          Masukkan judul cuplikan, kategori aksi, YouTube Video ID, dan durasi.
+          Enter clip title, action category, YouTube Video ID, and duration.
         </p>
       </div>
 
       <!-- Title & ID -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5 sm:col-span-2">
-          <label class="block text-muted-silver uppercase font-bold">Judul Video *</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Title *</label>
           <input
             v-model="form.title"
             type="text"
@@ -53,7 +53,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Kategori Video</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Category</label>
           <select
             v-model="form.category"
             class="w-full px-4 py-2.5 rounded-xl bg-black/50 border border-white/15 text-white text-xs focus:outline-none focus:border-purple-400"
@@ -67,7 +67,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Game Asosiasi</label>
+          <label class="block text-muted-silver uppercase font-bold">Associated Game</label>
           <input
             v-model="form.game"
             type="text"
@@ -77,7 +77,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Durasi Video (MM:SS)</label>
+          <label class="block text-muted-silver uppercase font-bold">Video Duration (MM:SS)</label>
           <input
             v-model="form.duration"
             type="text"
@@ -89,7 +89,7 @@
 
       <!-- Description -->
       <div class="space-y-1.5 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">Deskripsi Cuplikan</label>
+        <label class="block text-muted-silver uppercase font-bold">Clip Description</label>
         <textarea
           v-model="form.description"
           rows="3"
@@ -104,7 +104,7 @@
           to="/admin/gameplay"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -114,7 +114,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Simpan Video' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Save Video' }}</span>
         </button>
       </div>
 
@@ -144,7 +144,7 @@ const form = reactive({
 
 const handleSubmit = async () => {
   if (!form.title || !form.youtubeId) {
-    toastError('Validasi Gagal', 'Judul dan ID YouTube wajib diisi!')
+    toastError('Validation Failed', 'Title and YouTube ID are required!')
     return
   }
 
@@ -154,16 +154,16 @@ const handleSubmit = async () => {
       method: 'POST',
       body: form
     })
-    success('Berhasil!', `Video "${form.title}" berhasil ditambahkan.`)
+    success('Success!', `Video "${form.title}" has been successfully added.`)
     router.push('/admin/gameplay')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat menyimpan video.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while saving the video.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Tambah Video Gameplay - Disney Pixar Cars CMS'
+  title: 'Add Gameplay Video - Disney Pixar Cars CMS'
 })
 </script>

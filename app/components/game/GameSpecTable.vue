@@ -5,16 +5,16 @@
       <div>
         <div class="flex items-center gap-2 text-xs font-chakra text-lightning-yellow uppercase tracking-widest mb-1">
           <BootstrapIcon name="display" />
-          <span>Kebutuhan Perangkat Keras PC</span>
+          <span>PC Hardware Requirements</span>
         </div>
         <h3 class="text-2xl sm:text-3xl font-russo text-pure-white">
-          TABEL SPESIFIKASI SISTEM (MINIMUM SPECS)
+          SYSTEM SPECS TABLE (MINIMUM SPECS)
         </h3>
       </div>
 
       <div class="flex items-center gap-2 bg-black/60 px-3.5 py-1.5 rounded-xl border border-white/10 text-xs font-chakra text-muted-silver">
         <BootstrapIcon name="shield-check" class="text-emerald-400" />
-        <span>Spesifikasi Teruji & Kompatibel</span>
+        <span>Tested & Compatible Specs</span>
       </div>
     </div>
 
@@ -23,17 +23,19 @@
       <table class="w-full text-left text-xs font-chakra">
         <thead>
           <tr class="border-b border-white/10 text-muted-silver uppercase tracking-wider">
-            <th class="py-3.5 px-4 w-1/4">Komponen Sistem</th>
-            <th class="py-3.5 px-4 w-3/8 text-lightning-yellow">Disney•Pixar Cars (2006)</th>
-            <th class="py-3.5 px-4 w-3/8 text-rust-red-light">Cars 2: The Video Game (2011)</th>
+            <th class="py-3.5 px-4 w-1/4">System Component</th>
+            <th class="py-3.5 px-4 w-[37.5%] text-lightning-yellow">Disney•Pixar Cars (2006)</th>
+            <th class="py-3.5 px-4 w-[37.5%] text-rust-red-light">Cars 2: The Video Game (2011)</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-white/5 text-pure-white">
           
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="windows" class="text-dinoco-blue" />
-              Sistem Operasi (OS)
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="windows" class="text-dinoco-blue" />
+                Operating System (OS)
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.os }}
@@ -44,9 +46,11 @@
           </tr>
 
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="cpu" class="text-lightning-yellow" />
-              Prosesor (CPU)
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="cpu" class="text-lightning-yellow" />
+                Processor (CPU)
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.processor }}
@@ -57,9 +61,11 @@
           </tr>
 
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="memory" class="text-emerald-400" />
-              Memori (RAM)
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="memory" class="text-emerald-400" />
+                Memory (RAM)
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.memory }}
@@ -70,9 +76,11 @@
           </tr>
 
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="gpu-card" class="text-rust-red" />
-              Kartu Grafis (GPU)
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="gpu-card" class="text-rust-red" />
+                Graphics Card (GPU)
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.graphics }}
@@ -83,9 +91,11 @@
           </tr>
 
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="gear-wide-connected" class="text-purple-400" />
-              DirectX
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="gear-wide-connected" class="text-purple-400" />
+                DirectX
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.directx }}
@@ -96,9 +106,11 @@
           </tr>
 
           <tr class="hover:bg-white/5 transition-colors">
-            <td class="py-4 px-4 font-bold text-muted-silver flex items-center gap-2">
-              <BootstrapIcon name="device-hdd" class="text-cyan-400" />
-              Penyimpanan (Storage)
+            <td class="py-4 px-4 font-bold text-muted-silver">
+              <div class="flex items-center gap-2">
+                <BootstrapIcon name="device-hdd" class="text-cyan-400" />
+                Storage
+              </div>
             </td>
             <td class="py-4 px-4 font-medium">
               {{ cars1.minimumSpecs.storage }}

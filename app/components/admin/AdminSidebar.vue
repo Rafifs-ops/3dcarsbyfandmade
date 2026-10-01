@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="fixed inset-y-0 left-0 z-50 w-64 bg-carbon-dark border-r border-white/10 flex flex-col justify-between transition-transform duration-300 lg:translate-x-0"
+    class="fixed inset-y-0 left-0 z-50 w-64 bg-carbon-dark border-r border-white/10 flex flex-col justify-between overflow-y-auto transition-transform duration-300 lg:translate-x-0"
     :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
     <div>
       <!-- Brand Logo Header -->
@@ -36,7 +36,7 @@
         class="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-chakra text-muted-silver hover:text-white hover:bg-white/5 border border-white/5 transition-all">
         <div class="flex items-center gap-2">
           <BootstrapIcon name="box-arrow-up-right" class="text-dinoco-blue" />
-          <span>Lihat Website Publik</span>
+          <span>View Public Website</span>
         </div>
         <BootstrapIcon name="chevron-right" class="text-[10px]" />
       </NuxtLink>
@@ -46,7 +46,7 @@
         class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-chakra font-bold text-rust-red-light hover:text-white bg-rust-red/10 hover:bg-rust-red/30 border border-rust-red/20 hover:border-rust-red/50 transition-all">
         <div class="flex items-center gap-2">
           <BootstrapIcon name="box-arrow-left" class="text-sm" />
-          <span>Keluar (Logout)</span>
+          <span>Logout</span>
         </div>
       </button>
     </div>
@@ -92,6 +92,6 @@ const isActive = (path: string) => {
 
 const handleLogout = async () => {
   await logout()
-  success('Logout Berhasil', 'Anda telah keluar dari Admin Panel.')
+  success('Logout Successful', 'You have been logged out of the Admin Panel.')
 }
 </script>

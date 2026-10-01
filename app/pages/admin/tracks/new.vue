@@ -8,11 +8,11 @@
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Sirkuit</span>
+        <span>Back to Track List</span>
       </NuxtLink>
 
       <span class="text-xs font-chakra text-emerald-400 uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Tambah Sirkuit Baru
+        Add New Track
       </span>
     </div>
 
@@ -21,17 +21,17 @@
       
       <div class="border-b border-white/10 pb-4">
         <h1 class="text-2xl font-russo text-white">
-          TAMBAH SIRKUIT BARU
+          ADD NEW TRACK
         </h1>
         <p class="text-xs text-muted-silver font-chakra">
-          Gunakan editor WYSIWYG untuk mengisi narasi dan deskripsi lintasan sirkuit.
+          Use the WYSIWYG editor to fill in the track narrative and description.
         </p>
       </div>
 
       <!-- Name & ID -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Nama Sirkuit *</label>
+          <label class="block text-muted-silver uppercase font-bold">Track Name *</label>
           <input
             v-model="form.name"
             type="text"
@@ -43,7 +43,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">ID / Slug Sirkuit</label>
+          <label class="block text-muted-silver uppercase font-bold">Track ID / Slug</label>
           <input
             v-model="form.id"
             type="text"
@@ -54,7 +54,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Tipe Permukaan (Surface Type) *</label>
+          <label class="block text-muted-silver uppercase font-bold">Surface Type *</label>
           <input
             v-model="form.surfaceType"
             type="text"
@@ -65,7 +65,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Warna Ambience</label>
+          <label class="block text-muted-silver uppercase font-bold">Ambient Color</label>
           <div class="flex items-center gap-2">
             <input
               v-model="form.ambientColor"
@@ -83,7 +83,7 @@
 
       <!-- Image URL & Preview -->
       <div class="space-y-2 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">URL Gambar Sirkuit (Background Photo) *</label>
+        <label class="block text-muted-silver uppercase font-bold">Track Image URL (Background Photo) *</label>
         <input
           v-model="form.image"
           type="url"
@@ -100,8 +100,8 @@
       <!-- WYSIWYG Description Editor -->
       <div class="space-y-2 font-chakra text-xs">
         <label class="block text-muted-silver uppercase font-bold flex items-center justify-between">
-          <span>Deskripsi Sirkuit (WYSIWYG Rich-Text Editor) *</span>
-          <span class="text-[10px] text-emerald-400 font-normal">Format visual & styling didukung</span>
+          <span>Track Description (WYSIWYG Rich-Text Editor) *</span>
+          <span class="text-[10px] text-emerald-400 font-normal">Visual formatting & styling supported</span>
         </label>
         <AdminWysiwygEditor
           v-model="form.description"
@@ -114,7 +114,7 @@
           to="/admin/tracks"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -124,7 +124,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Simpan Sirkuit' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Save Track' }}</span>
         </button>
       </div>
 
@@ -164,7 +164,7 @@ const generateId = () => {
 
 const handleSubmit = async () => {
   if (!form.name || !form.description) {
-    toastError('Validasi Gagal', 'Nama dan deskripsi sirkuit wajib diisi!')
+    toastError('Validation Failed', 'Track name and description are required!')
     return
   }
 
@@ -174,16 +174,16 @@ const handleSubmit = async () => {
       method: 'POST',
       body: form
     })
-    success('Berhasil!', `Sirkuit "${form.name}" berhasil ditambahkan.`)
+    success('Success!', `Track "${form.name}" has been successfully added.`)
     router.push('/admin/tracks')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat menyimpan sirkuit.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while saving the track.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Tambah Sirkuit Baru - Disney Pixar Cars CMS'
+  title: 'Add New Track - Disney Pixar Cars CMS'
 })
 </script>

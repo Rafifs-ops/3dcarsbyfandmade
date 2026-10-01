@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   if (!name || !description) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Nama sirkuit dan deskripsi wajib diisi.'
+      statusMessage: 'Track name and description are required.'
     })
   }
 
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Sirkuit berhasil ditambahkan',
+    message: 'Track created successfully',
     data: created
   }
 })

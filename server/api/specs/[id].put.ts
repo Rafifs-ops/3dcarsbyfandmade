@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Game Spec diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'Game spec ID is required.' })
   }
 
   const existing = await prisma.gameSpec.findUnique({
@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Spesifikasi game tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'Game spec not found.' })
   }
 
   const body = await readBody(event)
@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Spesifikasi game berhasil diperbarui',
+    message: 'Game spec updated successfully',
     data: formatGameSpec(updated)
   }
 })

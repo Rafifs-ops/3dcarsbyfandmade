@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   if (!title || !content) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Judul dan konten berita wajib diisi.'
+      statusMessage: 'News title and content are required.'
     })
   }
 
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Berita berhasil ditambahkan',
+    message: 'News created successfully',
     data: created
   }
 })

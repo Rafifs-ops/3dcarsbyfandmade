@@ -10,7 +10,7 @@
     <div
       v-if="isSidebarOpen"
       @click="isSidebarOpen = false"
-      class="fixed inset-0 z-40 bg-black/70 backdrop-blur-xs lg:hidden"
+      class="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
     />
 
     <!-- Main Content Area -->

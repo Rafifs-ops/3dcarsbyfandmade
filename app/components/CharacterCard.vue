@@ -12,19 +12,11 @@
           #{{ character.racingNumber || 'RS' }}
         </span>
 
-        <!-- Category Tag & Audio Trigger -->
-        <div class="flex items-center gap-2">
-          <span
+        <!-- Category Tag -->
+        <span
             class="text-[10px] font-chakra tracking-widest uppercase px-2 py-0.5 rounded-md bg-white/5 text-muted-silver border border-white/10">
             {{ character.categoryLabel }}
           </span>
-
-          <button v-if="character.soundEffect" @click.stop.prevent="playVoice" type="button"
-            class="w-7 h-7 rounded-full bg-white/5 hover:bg-lightning-yellow/20 border border-white/10 hover:border-lightning-yellow/40 text-muted-silver hover:text-lightning-yellow flex items-center justify-center transition-all duration-200"
-            title="Dengar Suara Karakter" aria-label="Dengar Suara Karakter">
-            <BootstrapIcon name="volume-up-fill" class="text-xs" />
-          </button>
-        </div>
       </div>
 
       <!-- Character Cover Image Container -->
@@ -77,7 +69,7 @@
           <span class="text-white font-medium truncate max-w-[180px]">{{ character.sponsor }}</span>
         </div>
         <div class="flex justify-between items-center text-[11px]">
-          <span class="text-muted-silver/60">Mesin:</span>
+           <span class="text-muted-silver/60">Engine:</span>
           <span class="text-muted-silver font-medium truncate max-w-[180px]">{{ character.engineType }}</span>
         </div>
       </div>
@@ -99,7 +91,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Character } from '~/types'
-import { useCarAudio } from '~/composables/useCarAudio'
 
 const props = defineProps<{
   character: Character
@@ -108,13 +99,5 @@ const props = defineProps<{
 const imageError = ref(false)
 const handleImageError = () => {
   imageError.value = true
-}
-
-const { playSound } = useCarAudio()
-
-const playVoice = () => {
-  if (props.character.soundEffect) {
-    playSound(props.character.soundEffect)
-  }
 }
 </script>

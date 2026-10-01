@@ -13,8 +13,8 @@
           VIRTUAL 3D SHOWROOM
         </h2>
         <p class="text-sm sm:text-base text-muted-silver">
-          Pilih mobil favoritmu (Lightning McQueen, Tow Mater, Cruz Ramirez, Jackson Storm), ganti varian skin cat
-          resmi, dengarkan suara klakson ikonik, dan dengarkan raungan mesin V8 secara langsung!
+          Pick your favorite car (Lightning McQueen, Tow Mater, Cruz Ramirez, Jackson Storm), swap through official
+          paint skin variants, and hear the thunderous V8 roar in real time!
         </p>
       </div>
 
@@ -50,8 +50,8 @@ import HomeCtaBanner from '~/components/home/HomeCtaBanner.vue'
 useSeoMeta({
   title: 'Disney Pixar Cars - Official Steam Game Showcase & 3D Showroom',
   ogTitle: 'Disney Pixar Cars & Cars 2 - Steam Video Game Hub',
-  description: 'Landing page resmi promosi game Disney Pixar Cars & Cars 2 di Steam. Nikmati panggung 3D interaktif Lightning McQueen 360°, audio suara mesin ikonik, trailer sinematik, dan review.',
-  ogDescription: 'Panggung 3D virtual 360° Lightning McQueen, Tow Mater, Cruz Ramirez, dan Jackson Storm. Download game Cars di Steam sekarang!',
+  description: 'Official promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Experience the interactive 3D Lightning McQueen 360° showcase, iconic engine audio, cinematic trailers, and more.',
+  ogDescription: '360° virtual 3D showcase of Lightning McQueen, Tow Mater, Cruz Ramirez, and Jackson Storm. Download Cars on Steam now!',
   ogImage: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
   twitterCard: 'summary_large_image'
 })

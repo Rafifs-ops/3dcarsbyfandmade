@@ -10,7 +10,7 @@
       class="btn-racing-skew px-4 py-2 rounded text-xs font-chakra font-bold tracking-wider uppercase flex items-center gap-2 bg-carbon-gray hover:bg-rust-red text-white border border-white/10 hover:border-transparent transition-all"
     >
       <BootstrapIcon name="arrow-left" />
-      <span>Lihat Berita Lainnya</span>
+      <span>See Other News</span>
     </NuxtLink>
   </div>
 </template>

@@ -9,11 +9,11 @@
         <span>Video Showcase & In-Game Footage</span>
       </div>
       <h1 class="text-3xl sm:text-5xl font-russo text-pure-white tracking-wide">
-        GAMEPLAY & MODE PERMAINAN
+        GAMEPLAY & GAME MODES
       </h1>
       <p class="text-sm sm:text-base text-muted-silver">
-        Saksikan rekaman gameplay 4K 60FPS, aksi balap tempur bersenjata C.H.R.O.M.E., drifting di Radiator Springs, dan
-        kebebasan open-world.
+        Watch 4K 60FPS gameplay footage, armed C.H.R.O.M.E. combat racing, drifting through Radiator Springs, and
+        open-world freedom.
       </p>
     </div>
 
@@ -41,8 +41,8 @@ const videos = computed(() => fetchedVideos.value || gameplayVideos)
 const activeVideo = ref<GameplayVideo>(videos.value[0] || gameplayVideos[0]!)
 
 useSeoMeta({
-  title: 'Video Gameplay & Cuplikan In-Game - Disney Pixar Cars Steam',
-  description: 'Saksikan video gameplay balap 4K 60FPS Disney Pixar Cars & Cars 2 di Steam dengan mode Piston Cup, misi mata-mata C.H.R.O.M.E., dan multiplayer.',
+  title: 'Gameplay Videos & In-Game Footage - Disney Pixar Cars Steam',
+  description: 'Watch 4K 60FPS racing gameplay of Disney Pixar Cars & Cars 2 on Steam featuring Piston Cup mode, C.H.R.O.M.E. spy missions, and multiplayer.',
   ogTitle: 'Disney Pixar Cars - Gameplay Showcase'
 })
 </script>

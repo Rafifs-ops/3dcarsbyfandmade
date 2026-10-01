@@ -10,7 +10,7 @@
           COMMUNITY NEWS & UPDATES
         </h1>
         <p class="text-sm sm:text-base text-muted-silver mt-1 max-w-2xl">
-          Dapatkan berita terkini seputar turnamen komunitas online, panduan konfigurasi Steam Deck 60 FPS, rilis mod tekstur HD 4K, dan update patch terbaru.
+          Stay updated with the latest community tournaments, Steam Deck 60 FPS configuration guides, 4K HD texture mod releases, and recent patch updates.
         </p>
       </div>
 
@@ -20,7 +20,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Cari artikel berita..."
+          placeholder="Search news articles..."
           class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-carbon-gray border border-white/10 text-pure-white placeholder:text-muted-silver/60 text-xs font-chakra focus:outline-none focus:border-lightning-yellow/60 transition-colors"
         />
       </div>

@@ -12,7 +12,7 @@
           DASHBOARD OVERVIEW
         </h1>
         <p class="text-xs sm:text-sm text-muted-silver font-inter">
-          Kelola seluruh konten dinamis website Disney Pixar Cars Steam Game Hub dari panel ini.
+          Manage all dynamic content on the Disney Pixar Cars Steam Game Hub from this panel.
         </p>
       </div>
 
@@ -24,7 +24,7 @@
           class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-chakra font-bold uppercase border border-white/15 flex items-center gap-2 transition-all shadow-md active:scale-95"
         >
           <BootstrapIcon name="database-fill-gear" :class="isResyncing ? 'animate-spin text-lightning-yellow' : 'text-dinoco-blue'" />
-          <span>{{ isResyncing ? 'Sinkronisasi...' : 'Sinkronkan Database' }}</span>
+          <span>{{ isResyncing ? 'Syncing...' : 'Sync Database' }}</span>
         </button>
       </div>
     </div>
@@ -38,7 +38,7 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-lightning-yellow/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Total Berita</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">Total News</span>
           <div class="w-10 h-10 rounded-xl bg-lightning-yellow/10 text-lightning-yellow flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="newspaper" />
           </div>
@@ -46,7 +46,7 @@
         <div class="mt-4 flex items-baseline justify-between">
           <span class="text-3xl font-russo text-white">{{ newsList.length }}</span>
           <span class="text-xs font-chakra text-lightning-yellow flex items-center gap-1">
-            <span>Kelola</span>
+            <span>Manage</span>
             <BootstrapIcon name="arrow-right" />
           </span>
         </div>
@@ -58,7 +58,7 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-rust-red/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Karakter 3D</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">3D Characters</span>
           <div class="w-10 h-10 rounded-xl bg-rust-red/10 text-rust-red-light flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="car-front-fill" />
           </div>
@@ -66,7 +66,7 @@
         <div class="mt-4 flex items-baseline justify-between">
           <span class="text-3xl font-russo text-white">{{ charactersList.length }}</span>
           <span class="text-xs font-chakra text-rust-red-light flex items-center gap-1">
-            <span>Kelola</span>
+            <span>Manage</span>
             <BootstrapIcon name="arrow-right" />
           </span>
         </div>
@@ -78,7 +78,7 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-emerald-500/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Sirkuit Balap</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">Racing Tracks</span>
           <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="flag-fill" />
           </div>
@@ -86,7 +86,7 @@
         <div class="mt-4 flex items-baseline justify-between">
           <span class="text-3xl font-russo text-white">{{ tracksList.length }}</span>
           <span class="text-xs font-chakra text-emerald-400 flex items-center gap-1">
-            <span>Kelola</span>
+            <span>Manage</span>
             <BootstrapIcon name="arrow-right" />
           </span>
         </div>
@@ -98,7 +98,7 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-dinoco-blue/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Game</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">Games</span>
           <div class="w-10 h-10 rounded-xl bg-dinoco-blue/10 text-dinoco-blue flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="cpu-fill" />
           </div>
@@ -106,7 +106,7 @@
         <div class="mt-4 flex items-baseline justify-between">
           <span class="text-3xl font-russo text-white">2</span>
           <span class="text-xs font-chakra text-dinoco-blue flex items-center gap-1">
-            <span>Kelola</span>
+            <span>Manage</span>
             <BootstrapIcon name="arrow-right" />
           </span>
         </div>
@@ -118,7 +118,7 @@
         class="p-5 rounded-2xl carbon-card border border-white/10 hover:border-purple-500/50 transition-all group flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="text-xs font-chakra text-muted-silver uppercase">Video Gameplay</span>
+          <span class="text-xs font-chakra text-muted-silver uppercase">Gameplay Videos</span>
           <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
             <BootstrapIcon name="play-btn-fill" />
           </div>
@@ -126,7 +126,7 @@
         <div class="mt-4 flex items-baseline justify-between">
           <span class="text-3xl font-russo text-white">{{ videosList.length }}</span>
           <span class="text-xs font-chakra text-purple-400 flex items-center gap-1">
-            <span>Kelola</span>
+            <span>Manage</span>
             <BootstrapIcon name="arrow-right" />
           </span>
         </div>
@@ -144,8 +144,8 @@
           <BootstrapIcon name="plus-circle-fill" />
         </div>
         <div>
-          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-lightning-yellow">Tambah Berita Baru</h4>
-          <p class="text-[11px] text-muted-silver">Tulis artikel / berita</p>
+          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-lightning-yellow">Add New Article</h4>
+          <p class="text-[11px] text-muted-silver">Write an article / news</p>
         </div>
       </NuxtLink>
 
@@ -157,8 +157,8 @@
           <BootstrapIcon name="plus-circle-fill" />
         </div>
         <div>
-          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-rust-red-light">Tambah Karakter</h4>
-          <p class="text-[11px] text-muted-silver">Input 3D model, skins & spek</p>
+          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-rust-red-light">Add Character</h4>
+          <p class="text-[11px] text-muted-silver">Input 3D model, skins & specs</p>
         </div>
       </NuxtLink>
 
@@ -170,8 +170,8 @@
           <BootstrapIcon name="plus-circle-fill" />
         </div>
         <div>
-          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-emerald-400">Tambah Sirkuit</h4>
-          <p class="text-[11px] text-muted-silver">Deskripsi map sirkuit dan tambah gambar</p>
+          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-emerald-400">Add Track</h4>
+          <p class="text-[11px] text-muted-silver">Track description and add images</p>
         </div>
       </NuxtLink>
 
@@ -183,8 +183,8 @@
           <BootstrapIcon name="plus-circle-fill" />
         </div>
         <div>
-          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-purple-400">Tambah Video</h4>
-          <p class="text-[11px] text-muted-silver">Link YouTube & kategori</p>
+          <h4 class="font-chakra font-bold text-sm text-white group-hover:text-purple-400">Add Video</h4>
+          <p class="text-[11px] text-muted-silver">YouTube link & category</p>
         </div>
       </NuxtLink>
     </div>
@@ -197,10 +197,10 @@
         <div class="flex items-center justify-between border-b border-white/10 pb-4">
           <h3 class="font-russo text-lg text-white flex items-center gap-2">
             <BootstrapIcon name="newspaper" class="text-lightning-yellow" />
-            <span>Berita Terbaru</span>
+            <span>Recent News</span>
           </h3>
           <NuxtLink to="/admin/news" class="text-xs font-chakra text-lightning-yellow hover:underline">
-            Lihat Semua
+            View All
           </NuxtLink>
         </div>
 
@@ -216,7 +216,7 @@
                 <span>{{ item.date }}</span>
                 <span>•</span>
                 <span>{{ item.author }}</span>
-                <span v-if="item.isFeatured" class="px-1.5 py-0.2 rounded bg-lightning-yellow/20 text-lightning-yellow text-[9px] font-bold">FEATURED</span>
+                <span v-if="item.isFeatured" class="px-1.5 py-0.5 rounded bg-lightning-yellow/20 text-lightning-yellow text-[9px] font-bold">FEATURED</span>
               </div>
             </div>
             <NuxtLink
@@ -234,10 +234,10 @@
         <div class="flex items-center justify-between border-b border-white/10 pb-4">
           <h3 class="font-russo text-lg text-white flex items-center gap-2">
             <BootstrapIcon name="car-front-fill" class="text-rust-red-light" />
-            <span>Daftar Karakter</span>
+            <span>Character List</span>
           </h3>
           <NuxtLink to="/admin/characters" class="text-xs font-chakra text-rust-red-light hover:underline">
-            Lihat Semua
+            View All
           </NuxtLink>
         </div>
 
@@ -272,15 +272,15 @@
     <!-- Re-sync Confirmation Modal -->
     <AdminModal
       v-model="openResyncModal"
-      title="Sinkronisasi Data Awal ke Turso"
-      confirm-text="Mulai Sinkronisasi"
+      title="Sync Initial Data to Turso"
+      confirm-text="Start Sync"
       confirm-type="primary"
       :loading="isResyncing"
       @confirm="handleResync"
     >
       <p>
-        Tindakan ini akan mengimpor ulang data awal (news, characters, tracks, specs, gameplay) ke database Turso.
-        Data yang telah Anda buat atau modifikasi akan di-upsert sesuai ID.
+        This action will re-import initial data (news, characters, tracks, specs, gameplay) to the Turso database.
+        Data you have created or modified will be upserted by ID.
       </p>
     </AdminModal>
 
@@ -311,11 +311,11 @@ const handleResync = async () => {
       method: 'POST',
       body: { force: true }
     })
-    success('Sinkronisasi Berhasil', 'Database Turso telah berhasil dimigrasi dan disinkronkan!')
+    success('Sync Successful', 'Turso database has been successfully migrated and synced!')
     openResyncModal.value = false
     await refreshNuxtData()
   } catch (err: any) {
-    toastError('Gagal Sinkronisasi', err?.message || 'Terjadi kesalahan saat sinkronisasi.')
+    toastError('Sync Failed', err?.message || 'An error occurred during synchronization.')
   } finally {
     isResyncing.value = false
   }

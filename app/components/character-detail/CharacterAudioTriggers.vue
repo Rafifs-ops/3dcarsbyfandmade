@@ -11,22 +11,13 @@
         <span>{{ isRevving ? 'REVVIINNGG!!' : 'Rev V8 Engine' }}</span>
       </button>
 
-      <!-- Voice Line -->
-      <button
-        @click="playVoice"
-        class="px-3.5 py-2.5 rounded bg-carbon-gray hover:bg-carbon-gray-light text-pure-white text-xs font-chakra font-semibold tracking-wider flex items-center gap-2 border border-white/10 hover:border-lightning-yellow/50 transition-all cursor-pointer"
-      >
-        <BootstrapIcon name="megaphone-fill" class="text-lightning-yellow" />
-        <span>Suara Ikonik</span>
-      </button>
-
       <!-- Horn -->
       <button
         @click="playHorn"
         class="px-3.5 py-2.5 rounded bg-carbon-gray hover:bg-carbon-gray-light text-muted-silver hover:text-white text-xs font-chakra font-medium flex items-center gap-1.5 border border-white/10 transition-all cursor-pointer"
       >
         <BootstrapIcon name="bell-fill" class="text-dinoco-blue" />
-        <span>Klakson</span>
+        <span>Horn</span>
       </button>
     </div>
 
@@ -39,16 +30,9 @@
 <script setup lang="ts">
 import { useCarAudio } from '~/composables/useCarAudio'
 
-const props = defineProps<{
-  soundEffect?: string
+defineProps<{
   voiceQuote?: string
 }>()
 
-const { isRevving, revEngine, playSound, playHorn } = useCarAudio()
-
-const playVoice = () => {
-  if (props.soundEffect) {
-    playSound(props.soundEffect)
-  }
-}
+const { isRevving, revEngine, playHorn } = useCarAudio()
 </script>

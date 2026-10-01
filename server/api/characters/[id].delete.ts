@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Karakter diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'Character ID is required.' })
   }
 
   const existing = await prisma.character.findFirst({
@@ -31,13 +31,12 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Karakter tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'Character not found.' })
   }
 
   // Delete associated files from public/
   tryDeleteFile(existing.modelFile)
   tryDeleteFile(existing.coverUrl)
-  tryDeleteFile(existing.soundEffect)
   for (const skin of existing.skins) {
     tryDeleteFile(skin.modelFile)
   }
@@ -48,6 +47,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Karakter berhasil dihapus'
+    message: 'Character deleted successfully'
   }
 })

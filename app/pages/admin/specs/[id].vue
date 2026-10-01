@@ -2,16 +2,16 @@
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Top Nav / Breadcrumbs -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/admin/specs"
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Spesifikasi Game</span>
+        <span>Back to Game Specs List</span>
       </NuxtLink>
 
-      <span class="text-xs font-chakra text-dinoco-blue uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
+      <span class="text-xs font-chakra text-dinoco-blue uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 truncate max-w-[60%]">
         Edit Game Spec #{{ id }}
       </span>
     </div>
@@ -22,32 +22,32 @@
       <div class="border-b border-white/10 pb-4 flex items-center justify-between">
         <div>
           <h1 class="text-2xl font-russo text-white">
-            EDIT SPESIFIKASI GAME
+            EDIT GAME SPECIFICATIONS
           </h1>
           <p class="text-xs text-muted-silver font-chakra">
-            Perbarui data metadata Steam, informasi rilis, dan kebutuhan minimum perangkat keras PC.
+            Update Steam metadata, release information, and minimum PC hardware requirements.
           </p>
         </div>
 
         <NuxtLink
-          to="/identity"
+          to="/admin/game"
           target="_blank"
           class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white text-xs font-chakra flex items-center gap-1.5 transition-colors"
         >
           <BootstrapIcon name="eye" />
-          <span>Lihat Halaman Games</span>
+          <span>View Games Page</span>
         </NuxtLink>
       </div>
 
       <!-- SECTION 1: General Info -->
       <div class="space-y-4 font-chakra text-xs">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          1. Informasi Game & Steam
+          1. Game & Steam Information
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Judul Game *</label>
+            <label class="block text-muted-silver uppercase font-bold">Game Title *</label>
             <input
               v-model="form.title"
               type="text"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Tahun Rilis *</label>
+            <label class="block text-muted-silver uppercase font-bold">Release Year *</label>
             <input
               v-model.number="form.releaseYear"
               type="number"
@@ -67,7 +67,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Pengembang (Developer)</label>
+            <label class="block text-muted-silver uppercase font-bold">Developer</label>
             <input
               v-model="form.developer"
               type="text"
@@ -76,7 +76,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Penerbit (Publisher)</label>
+            <label class="block text-muted-silver uppercase font-bold">Publisher</label>
             <input
               v-model="form.publisher"
               type="text"
@@ -85,7 +85,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Genre Game</label>
+            <label class="block text-muted-silver uppercase font-bold">Game Genre</label>
             <input
               v-model="form.genre"
               type="text"
@@ -121,7 +121,7 @@
           </div>
 
           <div class="space-y-1.5 sm:col-span-2">
-            <label class="block text-muted-silver uppercase font-bold">Ringkasan Game</label>
+            <label class="block text-muted-silver uppercase font-bold">Game Summary</label>
             <textarea
               v-model="form.summary"
               rows="3"
@@ -134,12 +134,12 @@
       <!-- SECTION 2: Minimum Hardware System Requirements -->
       <div class="space-y-4 font-chakra text-xs">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          2. Kebutuhan Perangkat Keras PC (Minimum Specs)
+          2. PC Hardware Requirements (Minimum Specs)
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Sistem Operasi (OS)</label>
+            <label class="block text-muted-silver uppercase font-bold">Operating System</label>
             <input
               v-model="form.minimumSpecs.os"
               type="text"
@@ -148,7 +148,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Prosesor (CPU)</label>
+            <label class="block text-muted-silver uppercase font-bold">Processor</label>
             <input
               v-model="form.minimumSpecs.processor"
               type="text"
@@ -157,7 +157,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Memori (RAM)</label>
+            <label class="block text-muted-silver uppercase font-bold">Memory</label>
             <input
               v-model="form.minimumSpecs.memory"
               type="text"
@@ -166,7 +166,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Kartu Grafis (GPU)</label>
+            <label class="block text-muted-silver uppercase font-bold">Graphics Card</label>
             <input
               v-model="form.minimumSpecs.graphics"
               type="text"
@@ -184,7 +184,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Ruang Penyimpanan (Storage)</label>
+            <label class="block text-muted-silver uppercase font-bold">Storage</label>
             <input
               v-model="form.minimumSpecs.storage"
               type="text"
@@ -200,7 +200,7 @@
           to="/admin/specs"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -210,7 +210,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Perbarui Game Spec' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Update Game Spec' }}</span>
         </button>
       </div>
 
@@ -257,7 +257,7 @@ const form = reactive({
 
 const handleSubmit = async () => {
   if (!form.title) {
-    toastError('Validasi Gagal', 'Judul game wajib diisi!')
+    toastError('Validation Failed', 'Game title is required!')
     return
   }
 
@@ -267,10 +267,10 @@ const handleSubmit = async () => {
       method: 'PUT',
       body: form
     })
-    success('Berhasil!', `Spesifikasi "${form.title}" berhasil diperbarui.`)
+    success('Success!', `Specifications for "${form.title}" have been successfully updated.`)
     router.push('/admin/specs')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat memperbarui spesifikasi.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while updating the specifications.')
   } finally {
     isSubmitting.value = false
   }

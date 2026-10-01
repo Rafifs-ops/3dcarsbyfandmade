@@ -37,7 +37,7 @@
         :to="`/news/${item.id}`"
         class="text-lightning-yellow font-bold uppercase tracking-wider flex items-center gap-1 hover:underline"
       >
-        <span>Baca Artikel</span>
+        <span>Read Article</span>
         <BootstrapIcon name="chevron-right" class="text-[10px]" />
       </NuxtLink>
 

@@ -2,19 +2,19 @@
   <div v-if="character" class="pt-28 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
     
     <!-- Breadcrumb & Back Navigation -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/characters"
         class="inline-flex items-center gap-2 text-xs font-chakra tracking-wider uppercase text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Katalog Karakter</span>
+        <span>Back to Character Catalog</span>
       </NuxtLink>
 
-      <div class="flex items-center gap-2 text-xs font-chakra text-muted-silver">
-        <span>Roster</span>
-        <BootstrapIcon name="chevron-right" class="text-[10px]" />
-        <span class="text-pure-white font-bold">{{ character.name }}</span>
+      <div class="flex items-center gap-2 min-w-0 text-xs font-chakra text-muted-silver">
+        <span class="shrink-0">Roster</span>
+        <BootstrapIcon name="chevron-right" class="text-[10px] shrink-0" />
+        <span class="text-pure-white font-bold truncate">{{ character.name }}</span>
       </div>
     </div>
 
@@ -38,7 +38,6 @@
 
         <!-- Audio Soundboard Trigger -->
         <CharacterAudioTriggers
-          :sound-effect="character.soundEffect"
           :voice-quote="character.voiceQuote"
         />
 
@@ -79,16 +78,19 @@
     </div>
 
     <!-- Related Characters Grid -->
-    <CharacterRelatedGrid :related-characters="relatedCharacters" />
+    <CharacterRelatedGrid
+      :related-characters="relatedCharacters"
+      :loading="isRelatedLoading"
+    />
 
   </div>
 
   <!-- 404 Character Not Found -->
   <div v-else class="py-24 text-center carbon-card rounded-2xl max-w-lg mx-auto border border-white/10 space-y-4">
-    <h2 class="text-2xl font-russo text-pure-white">Karakter Tidak Ditemukan</h2>
-    <p class="text-xs font-chakra text-muted-silver">Karakter yang Anda tuju tidak ada dalam database kami.</p>
+    <h2 class="text-2xl font-russo text-pure-white">Character Not Found</h2>
+    <p class="text-xs font-chakra text-muted-silver">The character you're looking for doesn't exist in our database.</p>
     <NuxtLink to="/characters" class="inline-block px-5 py-2.5 rounded bg-rust-red text-white text-xs font-chakra font-bold uppercase">
-      Kembali ke Katalog
+      Back to Catalog
     </NuxtLink>
   </div>
 </template>
@@ -112,8 +114,9 @@ const { data: fetchedChar } = await useFetch<Character>(() => `/api/characters/$
   default: () => charactersData.find(c => c.slug === slug.value || c.id === slug.value) as any
 })
 
-const { data: allChars } = await useFetch<Character[]>('/api/characters', {
-  default: () => charactersData
+const { data: allChars, pending: allCharsPending } = useFetch<Character[]>('/api/characters', {
+  default: () => charactersData,
+  lazy: true
 })
 
 const character = computed<Character | undefined>(() => {
@@ -147,8 +150,10 @@ const relatedCharacters = computed(() => {
     .slice(0, 4)
 })
 
+const isRelatedLoading = computed(() => import.meta.client && allCharsPending.value)
+
 useSeoMeta({
   title: computed(() => character.value ? `${character.value.name} - 3D Showcase & Specs | Cars Steam` : 'Character Detail | Cars Steam'),
-  description: computed(() => character.value?.bio || 'Detail karakter Disney Pixar Cars')
+  description: computed(() => character.value?.bio || 'Disney Pixar Cars character details')
 })
 </script>

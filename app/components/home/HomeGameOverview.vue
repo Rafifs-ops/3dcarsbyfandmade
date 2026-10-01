@@ -20,10 +20,10 @@
         class="rounded-2xl overflow-hidden carbon-card border border-white/10 p-8 flex flex-col justify-between hover:border-lightning-yellow/40 transition-all duration-300">
         <div>
           <!-- Header Tag & Developer -->
-          <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
             <span
               class="px-3 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-chakra font-bold uppercase">
-              Rilis 2006 • Open-World
+               Released 2006 • Open-World
             </span>
             <span class="text-xs font-chakra text-muted-silver">
               Rainbow Studios
@@ -44,9 +44,9 @@
           </h3>
 
           <p class="text-sm text-muted-silver leading-relaxed mb-6">
-            Mulai kisah rookie Lightning McQueen saat tersesat di Radiator Springs. Rasakan kebebasan menjelajahi kota
-            dan Ornament Valley di dunia terbuka, balapan di lintasan berdebu Willy's Butte, dan latih teknik drifting
-            legendaris Doc Hudson.
+            Begin rookie Lightning McQueen's journey as he gets lost in Radiator Springs. Experience the freedom of
+            exploring the town and Ornament Valley in the open world, race on the dusty tracks of Willy's Butte, and
+            master Doc Hudson's legendary drifting techniques.
           </p>
         </div>
 
@@ -60,7 +60,7 @@
             rel="noopener noreferrer"
             class="btn-racing-skew px-5 py-2.5 rounded bg-carbon-gray hover:bg-carbon-gray-light text-white text-xs font-chakra font-bold tracking-wider uppercase border border-white/20 hover:border-lightning-yellow/50 flex items-center gap-1.5 transition-all">
             <BootstrapIcon name="steam" class="text-lightning-yellow" />
-            <span>Beli Cars (2006)</span>
+            <span>Buy Cars (2006)</span>
           </a>
         </div>
       </div>
@@ -70,10 +70,10 @@
         class="rounded-2xl overflow-hidden carbon-card border border-rust-red/30 p-8 flex flex-col justify-between hover:border-rust-red transition-all duration-300 shadow-[0_0_30px_rgba(225,29,42,0.15)]">
         <div>
           <!-- Header Tag & Developer -->
-          <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
             <span
               class="px-3 py-1 rounded bg-rust-red/20 text-rust-red-light border border-rust-red/30 text-xs font-chakra font-bold uppercase">
-              Rilis 2011 • Spy Combat Racing
+               Released 2011 • Spy Combat Racing
             </span>
             <span class="text-xs font-chakra text-muted-silver">
               Avalanche Software
@@ -93,8 +93,8 @@
           </h3>
 
           <p class="text-sm text-muted-silver leading-relaxed mb-6">
-            Bergabunglah dengan pusat intelijen spionase C.H.R.O.M.E.! Ikuti turnamen World Grand Prix di Tokyo, London,
-            dan Italia dengan persenjataan canggih (rudal pelacak, ranjau oli) dan trik balap akrobatik dua roda.
+            Join the C.H.R.O.M.E. intelligence agency! Compete in the World Grand Prix tournament across Tokyo, London,
+            and Italy with advanced weaponry (homing missiles, oil mines) and acrobatic two-wheel racing tricks.
           </p>
         </div>
 
@@ -108,7 +108,7 @@
             rel="noopener noreferrer"
             class="btn-racing-skew px-5 py-2.5 rounded bg-gradient-to-r from-rust-red to-rust-red-dark text-white text-xs font-chakra font-bold tracking-wider uppercase shadow-lg hover:shadow-rust-red/50 flex items-center gap-1.5 transition-all">
             <BootstrapIcon name="steam" />
-            <span>Beli Cars 2 di Steam</span>
+            <span>Buy Cars 2 on Steam</span>
           </a>
         </div>
       </div>

@@ -39,6 +39,7 @@ export default {
           light: '#262A34',
           dark: '#14171E'
         },
+        'carbon-dark': '#14171E',
         'pure-white': '#F8FAFC',
         'muted-silver': {
           DEFAULT: '#94A3B8',

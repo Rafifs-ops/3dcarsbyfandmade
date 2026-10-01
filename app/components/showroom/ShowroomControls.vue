@@ -5,7 +5,7 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
       <div class="text-xs font-chakra tracking-wider text-muted-silver uppercase flex items-center gap-1.5">
         <BootstrapIcon name="car-front-fill" class="text-lightning-yellow" />
-        <span>Pilih Karakter Showroom:</span>
+        <span>Showroom Character:</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-2">
@@ -28,7 +28,7 @@
     <div v-if="activeCharacter.skins && activeCharacter.skins.length > 1" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-white/5">
       <div class="text-xs font-chakra tracking-wider text-muted-silver uppercase flex items-center gap-1.5">
         <BootstrapIcon name="palette-fill" class="text-dinoco-blue" />
-        <span>Ganti Paint Job / Skin:</span>
+        <span>Change Paint Job / Skin:</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-2">
@@ -68,7 +68,7 @@
           class="px-3.5 py-2 rounded bg-carbon-gray hover:bg-carbon-gray-light text-pure-white text-xs font-chakra font-semibold tracking-wider flex items-center gap-2 border border-white/10 hover:border-lightning-yellow/50 transition-all cursor-pointer"
         >
           <BootstrapIcon name="megaphone-fill" class="text-lightning-yellow" />
-          <span>Suara Ikonik</span>
+          <span>Iconic Voice</span>
         </button>
 
         <!-- Horn Button -->
@@ -77,7 +77,7 @@
           class="px-3 py-2 rounded bg-carbon-gray hover:bg-carbon-gray-light text-muted-silver hover:text-white text-xs font-chakra font-medium flex items-center gap-1.5 border border-white/10 transition-all cursor-pointer"
         >
           <BootstrapIcon name="bell-fill" class="text-dinoco-blue" />
-          <span>Klakson</span>
+          <span>Horn</span>
         </button>
       </div>
 
@@ -87,7 +87,7 @@
         <NuxtLink
           :to="`/characters/${activeCharacter.slug}`"
           class="p-2 rounded-lg bg-carbon-gray hover:bg-rust-red/20 text-muted-silver hover:text-rust-red-light text-xs font-chakra border border-white/10 hover:border-rust-red/40 flex items-center gap-1.5 transition-all"
-          title="Lihat Spesifikasi Penuh"
+          title="View Full Specifications"
         >
           <BootstrapIcon name="box-arrow-up-right" />
           <span class="hidden sm:inline text-[11px]">Full Specs</span>

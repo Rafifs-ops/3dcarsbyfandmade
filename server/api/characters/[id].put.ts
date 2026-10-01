@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Karakter diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'Character ID is required.' })
   }
 
   const existing = await prisma.character.findFirst({
@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Karakter tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'Character not found.' })
   }
 
   const body = await readBody(event)
@@ -41,7 +41,6 @@ export default defineEventHandler(async (event) => {
     sponsor,
     engineType,
     voiceQuote,
-    soundEffect,
     bio,
     funFact,
     primaryColor,
@@ -72,7 +71,6 @@ export default defineEventHandler(async (event) => {
       sponsor: sponsor !== undefined ? sponsor : existing.sponsor,
       engineType: engineType !== undefined ? engineType : existing.engineType,
       voiceQuote: voiceQuote !== undefined ? voiceQuote : existing.voiceQuote,
-      soundEffect: soundEffect !== undefined ? soundEffect : existing.soundEffect,
       bio: bio !== undefined ? bio : existing.bio,
       funFact: funFact !== undefined ? funFact : existing.funFact,
       primaryColor: primaryColor !== undefined ? primaryColor : existing.primaryColor,
@@ -110,7 +108,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Karakter berhasil diperbarui',
+    message: 'Character updated successfully',
     data: formatCharacter(updated)
   }
 })

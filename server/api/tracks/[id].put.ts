@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Sirkuit diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'Track ID is required.' })
   }
 
   const existing = await prisma.trackCircuit.findUnique({
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Sirkuit tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'Track not found.' })
   }
 
   const body = await readBody(event)
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Sirkuit berhasil diperbarui',
+    message: 'Track updated successfully',
     data: updated
   }
 })

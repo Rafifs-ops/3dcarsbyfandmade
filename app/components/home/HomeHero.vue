@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative min-h-[90vh] flex items-center justify-center pt-28 sm:pt-36 mt-3 pb-16 px-4 sm:px-6 lg:px-8">
+    class="relative overflow-hidden min-h-[90vh] flex items-center justify-center pt-28 sm:pt-36 mt-3 pb-16 px-4 sm:px-6 lg:px-8">
 
     <!-- Background Ambient Glow & Racing Elements -->
     <div
@@ -26,32 +26,32 @@
 
         <!-- Subheadline -->
         <p class="text-base sm:text-lg text-muted-silver leading-relaxed max-w-2xl font-inter">
-          Kuasai lintasan sirkuit Piston Cup dan selami misi spionase internasional berkecepatan tinggi! Jelajahi
-          panggung virtual 3D interaktif, ganti corak livery legendaris, dan rasakan kembali raungan mesin V8 di
-          platform Steam.
+          Master the Piston Cup circuit tracks and dive into high-speed international spy missions! Explore the
+          interactive 3D virtual stage, switch legendary livery designs, and feel the roar of the V8 engine on
+          the Steam platform.
         </p>
 
         <!-- Primary CTA Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
 
           <!-- Steam CTA Button Cars 2 -->
-          <NuxtLink to="/identity"
-            rel="noopener noreferrer"
-            class="btn-racing-skew px-7 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.55)] border border-rust-red-light/50 flex items-center gap-2.5 group transition-all cursor-pointer">
-            <BootstrapIcon name="steam" class="text-xl" />
-            <span>Get The Games On Steam</span>
-            <BootstrapIcon name="arrow-right" class="group-hover:translate-x-1 transition-transform" />
-          </NuxtLink>
+           <NuxtLink to="/game"
+             rel="noopener noreferrer"
+             class="btn-racing-skew px-7 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.55)] border border-rust-red-light/50 flex items-center gap-2.5 group transition-all cursor-pointer">
+             <BootstrapIcon name="steam" class="text-xl" />
+             <span>Get The Games On Steam</span>
+             <BootstrapIcon name="arrow-right" class="group-hover:translate-x-1 transition-transform" />
+           </NuxtLink>
         </div>
 
         <!-- Feature Pills -->
-        <div class="pt-4 grid grid-cols-3 gap-4 border-t border-white/10 max-w-xl text-left">
+        <div class="pt-4 grid grid-cols-2 gap-4 border-t border-white/10 max-w-xl text-left">
           <div>
-            <BootstrapIcon name="steam" :size="50" class="text-white" />
+            <BootstrapIcon name="steam" class="text-4xl sm:text-[50px] text-white" />
             <div class="text-xs font-chakra text-muted-silver mt-2">Available on Steam</div>
           </div>
           <div>
-            <BootstrapIcon name="playstation" :size="50" class="text-white" />
+            <BootstrapIcon name="playstation" class="text-4xl sm:text-[50px] text-white" />
             <div class="text-xs font-chakra text-muted-silver mt-2">Available on Playstation</div>
           </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="flex items-center gap-1.5">
               <button @click="playKaChow"
                 class="px-2.5 py-1.5 rounded-lg bg-rust-red hover:bg-rust-red-light text-white text-xs font-chakra font-bold flex items-center gap-1 border border-white/10 transition-all cursor-pointer shadow"
-                title="Dengar Ka-Chow!">
+                title="Listen to Ka-Chow!">
                 <BootstrapIcon name="megaphone-fill" class="text-lightning-yellow text-xs" />
                 <span>Ka-Chow!</span>
               </button>
@@ -107,7 +107,7 @@
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-lightning-yellow" />
                 </span>
                 <span class="text-[10px] font-chakra font-bold text-white tracking-wider">
-                  SKELETON CHASSIS AKTIF • MEMUAT 3D...
+                  SKELETAL CHASSIS ACTIVE • LOADING 3D...
                 </span>
               </div>
             </Transition>
@@ -145,7 +145,7 @@
                 <CarSkeletonLoader
                   primary-color="#E11D2A"
                   accent-color="#FFC700"
-                  title="MEMUAT LIGHTNING MCQUEEN..."
+                  title="LOADING LIGHTNING MCQUEEN..."
                 />
               </template>
             </ClientOnly>

@@ -8,12 +8,12 @@
         class="inline-flex items-center gap-2 text-xs font-chakra tracking-wider uppercase text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Berita</span>
+        <span>Back to News</span>
       </NuxtLink>
 
       <span class="text-xs font-chakra text-lightning-yellow uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1.5">
         <BootstrapIcon name="newspaper" class="text-xs" />
-        <span>Berita Komunitas</span>
+        <span>Community News</span>
       </span>
     </div>
 
@@ -45,10 +45,10 @@
 
   <!-- 404 State -->
   <div v-else class="py-20 text-center carbon-card rounded-2xl max-w-md mx-auto border border-white/10 space-y-4">
-    <h2 class="text-2xl font-russo text-pure-white">Artikel Tidak Ditemukan</h2>
-    <p class="text-xs font-chakra text-muted-silver">Artikel yang Anda cari mungkin telah dipindahkan atau dihapus.</p>
+    <h2 class="text-2xl font-russo text-pure-white">Article Not Found</h2>
+    <p class="text-xs font-chakra text-muted-silver">The article you're looking for may have been moved or deleted.</p>
     <NuxtLink to="/news" class="inline-block px-5 py-2.5 rounded bg-rust-red text-white text-xs font-chakra font-bold uppercase">
-      Kembali ke Berita
+      Back to News
     </NuxtLink>
   </div>
 </template>
@@ -75,7 +75,7 @@ const article = computed<CommunityNews | undefined>(() => {
 
 useSeoMeta({
   title: computed(() => article.value ? `${article.value.title} | Cars Community News` : 'News Detail | Cars Steam'),
-  description: computed(() => article.value?.excerpt || 'Detail berita komunitas game Cars')
+  description: computed(() => article.value?.excerpt || 'Cars community news details')
 })
 </script>
 

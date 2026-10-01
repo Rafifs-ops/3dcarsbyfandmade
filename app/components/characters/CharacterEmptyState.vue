@@ -3,9 +3,9 @@
     <div class="w-16 h-16 rounded-full bg-carbon-gray mx-auto flex items-center justify-center text-muted-silver text-2xl">
       <BootstrapIcon name="car-front" />
     </div>
-    <h3 class="text-xl font-russo text-pure-white">Tidak ada karakter yang cocok</h3>
+    <h3 class="text-xl font-russo text-pure-white">No matching characters</h3>
     <p class="text-xs font-chakra text-muted-silver max-w-sm mx-auto">
-      Coba sesuaikan kata kunci pencarian atau ganti kategori filter untuk menemukan pembalap yang Anda cari.
+      Try adjusting your search keywords or change the filter category to find the racer you're looking for.
     </p>
     <button
       @click="$emit('reset')"

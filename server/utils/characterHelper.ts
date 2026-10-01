@@ -46,7 +46,6 @@ export function formatCharacter(char: any) {
     sponsor: char.sponsor,
     engineType: char.engineType,
     voiceQuote: char.voiceQuote,
-    soundEffect: char.soundEffect,
     bio: char.bio,
     funFact: char.funFact,
     primaryColor: char.primaryColor,

@@ -12,28 +12,28 @@
         GAMES
       </h1>
       <p class="text-sm sm:text-base text-muted-silver">
-        Bandingkan fitur, gameplay, sejarah pengembang, dan kebutuhan sistem PC untuk Disney•Pixar Cars (2006) dan Cars
+        Compare features, gameplay, developer history, and PC system requirements for Disney•Pixar Cars (2006) and Cars
         2: The Video Game (2011).
       </p>
     </div>
 
-    <!-- Side-by-Side Game Identity Cards -->
+    <!-- Side-by-Side Game Cards -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-      <!-- Cars (2006) Identity Card -->
-      <IdentityGameCard :game-spec="cars1" edition-title="Disney•Pixar Cars (2006)" edition-tag="Classic Edition"
+      <!-- Cars (2006) Game Card -->
+      <GameGameCard :game-spec="cars1" edition-title="Disney•Pixar Cars (2006)" edition-tag="Classic Edition"
         theme="yellow" />
 
-      <!-- Cars 2 (2011) Identity Card -->
-      <IdentityGameCard :game-spec="cars2" edition-title="Disney•Pixar Cars 2 (2011)" edition-tag="Spy Action Edition"
+      <!-- Cars 2 (2011) Game Card -->
+      <GameGameCard :game-spec="cars2" edition-title="Disney•Pixar Cars 2 (2011)" edition-tag="Spy Action Edition"
         theme="red" />
 
     </div>
 
     <!-- SYSTEM REQUIREMENTS COMPARISON TABLE -->
-    <IdentitySpecTable :cars1="cars1" :cars2="cars2">
-      <IdentityCompatibilityBadge />
-    </IdentitySpecTable>
+    <GameSpecTable :cars1="cars1" :cars2="cars2">
+      <GameCompatibilityBadge />
+    </GameSpecTable>
 
   </div>
 </template>
@@ -41,9 +41,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { cars1Spec, cars2Spec } from '~/data/gameInfo'
-import IdentityGameCard from '~/components/identity/IdentityGameCard.vue'
-import IdentitySpecTable from '~/components/identity/IdentitySpecTable.vue'
-import IdentityCompatibilityBadge from '~/components/identity/IdentityCompatibilityBadge.vue'
+import GameGameCard from '~/components/game/GameGameCard.vue'
+import GameSpecTable from '~/components/game/GameSpecTable.vue'
+import GameCompatibilityBadge from '~/components/game/GameCompatibilityBadge.vue'
 
 const { data: specs } = await useFetch<any[]>('/api/specs', {
   default: () => [
@@ -61,8 +61,8 @@ const cars2 = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Identitas 2 Game & Spesifikasi PC - Disney Pixar Cars vs Cars 2',
-  description: 'Tabel perbandingan spesifikasi minimum dan rekomendasi PC untuk Disney Pixar Cars dan Cars 2 di Steam beserta link resmi Steam Store.',
+  title: '2 Game Identity & PC Specs - Disney Pixar Cars vs Cars 2',
+  description: 'Comparison table of minimum and recommended PC specifications for Disney Pixar Cars and Cars 2 on Steam, with official Steam Store links.',
   ogTitle: 'Disney Pixar Cars - Game Identity & PC Requirements'
 })
 </script>

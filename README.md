@@ -1,6 +1,6 @@
 # Disney Pixar Cars — Steam Game Promotional Hub
 
-A cinematic promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Features an interactive 3D car showroom (Three.js via TresJS), a CMS-style admin panel for managing all content, character catalog with skins & audio, gameplay video showcase, news system, and game specs comparison.
+A cinematic promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Features an interactive 3D car showroom (Three.js via TresJS), a CMS-style admin panel for managing all content, character catalog with skins, gameplay video showcase, news system, and game specs comparison.
 
 ## Table of Contents
 
@@ -22,20 +22,21 @@ A cinematic promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Fe
 
 ### Public Website
 - **Interactive 3D Showroom** — TresJS/Cientos-powered car model viewer with 360° spin, skin switching, and camera controls
-- **Character Catalog** — filterable grid with category tabs, search, and dedicated detail pages per character
-- **Character Detail Pages** — 3D model viewer, skin selector, audio triggers (engine sounds, voice quotes), telemetry dashboard, trivia card
+- **Character Catalog** — filterable grid with category tabs, search, dedicated detail pages per character, and skeleton loading while the roster fetches
+- **Character Detail Pages** — 3D model viewer with automatic model normalization, skin selector, engine rev & horn audio, telemetry dashboard, trivia card, and a related-racers grid with skeleton loading
 - **Gameplay Video Showcase** — YouTube video player with playlist grid, category filtering
 - **Community News** — article listing with featured highlight, search, rich-text article detail pages
 - **Game Identity & Specs** — side-by-side comparison of Cars (2006) vs Cars 2 (2011) with system requirements
 - **Legendary Tracks Carousel** — scrollable circuit cards with ambient color theming
 - **Cinematic Trailer Modal** — embedded trailer player
 - **Responsive Design** — mobile-first Tailwind CSS with custom Cars-themed color palette and typography
+- **Page Transitions** — NuxtLoadingIndicator progress bar on all route changes (public + admin)
 - **Scroll Animations** — AOS (Animate on Scroll) integration
 - **SEO Optimized** — meta tags, Open Graph, Twitter cards, sitemap, robots.txt
 
 ### Admin CMS Panel
 - **Dashboard** — overview stats, quick actions, recent entries, database resync button
-- **Character Management** — full CRUD with file upload for 3D models (.glb), cover images, audio files, skin management
+- **Character Management** — full CRUD with file upload for 3D models (.glb), cover images, skin management
 - **News Management** — full CRUD with TipTap rich-text editor, featured toggle, image upload
 - **Track Management** — full CRUD with ambient color picker, rich-text descriptions
 - **Game Specs Management** — edit system requirements for Cars & Cars 2
@@ -83,7 +84,7 @@ npm install
 
 ### Database Setup
 
-The project uses **Prisma** with **Turso** (libSQL) in production, with a local SQLite fallback at `prisma/dev.db`.
+The project uses **Prisma** with **Turso** (libSQL) in production. When `TURSO_DATABASE_URL` is unset it falls back to a local SQLite file `dev.db` in the project root (`file:./dev.db`).
 
 **Option A — Standalone scripts (recommended for fresh Turso setup):**
 
@@ -130,15 +131,15 @@ carsgame/
 │   │   │   ├── AdminSidebar.vue  # Admin navigation sidebar
 │   │   │   ├── AdminHeader.vue   # Admin page header
 │   │   │   └── AdminToast.vue    # Toast notifications
-│   │   ├── characters/           # Character-related components
-│   │   ├── character-detail/     # Character detail page components
+│   │   ├── characters/           # Character list components (card skeleton, filter bar, empty state)
+│   │   ├── character-detail/     # Character detail page components (3D stage, related grid, etc.)
 │   │   ├── home/                 # Homepage section components
 │   │   ├── news/                 # News listing components
 │   │   ├── news-detail/          # News detail page components
 │   │   ├── gameplay/             # Gameplay video components
 │   │   ├── showroom/             # 3D showroom components
 │   │   ├── tracks/               # Track carousel components
-│   │   ├── identity/             # Game identity/specs components
+│   │   ├── game/              # Game identity/specs components
 │   │   ├── ThreeShowroom.vue     # Showroom orchestrator
 │   │   ├── ModelViewer3D.vue     # Interactive 3D model viewer
 │   │   ├── CarSkeleton3D.vue     # 3D loading skeleton (Three.js primitives)
@@ -154,7 +155,7 @@ carsgame/
 │   │   ├── useCarAudio.ts        # Car audio playback
 │   │   └── useToast.ts           # Toast notification state
 │   ├── data/                     # Static TypeScript data (API fallback)
-│   │   ├── characters.ts         # 19 characters with skins
+│   │   ├── characters.ts         # 18 characters with skins
 │   │   ├── news.ts               # News articles
 │   │   ├── tracks.ts             # Track circuits
 │   │   └── gameInfo.ts           # Game specs + gameplay videos
@@ -166,7 +167,7 @@ carsgame/
 │   ├── pages/                    # File-based routing
 │   │   ├── index.vue             # Homepage
 │   │   ├── gameplay.vue          # Gameplay videos
-│   │   ├── identity.vue          # Game specs comparison
+│   │   ├── game.vue          # Game specs comparison
 │   │   ├── characters/           # Character pages
 │   │   ├── news/                 # News pages
 │   │   └── admin/                # Admin CMS pages
@@ -204,7 +205,7 @@ carsgame/
 ├── tailwind.config.js            # Tailwind custom theme
 ├── tsconfig.json                 # TypeScript config (references .nuxt)
 ├── package.json
-└── .env                          # Environment variables (committed)
+└── .env                          # Local env vars (gitignored, not committed)
 ```
 
 ---
@@ -243,7 +244,7 @@ carsgame/
 │                     DATABASE                            │
 │                                                         │
 │  Prisma ORM ──→ Turso (libSQL) in production           │
-│               ──→ SQLite file (prisma/dev.db) locally   │
+│               ──→ SQLite file (dev.db) locally          │
 │                                                         │
 │  Standalone scripts (scripts/) bypass Prisma            │
 │  and use @libsql/client directly for Turso setup        │
@@ -260,6 +261,18 @@ carsgame/
 
 4. **Global Auth Middleware** — A single `auth.global.ts` middleware checks the session on every navigation and redirects unauthenticated users away from `/admin/*` routes.
 
+5. **Automatic 3D Model Normalization** — `ModelViewer3D.vue` measures each loaded GLB with a `Box3`, recenters it at the origin, and uniformly scales its largest dimension to a fixed target (`4.6 × character.scale`). Uploaded Sketchfab models have inconsistent pivots and scales, so this keeps every car correctly framed in the camera without hand-tuning per-model offsets. Manual `positionOffset` / `rotationOffset` still apply on top as tweaks.
+
+6. **Client-Side Skeleton Loading** — Grid skeletons (`CharacterCardSkeleton.vue`) are shown while data loads on the client. Fetches use `useFetch(..., { lazy: true })` (no top-level `await`) so `pending` is observable during client navigation, and loading is guarded with `import.meta.client` so SSR still renders real content from the static fallback (no skeleton in the SEO HTML).
+
+### 3D Model Viewer & Loading States
+
+`app/components/ModelViewer3D.vue` (used by the character detail stage) accepts `modelPath`, `scale`, `positionOffset`, and `rotationOffset`. On model load it normalizes the scene (center + uniform scale) and reports status to a `<Suspense>` boundary:
+
+- While the GLB downloads → `CarSkeleton3D.vue` (animated wireframe Three.js primitives)
+- Before the client canvas mounts → `CarSkeletonLoader.vue` (CSS placeholder)
+- Grid/card lists → `CharacterCardSkeleton.vue`
+
 ---
 
 ## Frontend Pages
@@ -270,11 +283,11 @@ carsgame/
 |-------|------|-------------|
 | `/` | `pages/index.vue` | Homepage — hero banner, 3D showroom, tracks carousel, trailer, game overview, Steam CTA |
 | `/characters` | `pages/characters/index.vue` | Character catalog — category filter tabs, search, responsive grid |
-| `/characters/:slug` | `pages/characters/[slug].vue` | Character detail — 3D model viewer, skin selector, audio triggers, telemetry, trivia |
+| `/characters/:slug` | `pages/characters/[slug].vue` | Character detail — 3D model viewer, skin selector, engine rev & horn, telemetry, trivia |
 | `/news` | `pages/news/index.vue` | News listing — featured article highlight, search, article grid |
 | `/news/:id` | `pages/news/[id].vue` | News detail — article header, rich-text body, reaction bar, Steam CTA |
 | `/gameplay` | `pages/gameplay.vue` | Gameplay showcase — featured video player, video playlist grid |
-| `/identity` | `pages/identity.vue` | Game identity — side-by-side Cars vs Cars 2, system requirements comparison |
+| `/game` | `pages/game.vue` | Game identity — side-by-side Cars vs Cars 2, system requirements comparison |
 
 ### Admin Pages
 
@@ -291,8 +304,8 @@ carsgame/
 | `/admin/tracks` | `pages/admin/tracks/index.vue` | Track list — delete |
 | `/admin/tracks/new` | `pages/admin/tracks/new.vue` | Create track form |
 | `/admin/tracks/:id` | `pages/admin/tracks/[id].vue` | Edit track form |
-| `/admin/specs` | `pages/admin/specs/index.vue` | Game specs overview (2 games) |
-| `/admin/specs/:id` | `pages/admin/specs/[id].vue` | Edit game spec form |
+| `/admin/game` | `pages/admin/game/index.vue` | Game specs overview (2 games) |
+| `/admin/game/:id` | `pages/admin/game/[id].vue` | Edit game spec form |
 | `/admin/gameplay` | `pages/admin/gameplay/index.vue` | Gameplay video list — delete |
 | `/admin/gameplay/new` | `pages/admin/gameplay/new.vue` | Create gameplay video form |
 | `/admin/gameplay/:id` | `pages/admin/gameplay/[id].vue` | Edit gameplay video form |
@@ -372,7 +385,6 @@ Request body:
   "sponsor": "Rust-eze",
   "engineType": "Full-race V8 Engine",
   "voiceQuote": "Ka-Chow!",
-  "soundEffect": "/audio/ka-chow.mp3",
   "bio": "Lightning McQueen is a red race car...",
   "funFact": "McQueen was named after Glen Jr. and John Henry...",
   "skins": [
@@ -409,7 +421,7 @@ Request body: Same fields as POST, all optional (partial update). If `skins` arr
 
 **DELETE `/api/characters/:id`**
 
-Deletes the character and associated files (`modelFile`, `coverUrl`, `soundEffect`, skin `modelFile`) from `public/`.
+Deletes the character and associated files (`modelFile`, `coverUrl`, skin `modelFile`) from `public/`.
 
 ---
 
@@ -537,7 +549,7 @@ Note: `youtubeId` accepts full YouTube URLs — the ID is extracted automaticall
 
 ## Database Schema
 
-**6 models** defined in `prisma/schema.prisma`:
+**7 models** defined in `prisma/schema.prisma`:
 
 | Model | Description |
 |-------|-------------|
@@ -551,8 +563,8 @@ Note: `youtubeId` accepts full YouTube URLs — the ID is extracted automaticall
 
 Key relationships:
 - `Character` 1:N `CharacterSkin` (cascade delete)
-- Skin IDs use format `{characterId}_{skinId}`
-- `positionOffset` / `rotationOffset` stored as JSON strings in DB, parsed in `characterHelper.ts`
+- Skin `skinId` values are plain ids (e.g., `rusteze`, `dinoco`) defined inside `Character.skins`
+- `positionOffset` / `rotationOffset` stored as JSON strings in DB, parsed in `characterHelper.ts` and applied by `ModelViewer3D.vue`
 
 ---
 
@@ -599,7 +611,7 @@ Key relationships:
 
 ## Environment Variables
 
-Defined in `.env` (committed for this project):
+Defined in a local `.env` file (gitignored — not committed; never commit secrets):
 
 | Variable | Description |
 |----------|-------------|
@@ -607,4 +619,4 @@ Defined in `.env` (committed for this project):
 | `TURSO_DATABASE_URL` | Turso database URL |
 | `TURSO_DATABASE_AUTH` | Turso auth token |
 
-When `TURSO_DATABASE_URL` is not set, Prisma falls back to local SQLite at `prisma/dev.db`.
+When `TURSO_DATABASE_URL` is not set, Prisma falls back to a local SQLite file at `file:./dev.db` (project root). Tables are not created automatically, so run `scripts/init-db.js` (or seed) against a fresh database.

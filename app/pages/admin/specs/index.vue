@@ -6,10 +6,10 @@
       <div>
         <h1 class="text-2xl sm:text-3xl font-russo text-white flex items-center gap-2">
           <BootstrapIcon name="cpu-fill" class="text-dinoco-blue" />
-          <span>KELOLA GAME SPECS & IDENTITAS PC</span>
+          <span>MANAGE GAME SPECS & PC IDENTITY</span>
         </h1>
         <p class="text-xs sm:text-sm text-muted-silver font-inter">
-          Atur informasi judul game, link Steam Store, cover, publisher, dan tabel spesifikasi sistem hardware PC.
+          Manage game title information, Steam Store links, covers, publisher, and PC hardware system specification table.
         </p>
       </div>
     </div>
@@ -30,7 +30,7 @@
               class="px-3 py-1 rounded text-xs font-chakra font-bold uppercase border"
               :class="spec.id === 'cars-2' ? 'bg-rust-red/20 text-rust-red-light border-rust-red/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'"
             >
-              Rilis {{ spec.releaseYear }} • {{ spec.genre }}
+              Released {{ spec.releaseYear }} • {{ spec.genre }}
             </span>
             <span class="text-xs font-chakra font-mono text-muted-silver">
               ID: {{ spec.id }}
@@ -81,14 +81,14 @@
         </div>
 
         <!-- Action Button -->
-        <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-4 font-chakra">
+        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-chakra">
           <a
             :href="spec.steamUrl"
             target="_blank"
             class="text-xs text-muted-silver hover:text-white flex items-center gap-1.5 transition-colors"
           >
             <BootstrapIcon name="steam" />
-            <span>Buka Steam Store</span>
+            <span>Open Steam Store</span>
           </a>
 
           <NuxtLink
@@ -99,7 +99,7 @@
               : 'bg-lightning-yellow text-black hover:bg-yellow-400 font-bold'"
           >
             <BootstrapIcon name="pencil-square" />
-            <span>Edit Spesifikasi</span>
+            <span>Edit Specifications</span>
           </NuxtLink>
         </div>
 
@@ -118,6 +118,6 @@ definePageMeta({
 const { data: specsList } = await useFetch<any[]>('/api/specs', { default: () => [] })
 
 useSeoMeta({
-  title: 'Kelola Game Specs - Disney Pixar Cars CMS'
+  title: 'Manage Game Specs - Disney Pixar Cars CMS'
 })
 </script>

@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   if (!username || !password) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Username dan password wajib diisi.'
+      statusMessage: 'Username and password are required.'
     })
   }
 
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   if (!user) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Username atau password salah.'
+      statusMessage: 'Invalid username or password.'
     })
   }
 
@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
   if (!isPasswordValid) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Username atau password salah.'
+      statusMessage: 'Invalid username or password.'
     })
   }
 
@@ -75,7 +75,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Login berhasil',
+    message: 'Login successful',
     user: {
       ...userPayload,
       isLogin: true

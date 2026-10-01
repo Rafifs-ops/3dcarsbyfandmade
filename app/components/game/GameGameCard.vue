@@ -8,7 +8,7 @@
     <div class="space-y-5">
       
       <!-- Edition Header Badges -->
-      <div class="flex items-center justify-between">
+      <div class="flex flex-wrap items-center justify-between gap-2">
         <span 
           class="px-3 py-1 rounded text-xs font-chakra font-bold uppercase border"
           :class="theme === 'red' 
@@ -66,15 +66,15 @@
       <!-- Key Meta Table -->
       <div class="bg-black/40 rounded-xl p-4 border border-white/5 space-y-2 text-xs font-chakra">
         <div class="flex justify-between py-1 border-b border-white/5">
-          <span class="text-muted-silver">Tahun Rilis:</span>
+          <span class="text-muted-silver">Release Year:</span>
           <span class="text-white font-bold">{{ gameSpec.releaseYear }}</span>
         </div>
         <div class="flex justify-between py-1 border-b border-white/5">
-          <span class="text-muted-silver">Pengembang (Developer):</span>
+          <span class="text-muted-silver">Developer:</span>
           <span class="text-white font-bold">{{ gameSpec.developer }}</span>
         </div>
         <div class="flex justify-between py-1 border-b border-white/5">
-          <span class="text-muted-silver">Penerbit (Publisher):</span>
+          <span class="text-muted-silver">Publisher:</span>
           <span class="text-white font-bold">{{ gameSpec.publisher }}</span>
         </div>
         <div class="flex justify-between py-1 border-b border-white/5">
@@ -87,7 +87,7 @@
           </span>
         </div>
         <div class="flex justify-between py-1">
-          <span class="text-muted-silver">Platform Resmi:</span>
+          <span class="text-muted-silver">Official Platform:</span>
           <span class="text-dinoco-blue font-bold">Steam Store (App ID: {{ gameSpec.steamAppId }})</span>
         </div>
       </div>
@@ -106,7 +106,7 @@
           : 'bg-carbon-gray hover:bg-carbon-gray-light border border-white/20 hover:border-lightning-yellow/50'"
       >
         <BootstrapIcon name="steam" :class="theme === 'red' ? 'text-sm' : 'text-lightning-yellow text-sm'" />
-        <span>{{ theme === 'red' ? 'Beli Cars 2 di Steam Store' : 'Lihat Cars (2006) di Steam Store' }}</span>
+        <span>{{ theme === 'red' ? 'Buy Cars 2 on Steam Store' : 'View Cars (2006) on Steam Store' }}</span>
       </a>
     </div>
   </div>

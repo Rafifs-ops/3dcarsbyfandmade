@@ -98,11 +98,7 @@ const triggerRev = () => {
 }
 
 const triggerVoice = () => {
-  if (activeCharacter.value.soundEffect) {
-    playSound(activeCharacter.value.soundEffect)
-  } else {
-    playSound('/audio/ka-chow.mp3')
-  }
+  playSound('/audio/ka-chow.mp3')
 }
 
 const triggerHorn = () => {

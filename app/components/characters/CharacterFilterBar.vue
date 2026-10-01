@@ -12,15 +12,15 @@
           DISNEY•PIXAR CARS ROSTER
         </h1>
         <p class="text-sm sm:text-base text-muted-silver mt-1 max-w-2xl">
-          Jelajahi seluruh pembalap Piston Cup legendaris, warga kota Radiator Springs, rival World Grand Prix, hingga
-          agen rahasia C.H.R.O.M.E. Klik karakter untuk melihat inspeksi 3D 360° dan spesifikasi lengkap.
+          Explore the legendary Piston Cup racers, Radiator Springs citizens, World Grand Prix rivals, and
+          C.H.R.O.M.E. secret agents. Click a character to view 360° 3D inspection and full specifications.
         </p>
       </div>
 
       <!-- Search Input -->
       <div class="relative w-full md:w-72">
         <BootstrapIcon name="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-silver text-sm" />
-        <input v-model="searchQuery" type="text" placeholder="Cari nama atau sponsor..."
+        <input v-model="searchQuery" type="text" placeholder="Search name or sponsor..."
           class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-carbon-gray border border-white/10 text-pure-white placeholder:text-muted-silver/60 text-xs font-chakra focus:outline-none focus:border-lightning-yellow/60 transition-colors" />
       </div>
     </div>
@@ -34,7 +34,7 @@
           : 'bg-carbon-gray text-muted-silver hover:text-white border-white/10 hover:border-white/25'">
         <BootstrapIcon :name="cat.icon" class="text-sm" />
         <span>{{ cat.label }}</span>
-        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/40 font-mono">
+        <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-black/40 font-mono">
           {{ getCount(cat.id) }}
         </span>
       </button>

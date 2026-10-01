@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Berita diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'News ID is required.' })
   }
 
   const body = await readBody(event)
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Berita tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'News not found.' })
   }
 
   const updated = await prisma.news.update({
@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Berita berhasil diperbarui',
+    message: 'News updated successfully',
     data: updated
   }
 })

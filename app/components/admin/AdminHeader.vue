@@ -1,22 +1,22 @@
 <template>
-  <header class="h-16 px-4 sm:px-8 bg-carbon-dark/80 backdrop-blur-md border-b border-white/10 flex items-center justify-between sticky top-0 z-40">
-    <div class="flex items-center gap-3">
+  <header class="h-16 px-4 sm:px-8 bg-carbon-dark/80 backdrop-blur-md border-b border-white/10 flex items-center justify-between sticky top-0 z-30">
+    <div class="flex items-center gap-3 min-w-0">
       <!-- Mobile menu hamburger -->
       <button
         @click="$emit('toggleSidebar')"
-        class="lg:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors"
+        class="lg:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors shrink-0"
         aria-label="Toggle Navigation"
       >
         <BootstrapIcon name="list" class="text-xl" />
       </button>
 
       <!-- Breadcrumbs / Page Title Context -->
-      <div class="flex items-center gap-2 text-xs font-chakra">
-        <NuxtLink to="/admin" class="text-muted-silver hover:text-white transition-colors">
+      <div class="flex items-center gap-2 min-w-0 text-xs font-chakra">
+        <NuxtLink to="/admin" class="hidden sm:inline text-muted-silver hover:text-white transition-colors shrink-0">
           Admin Panel
         </NuxtLink>
-        <BootstrapIcon name="chevron-right" class="text-[10px] text-muted-silver" />
-        <span class="text-lightning-yellow font-bold uppercase tracking-wider">{{ currentPageName }}</span>
+        <BootstrapIcon name="chevron-right" class="hidden sm:inline text-[10px] text-muted-silver shrink-0" />
+        <span class="text-lightning-yellow font-bold uppercase tracking-wider truncate">{{ currentPageName }}</span>
       </div>
     </div>
 
@@ -54,9 +54,9 @@ const { user } = useAuth()
 const currentPageName = computed(() => {
   const path = route.path
   if (path === '/admin') return 'Dashboard Overview'
-  if (path.startsWith('/admin/news')) return 'Berita (News)'
-  if (path.startsWith('/admin/characters')) return 'Karakter (Characters)'
-  if (path.startsWith('/admin/tracks')) return 'Sirkuit (Tracks)'
+  if (path.startsWith('/admin/news')) return 'News'
+  if (path.startsWith('/admin/characters')) return 'Characters'
+  if (path.startsWith('/admin/tracks')) return 'Tracks'
   if (path.startsWith('/admin/specs')) return 'Game Specs'
   if (path.startsWith('/admin/gameplay')) return 'Gameplay Videos'
   return 'Admin'

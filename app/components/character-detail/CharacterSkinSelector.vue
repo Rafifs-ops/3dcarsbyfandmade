@@ -2,7 +2,7 @@
   <div v-if="skins && skins.length > 1" class="carbon-card p-4 rounded-xl border border-white/10 space-y-2">
     <div class="text-xs font-chakra text-muted-silver uppercase tracking-wider flex items-center gap-1.5">
       <BootstrapIcon name="palette-fill" class="text-lightning-yellow" />
-      <span>Pilih Varian Livery / Cat Bodi:</span>
+      <span>Choose Livery / Paint Variant:</span>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">

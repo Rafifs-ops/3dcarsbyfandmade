@@ -14,7 +14,7 @@
           <span class="relative inline-flex rounded-full h-2 w-2 bg-lightning-yellow" />
         </span>
         <span class="text-[11px] font-chakra font-bold text-white tracking-wider">
-          SKELETON CHASSIS AKTIF • MEMUAT {{ activeCharacter?.name?.toUpperCase() || 'MODEL' }}...
+          SKELETAL CHASSIS ACTIVE • LOADING {{ activeCharacter?.name?.toUpperCase() || 'MODEL' }}...
         </span>
       </div>
     </Transition>
@@ -63,7 +63,7 @@
         <CarSkeletonLoader
           :primary-color="activeCharacter.primaryColor"
           :accent-color="activeCharacter.accentColor"
-          :title="`MEMUAT ${activeCharacter?.name?.toUpperCase() || 'MOBIL'}...`"
+          :title="`LOADING ${activeCharacter?.name?.toUpperCase() || 'CAR'}...`"
         />
       </template>
     </ClientOnly>

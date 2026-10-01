@@ -16,12 +16,12 @@
           Download Game Now !!!
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <NuxtLink to="/identity"
-            class="btn-racing-skew px-8 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.7)] flex items-center gap-2.5">
-            <BootstrapIcon name="steam" class="text-xl" />
-            <span>Download Game</span>
-          </NuxtLink>
+         <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+           <NuxtLink to="/game"
+             class="btn-racing-skew px-8 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.7)] flex items-center gap-2.5">
+             <BootstrapIcon name="steam" class="text-xl" />
+             <span>Download Game</span>
+           </NuxtLink>
 
           <NuxtLink to="/characters"
             class="px-7 py-4 rounded-lg bg-carbon-gray hover:bg-carbon-gray-light text-pure-white font-chakra font-bold text-sm tracking-wider uppercase border border-white/20 flex items-center gap-2">

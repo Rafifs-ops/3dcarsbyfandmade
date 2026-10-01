@@ -28,7 +28,7 @@
         <!-- Username Field -->
         <div class="space-y-1.5">
           <label class="block text-muted-silver uppercase tracking-wider font-bold">
-            Username / Email Admin
+            Username / Admin Email
           </label>
           <div class="relative flex items-center">
             <span class="absolute left-3.5 text-muted-silver">
@@ -42,7 +42,7 @@
         <!-- Password Field -->
         <div class="space-y-1.5">
           <label class="block text-muted-silver uppercase tracking-wider font-bold">
-            Kata Sandi (Password)
+            Password
           </label>
           <div class="relative flex items-center">
             <span class="absolute left-3.5 text-muted-silver">
@@ -63,7 +63,7 @@
           class="btn-racing-skew w-full py-3.5 rounded-xl bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light text-white font-chakra font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(225,29,42,0.5)] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
           <BootstrapIcon v-if="isLoading" name="arrow-repeat" class="animate-spin text-lg" />
           <BootstrapIcon v-else name="box-arrow-in-right" class="text-lightning-yellow text-lg" />
-          <span>{{ isLoading ? 'Memvalidasi Sesi...' : 'Masuk ke CMS' }}</span>
+          <span>{{ isLoading ? 'Validating Session...' : 'Sign In to CMS' }}</span>
         </button>
 
       </form>
@@ -73,7 +73,7 @@
         <NuxtLink to="/"
           class="inline-flex items-center gap-2 text-xs font-chakra text-muted-silver hover:text-lightning-yellow transition-colors">
           <BootstrapIcon name="arrow-left" />
-          <span>Kembali ke Website Utama</span>
+          <span>Back to Main Website</span>
         </NuxtLink>
       </div>
 
@@ -108,9 +108,9 @@ const handleLogin = async () => {
   errorMessage.value = null
   const result = await login(form.username, form.password)
   if (!result.success) {
-    errorMessage.value = result.error || 'Username atau password salah.'
+    errorMessage.value = result.error || 'Invalid username or password.'
   } else {
-    success('Login Berhasil', 'Selamat datang di Admin Control Panel Disney Pixar Cars!')
+    success('Login Successful', 'Welcome to the Disney Pixar Cars Admin Control Panel!')
   }
 }
 

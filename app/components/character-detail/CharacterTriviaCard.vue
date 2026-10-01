@@ -21,7 +21,7 @@
     <div class="p-4 rounded-xl bg-lightning-yellow/10 border border-lightning-yellow/30 flex items-start gap-3">
       <BootstrapIcon name="lightbulb-fill" class="text-lightning-yellow text-lg flex-shrink-0 mt-0.5" />
       <div class="text-xs font-chakra">
-        <span class="font-bold text-lightning-yellow uppercase tracking-wider block mb-0.5">Fakta Unik Disney•Pixar:</span>
+        <span class="font-bold text-lightning-yellow uppercase tracking-wider block mb-0.5">Disney•Pixar Fun Fact:</span>
         <p class="text-muted-silver-light">{{ character.funFact }}</p>
       </div>
     </div>
@@ -35,7 +35,7 @@
         class="w-full py-3.5 rounded-xl bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light text-pure-white text-xs font-chakra font-bold tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(225,29,42,0.4)] transition-all"
       >
         <BootstrapIcon name="steam" class="text-lg" />
-        <span>Mainkan {{ character.name }} di Steam</span>
+        <span>Play {{ character.name }} on Steam</span>
       </a>
     </div>
   </div>

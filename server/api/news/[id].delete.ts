@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Berita diperlukan.' })
+    throw createError({ statusCode: 400, statusMessage: 'News ID is required.' })
   }
 
   const existing = await prisma.news.findFirst({
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!existing) {
-    throw createError({ statusCode: 404, statusMessage: 'Berita tidak ditemukan.' })
+    throw createError({ statusCode: 404, statusMessage: 'News not found.' })
   }
 
   await prisma.news.delete({
@@ -25,6 +25,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Berita berhasil dihapus'
+    message: 'News deleted successfully'
   }
 })

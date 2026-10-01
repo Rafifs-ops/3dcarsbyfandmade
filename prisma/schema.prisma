@@ -53,7 +53,6 @@ model Character {
   sponsor        String
   engineType     String
   voiceQuote     String?
-  soundEffect    String?
   bio            String
   funFact        String
   primaryColor   String          @default("#E11D2A")

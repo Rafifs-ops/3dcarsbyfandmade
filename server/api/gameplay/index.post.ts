@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   if (!title || !youtubeId) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Judul dan ID YouTube wajib diisi.'
+      statusMessage: 'Title and YouTube ID are required.'
     })
   }
 
@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Video gameplay berhasil ditambahkan',
+    message: 'Gameplay video created successfully',
     data: created
   }
 })

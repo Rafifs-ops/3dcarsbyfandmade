@@ -10,12 +10,12 @@
     >
       <div
         v-if="modelValue"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
         @click.self="onClose"
       >
-        <div class="relative w-full max-w-lg bg-carbon-gray border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-fadeIn">
+        <div class="relative w-full max-w-lg max-h-[calc(100dvh-2rem)] bg-carbon-gray border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-fadeIn flex flex-col">
           <!-- Header -->
-          <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/40">
+          <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/40 shrink-0">
             <h3 class="font-russo text-lg text-pure-white flex items-center gap-2">
               <slot name="icon">
                 <BootstrapIcon name="exclamation-triangle-fill" class="text-rust-red" />
@@ -31,12 +31,12 @@
           </div>
 
           <!-- Body -->
-          <div class="p-5 sm:p-6 text-xs sm:text-sm font-inter text-muted-silver leading-relaxed">
+          <div class="p-5 sm:p-6 text-xs sm:text-sm font-inter text-muted-silver leading-relaxed overflow-y-auto">
             <slot />
           </div>
 
           <!-- Footer Actions -->
-          <div class="p-4 sm:p-5 border-t border-white/10 bg-black/40 flex items-center justify-end gap-3 font-chakra">
+          <div class="p-4 sm:p-5 border-t border-white/10 bg-black/40 flex items-center justify-end gap-3 font-chakra shrink-0">
             <button
               type="button"
               @click="onClose"
@@ -73,9 +73,9 @@ const props = withDefaults(defineProps<{
   confirmType?: 'danger' | 'primary'
   loading?: boolean
 }>(), {
-  title: 'Konfirmasi Tindakan',
-  confirmText: 'Lanjutkan',
-  cancelText: 'Batal',
+  title: 'Confirm Action',
+  confirmText: 'Continue',
+  cancelText: 'Cancel',
   confirmType: 'danger',
   loading: false
 })

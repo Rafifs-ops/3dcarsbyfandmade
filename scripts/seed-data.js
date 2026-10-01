@@ -28,7 +28,7 @@ async function seed() {
   console.log('Seeding Characters...')
   for (const c of charactersData) {
     await client.execute({
-      sql: `INSERT OR REPLACE INTO Character (id, slug, name, racingNumber, title, tagline, category, categoryLabel, modelFile, coverUrl, gameCoverUrl, defaultSkinId, scale, positionOffset, rotationOffset, topSpeed, sponsor, engineType, voiceQuote, soundEffect, bio, funFact, primaryColor, accentColor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      sql: `INSERT OR REPLACE INTO Character (id, slug, name, racingNumber, title, tagline, category, categoryLabel, modelFile, coverUrl, gameCoverUrl, defaultSkinId, scale, positionOffset, rotationOffset, topSpeed, sponsor, engineType, voiceQuote, bio, funFact, primaryColor, accentColor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [
         c.id,
         c.slug,
@@ -49,7 +49,6 @@ async function seed() {
         c.sponsor,
         c.engineType,
         c.voiceQuote || null,
-        c.soundEffect || null,
         c.bio,
         c.funFact,
         c.primaryColor || '#E11D2A',

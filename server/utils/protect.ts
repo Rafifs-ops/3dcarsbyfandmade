@@ -11,7 +11,7 @@ export function requireAdminAuth(event: H3Event): JwtUserPayload {
   if (!token) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Unauthorized: Sesi tidak ditemukan. Silakan login kembali.',
+      statusMessage: 'Unauthorized: Session not found. Please log in again.',
     })
   }
 
@@ -20,7 +20,7 @@ export function requireAdminAuth(event: H3Event): JwtUserPayload {
   if (!payload) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Unauthorized: Token tidak valid atau sudah kedaluwarsa.',
+      statusMessage: 'Unauthorized: Token is invalid or has expired.',
     })
   }
 

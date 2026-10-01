@@ -19,7 +19,7 @@
         <span
           class="px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-xs font-chakra tracking-wider text-pure-white border border-white/20 flex items-center gap-1.5">
           <BootstrapIcon name="flag-fill" class="text-rust-red text-xs" />
-          <span>Sirkuit Balap Cars</span>
+          <span>Cars Racing Circuit</span>
         </span>
 
         <span

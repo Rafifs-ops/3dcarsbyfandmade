@@ -10,7 +10,7 @@
         class="carbon-card carbon-card-hover rounded-xl overflow-hidden border p-3 cursor-pointer transition-all"
         :class="activeVideo?.id === video.id ? 'border-lightning-yellow ring-2 ring-lightning-yellow/30' : 'border-white/10'">
         <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-2.5">
-          <img :src="`https://youtube.com/${video.youtubeId}/hqdefault.jpg`" :alt="video.title"
+          <img :src="`https://img.youtube.com/vi/${getYoutubeId(video.youtubeId)}/hqdefault.jpg`" :alt="video.title"
             class="w-full h-full object-cover" />
           <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
             <div class="w-10 h-10 rounded-full bg-rust-red/80 flex items-center justify-center text-white text-lg">

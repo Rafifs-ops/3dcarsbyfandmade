@@ -4,7 +4,7 @@ import { gameplayVideos } from '../../../app/data/gameInfo'
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Video Gameplay diperlukan' })
+    throw createError({ statusCode: 400, statusMessage: 'Gameplay video ID is required' })
   }
 
   try {
@@ -17,11 +17,11 @@ export default defineEventHandler(async (event) => {
     const localItem = gameplayVideos.find(v => v.id === id)
     if (localItem) return localItem
 
-    throw createError({ statusCode: 404, statusMessage: 'Video gameplay tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Gameplay video not found' })
   } catch (error: any) {
     if (error.statusCode) throw error
     const localItem = gameplayVideos.find(v => v.id === id)
     if (localItem) return localItem
-    throw createError({ statusCode: 404, statusMessage: 'Video gameplay tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Gameplay video not found' })
   }
 })

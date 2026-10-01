@@ -8,11 +8,11 @@
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Berita</span>
+        <span>Back to News List</span>
       </NuxtLink>
 
       <span class="text-xs font-chakra text-lightning-yellow uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Buat Berita Baru
+        Create New Article
       </span>
     </div>
 
@@ -21,17 +21,17 @@
       
       <div class="border-b border-white/10 pb-4">
         <h1 class="text-2xl font-russo text-white">
-          TAMBAH BERITA BARU
+          ADD NEW ARTICLE
         </h1>
         <p class="text-xs text-muted-silver font-chakra">
-          Gunakan editor WYSIWYG untuk menyusun format artikel secara visual.
+          Use the WYSIWYG editor to visually format your article.
         </p>
       </div>
 
       <!-- Title & Slug -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
         <div class="space-y-1.5 sm:col-span-2">
-          <label class="block text-muted-silver uppercase font-bold">Judul Berita *</label>
+          <label class="block text-muted-silver uppercase font-bold">News Title *</label>
           <input
             v-model="form.title"
             type="text"
@@ -43,7 +43,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Slug URL (Otomatis)</label>
+          <label class="block text-muted-silver uppercase font-bold">URL Slug (Auto-generated)</label>
           <input
             v-model="form.slug"
             type="text"
@@ -54,7 +54,7 @@
         </div>
 
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Penulis (Author)</label>
+          <label class="block text-muted-silver uppercase font-bold">Author</label>
           <input
             v-model="form.author"
             type="text"
@@ -67,7 +67,7 @@
       <!-- Date & Featured Checkbox -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs items-center">
         <div class="space-y-1.5">
-          <label class="block text-muted-silver uppercase font-bold">Tanggal Publikasi</label>
+          <label class="block text-muted-silver uppercase font-bold">Publication Date</label>
           <input
             v-model="form.date"
             type="date"
@@ -82,14 +82,14 @@
               type="checkbox"
               class="w-4 h-4 rounded bg-black/50 border-white/20 text-rust-red focus:ring-rust-red"
             />
-            <span class="text-white font-bold uppercase tracking-wider">Jadikan Artikel Unggulan (Featured)</span>
+            <span class="text-white font-bold uppercase tracking-wider">Make Featured Article</span>
           </label>
         </div>
       </div>
 
       <!-- Image URL & Preview -->
       <div class="space-y-2 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">URL Gambar Sampul (Cover Image)</label>
+        <label class="block text-muted-silver uppercase font-bold">Cover Image URL</label>
         <div class="flex gap-3 items-center">
           <input
             v-model="form.image"
@@ -107,7 +107,7 @@
 
       <!-- Excerpt -->
       <div class="space-y-1.5 font-chakra text-xs">
-        <label class="block text-muted-silver uppercase font-bold">Ringkasan / Cuplikan Singkat (Excerpt)</label>
+        <label class="block text-muted-silver uppercase font-bold">Excerpt / Short Summary</label>
         <textarea
           v-model="form.excerpt"
           rows="2"
@@ -119,8 +119,8 @@
       <!-- WYSIWYG Content Editor -->
       <div class="space-y-2 font-chakra text-xs">
         <label class="block text-muted-silver uppercase font-bold flex items-center justify-between">
-          <span>Isi Konten Berita Lengkap (WYSIWYG Rich-Text Editor) *</span>
-          <span class="text-[10px] text-lightning-yellow font-normal">Format visual, list, heading & styling didukung</span>
+          <span>News Content (WYSIWYG Rich-Text Editor) *</span>
+          <span class="text-[10px] text-lightning-yellow font-normal">Visual formatting, lists, headings & styling supported</span>
         </label>
         <AdminWysiwygEditor
           v-model="form.content"
@@ -133,7 +133,7 @@
           to="/admin/news"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -143,7 +143,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Simpan Berita' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Save Article' }}</span>
         </button>
       </div>
 
@@ -186,7 +186,7 @@ const generateSlug = () => {
 
 const handleSubmit = async () => {
   if (!form.title || !form.content) {
-    toastError('Validasi Gagal', 'Judul dan konten berita wajib diisi!')
+    toastError('Validation Failed', 'Title and news content are required!')
     return
   }
 
@@ -196,16 +196,16 @@ const handleSubmit = async () => {
       method: 'POST',
       body: form
     })
-    success('Berhasil!', 'Artikel berita baru berhasil dipublikasikan.')
+    success('Success!', 'New article has been successfully published.')
     router.push('/admin/news')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat menyimpan berita.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while saving the article.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Tambah Berita Baru - Disney Pixar Cars CMS'
+  title: 'Add New Article - Disney Pixar Cars CMS'
 })
 </script>

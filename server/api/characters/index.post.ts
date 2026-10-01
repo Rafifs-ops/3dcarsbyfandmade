@@ -27,7 +27,6 @@ export default defineEventHandler(async (event) => {
     sponsor,
     engineType,
     voiceQuote,
-    soundEffect,
     bio,
     funFact,
     primaryColor,
@@ -38,7 +37,7 @@ export default defineEventHandler(async (event) => {
   if (!name || !category) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Nama karakter dan kategori wajib diisi.'
+      statusMessage: 'Character name and category are required.'
     })
   }
 
@@ -68,7 +67,6 @@ export default defineEventHandler(async (event) => {
       sponsor: sponsor || '',
       engineType: engineType || '',
       voiceQuote: voiceQuote || null,
-      soundEffect: soundEffect || null,
       bio: bio || '',
       funFact: funFact || '',
       primaryColor: primaryColor || '#E11D2A',
@@ -102,7 +100,7 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    message: 'Karakter berhasil ditambahkan',
+    message: 'Character created successfully',
     data: formatCharacter(fetched)
   }
 })

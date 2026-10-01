@@ -10,11 +10,19 @@
     />
 
     <!-- Characters Grid -->
-    <div v-if="filteredCharacters.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div v-if="!isLoading && filteredCharacters.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <CharacterCard
         v-for="character in filteredCharacters"
         :key="character.id"
         :character="character"
+      />
+    </div>
+
+    <!-- Characters Skeleton Loading -->
+    <div v-else-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <CharacterCardSkeleton
+        v-for="(item, index) in Array(8)"
+        :key="index"
       />
     </div>
 
@@ -33,18 +41,22 @@ import { charactersData } from '~/data/characters'
 import type { Character } from '~/types'
 import CharacterFilterBar from '~/components/characters/CharacterFilterBar.vue'
 import CharacterEmptyState from '~/components/characters/CharacterEmptyState.vue'
+import CharacterCard from '~/components/CharacterCard.vue'
+import CharacterCardSkeleton from '~/components/characters/CharacterCardSkeleton.vue'
 
 const searchQuery = ref('')
 const activeCategory = ref('all')
 
-const { data: fetchedChars } = await useFetch<Character[]>('/api/characters', {
-  default: () => charactersData
+const { data: fetchedChars, pending } = useFetch<Character[]>('/api/characters', {
+  default: () => charactersData,
+  lazy: true
 })
 
 const characterList = computed(() => fetchedChars.value || charactersData)
+const isLoading = computed(() => import.meta.client && pending.value)
 
 const categories = [
-  { id: 'all', label: 'Semua Karakter', icon: 'grid-fill' },
+  { id: 'all', label: 'All Characters', icon: 'grid-fill' },
   { id: 'piston-cup', label: 'Piston Cup Champions', icon: 'trophy-fill' },
   { id: 'radiator-springs', label: 'Radiator Springs', icon: 'geo-alt-fill' },
   { id: 'world-grand-prix', label: 'World Grand Prix', icon: 'globe-americas' },
@@ -74,8 +86,8 @@ const resetFilters = () => {
 }
 
 useSeoMeta({
-  title: 'Katalog Karakter Disney Pixar Cars - 20+ Model 3D Roster',
-  description: 'Daftar lengkap 20+ karakter Disney Pixar Cars & Cars 2 di Steam dengan inspeksi 3D 360°, spesifikasi kecepatan, dan suara mesin ikonik.',
+  title: 'Disney Pixar Cars Character Catalog - 20+ 3D Model Roster',
+  description: 'Complete roster of 20+ Disney Pixar Cars & Cars 2 characters on Steam with 360° 3D inspection, speed specs, and iconic engine audio.',
   ogTitle: 'Disney Pixar Cars - Character Roster Showcase'
 })
 </script>

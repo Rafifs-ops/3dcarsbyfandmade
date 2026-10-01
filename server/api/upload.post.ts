@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
 
   const formData = await readMultipartFormData(event)
   if (!formData || formData.length === 0) {
-    throw createError({ statusCode: 400, statusMessage: 'Tidak ada file yang dikirim.' })
+    throw createError({ statusCode: 400, statusMessage: 'No file was sent.' })
   }
 
   let fileField: typeof formData[0] | undefined
@@ -41,19 +41,19 @@ export default defineEventHandler(async (event) => {
   }
 
   if (!fileField || !fileField.filename || !fileField.data) {
-    throw createError({ statusCode: 400, statusMessage: 'File wajib dipilih.' })
+    throw createError({ statusCode: 400, statusMessage: 'File is required.' })
   }
 
   const allowedExts = ALLOWED_EXTENSIONS[folder]
   if (!allowedExts) {
-    throw createError({ statusCode: 400, statusMessage: `Folder "${folder}" tidak valid.` })
+    throw createError({ statusCode: 400, statusMessage: `Folder "${folder}" is not valid.` })
   }
 
   const ext = '.' + fileField.filename.split('.').pop()?.toLowerCase()
   if (!allowedExts.includes(ext)) {
     throw createError({
       statusCode: 400,
-      statusMessage: `Format file "${ext}" tidak diizinkan untuk folder "${folder}". Diizinkan: ${allowedExts.join(', ')}`
+      statusMessage: `File format "${ext}" is not allowed for folder "${folder}". Allowed: ${allowedExts.join(', ')}`
     })
   }
 
@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
 
   const publicDir = resolve('public', folder)
   if (!existsSync(publicDir)) {
-    throw createError({ statusCode: 500, statusMessage: `Folder "${folder}" tidak ditemukan.` })
+    throw createError({ statusCode: 500, statusMessage: `Folder "${folder}" not found.` })
   }
 
   const filePath = resolve(publicDir, filename)

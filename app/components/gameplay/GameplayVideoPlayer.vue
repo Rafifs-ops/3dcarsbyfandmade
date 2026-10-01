@@ -4,7 +4,7 @@
     <!-- Video Player Frame -->
     <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-inner border border-white/10">
       <iframe
-        :src="`https://www.youtube-nocookie.com/embed/${activeVideo.youtubeId}?autoplay=0&rel=0&modestbranding=1`"
+        :src="`https://www.youtube-nocookie.com/embed/${getYoutubeId(activeVideo.youtubeId)}?autoplay=0&rel=0&modestbranding=1`"
         :title="activeVideo.title"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen

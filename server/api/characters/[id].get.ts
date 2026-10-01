@@ -5,7 +5,7 @@ import { formatCharacter } from '../../utils/characterHelper'
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID / Slug Karakter diperlukan' })
+    throw createError({ statusCode: 400, statusMessage: 'Character ID / slug is required' })
   }
 
   try {
@@ -21,11 +21,11 @@ export default defineEventHandler(async (event) => {
     const localItem = charactersData.find(c => c.id === id || c.slug === id)
     if (localItem) return localItem
 
-    throw createError({ statusCode: 404, statusMessage: 'Karakter tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Character not found' })
   } catch (error: any) {
     if (error.statusCode) throw error
     const localItem = charactersData.find(c => c.id === id || c.slug === id)
     if (localItem) return localItem
-    throw createError({ statusCode: 404, statusMessage: 'Karakter tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Character not found' })
   }
 })

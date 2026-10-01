@@ -2,17 +2,17 @@
   <div class="max-w-4xl mx-auto space-y-6">
     
     <!-- Top Nav / Breadcrumbs -->
-    <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
       <NuxtLink
         to="/admin/characters"
         class="inline-flex items-center gap-2 text-xs font-chakra uppercase tracking-wider text-muted-silver hover:text-lightning-yellow transition-colors"
       >
         <BootstrapIcon name="arrow-left" />
-        <span>Kembali ke Daftar Karakter</span>
+        <span>Back to Character List</span>
       </NuxtLink>
 
-      <span class="text-xs font-chakra text-rust-red-light uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10">
-        Edit Karakter #{{ id }}
+      <span class="text-xs font-chakra text-rust-red-light uppercase tracking-widest px-2.5 py-0.5 rounded bg-white/5 border border-white/10 truncate max-w-[60%]">
+        Edit Character #{{ id }}
       </span>
     </div>
 
@@ -22,10 +22,10 @@
       <div class="border-b border-white/10 pb-4 flex items-center justify-between">
         <div>
           <h1 class="text-2xl font-russo text-white">
-            EDIT KARAKTER
+            EDIT CHARACTER
           </h1>
           <p class="text-xs text-muted-silver font-chakra">
-            Perbarui data model 3D, corak skin, audio suara, dan spesifikasi.
+            Update 3D model data, skin patterns, audio voices, and specifications.
           </p>
         </div>
 
@@ -35,19 +35,19 @@
           class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white text-xs font-chakra flex items-center gap-1.5 transition-colors"
         >
           <BootstrapIcon name="eye" />
-          <span>Lihat Panggung 3D</span>
+          <span>View 3D Stage</span>
         </NuxtLink>
       </div>
 
       <!-- SECTION 1: Identity & Classification -->
       <div class="space-y-4">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          1. Identitas & Klasifikasi
+          1. Identity & Classification
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-chakra text-xs">
           <div class="space-y-1.5 sm:col-span-2">
-            <label class="block text-muted-silver uppercase font-bold">Nama Karakter *</label>
+            <label class="block text-muted-silver uppercase font-bold">Character Name *</label>
             <input
               v-model="form.name"
               type="text"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Nomor Balap</label>
+            <label class="block text-muted-silver uppercase font-bold">Racing Number</label>
             <input
               v-model="form.racingNumber"
               type="text"
@@ -76,7 +76,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Kategori *</label>
+            <label class="block text-muted-silver uppercase font-bold">Category *</label>
             <select
               v-model="form.category"
               required
@@ -91,7 +91,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Label Kategori Tampilan</label>
+            <label class="block text-muted-silver uppercase font-bold">Display Category Label</label>
             <input
               v-model="form.categoryLabel"
               type="text"
@@ -102,7 +102,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Gelar / Title</label>
+            <label class="block text-muted-silver uppercase font-bold">Title</label>
             <input
               v-model="form.title"
               type="text"
@@ -124,7 +124,7 @@
       <!-- SECTION 2: 3D Model & Assets -->
       <div class="space-y-4">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          2. Model 3D & Aset Visual
+          2. 3D Model & Visual Assets
         </h3>
 
         <div class="space-y-4 font-chakra text-xs">
@@ -132,14 +132,14 @@
             v-model="form.modelFile"
             accept=".glb,.gltf"
             folder="models"
-            label="File Model 3D (.glb) *"
+            label="3D Model File (.glb) *"
             :old-path="originalPaths.modelFile"
           />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-chakra text-xs">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Scale Model</label>
+            <label class="block text-muted-silver uppercase font-bold">Model Scale</label>
             <input
               v-model.number="form.scale"
               type="number"
@@ -149,7 +149,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Warna Utama (Primary Color)</label>
+            <label class="block text-muted-silver uppercase font-bold">Primary Color</label>
             <div class="flex items-center gap-2">
               <input
                 v-model="form.primaryColor"
@@ -165,7 +165,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Warna Aksen (Accent Color)</label>
+            <label class="block text-muted-silver uppercase font-bold">Accent Color</label>
             <div class="flex items-center gap-2">
               <input
                 v-model="form.accentColor"
@@ -186,22 +186,14 @@
             v-model="form.coverUrl"
             accept=".png,.jpg,.jpeg,.webp"
             folder="images/cars"
-            label="Gambar Cover Karakter"
+            label="Character Cover Image"
             :old-path="originalPaths.coverUrl"
-          />
-
-          <FileUpload
-            v-model="form.soundEffect"
-            accept=".mp3,.wav,.ogg,.m4a"
-            folder="audio"
-            label="Suara Audio FX (Sound Effect)"
-            :old-path="originalPaths.soundEffect"
           />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-chakra text-xs">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Kutipan Suara (Voice Quote)</label>
+            <label class="block text-muted-silver uppercase font-bold">Voice Quote</label>
             <input
               v-model="form.voiceQuote"
               type="text"
@@ -214,7 +206,7 @@
       <!-- SECTION 3: Performance Telemetry -->
       <div class="space-y-4">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          3. Spesifikasi Telemetri Mesin
+          3. Engine Telemetry Specs
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-chakra text-xs">
@@ -229,7 +221,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Sponsor Resmi</label>
+            <label class="block text-muted-silver uppercase font-bold">Official Sponsor</label>
             <input
               v-model="form.sponsor"
               type="text"
@@ -238,7 +230,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Tipe Mesin (Engine Type)</label>
+            <label class="block text-muted-silver uppercase font-bold">Engine Type</label>
             <input
               v-model="form.engineType"
               type="text"
@@ -251,12 +243,12 @@
       <!-- SECTION 4: Bio & Trivia Fun Fact -->
       <div class="space-y-4">
         <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider border-b border-white/10 pb-2">
-          4. Biografi & Fakta Menarik
+          4. Bio & Fun Facts
         </h3>
 
         <div class="space-y-3 font-chakra text-xs">
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Biografi Karakter</label>
+            <label class="block text-muted-silver uppercase font-bold">Character Bio</label>
             <textarea
               v-model="form.bio"
               rows="3"
@@ -265,7 +257,7 @@
           </div>
 
           <div class="space-y-1.5">
-            <label class="block text-muted-silver uppercase font-bold">Fakta Unik (Fun Fact)</label>
+            <label class="block text-muted-silver uppercase font-bold">Fun Fact</label>
             <textarea
               v-model="form.funFact"
               rows="2"
@@ -279,7 +271,7 @@
       <div class="space-y-4">
         <div class="flex items-center justify-between border-b border-white/10 pb-2">
           <h3 class="text-sm font-russo text-lightning-yellow uppercase tracking-wider">
-            5. Skin & Livery Alternatif
+            5. Alternative Skins & Liveries
           </h3>
           <button
             type="button"
@@ -287,12 +279,12 @@
             class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-chakra font-bold flex items-center gap-1.5 transition-colors"
           >
             <BootstrapIcon name="plus-lg" />
-            <span>Tambah Skin</span>
+            <span>Add Skin</span>
           </button>
         </div>
 
         <div v-if="form.skins.length === 0" class="p-4 rounded-xl bg-black/30 border border-dashed border-white/10 text-center text-xs font-chakra text-muted-silver">
-          Belum ada skin alternatif. Klik tombol di atas jika karakter memiliki corak warna/3D model tambahan.
+          No alternative skins yet. Click the button above if the character has additional color patterns / 3D models.
         </div>
 
         <div v-else class="space-y-3 font-chakra text-xs">
@@ -314,7 +306,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label class="block text-muted-silver text-[11px] mb-1">Nama Skin</label>
+                <label class="block text-muted-silver text-[11px] mb-1">Skin Name</label>
                 <input
                   v-model="skin.name"
                   type="text"
@@ -334,7 +326,7 @@
               </div>
 
               <div>
-                <label class="block text-muted-silver text-[11px] mb-1">Warna Preview</label>
+                <label class="block text-muted-silver text-[11px] mb-1">Preview Color</label>
                 <div class="flex items-center gap-2">
                   <input
                     v-model="skin.previewColor"
@@ -350,7 +342,7 @@
               </div>
 
               <div class="sm:col-span-3">
-                <label class="block text-muted-silver text-[11px] mb-1">Deskripsi Skin</label>
+                <label class="block text-muted-silver text-[11px] mb-1">Skin Description</label>
                 <input
                   v-model="skin.description"
                   type="text"
@@ -368,7 +360,7 @@
           to="/admin/characters"
           class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-bold uppercase transition-colors"
         >
-          Batal
+          Cancel
         </NuxtLink>
 
         <button
@@ -378,7 +370,7 @@
         >
           <BootstrapIcon v-if="isSubmitting" name="arrow-repeat" class="animate-spin" />
           <BootstrapIcon v-else name="check2-circle" />
-          <span>{{ isSubmitting ? 'Menyimpan...' : 'Perbarui Karakter' }}</span>
+          <span>{{ isSubmitting ? 'Saving...' : 'Update Character' }}</span>
         </button>
       </div>
 
@@ -406,7 +398,6 @@ const { data: item } = await useFetch<any>(`/api/characters/${id}`)
 const originalPaths = reactive({
   modelFile: item.value?.modelFile || '',
   coverUrl: item.value?.coverUrl || '',
-  soundEffect: item.value?.soundEffect || '',
 })
 
 const form = reactive({
@@ -422,7 +413,6 @@ const form = reactive({
   scale: item.value?.scale || 0.95,
   primaryColor: item.value?.primaryColor || '#E11D2A',
   accentColor: item.value?.accentColor || '#FFC700',
-  soundEffect: item.value?.soundEffect || '',
   voiceQuote: item.value?.voiceQuote || '',
   topSpeed: item.value?.stats?.topSpeed || 200,
   sponsor: item.value?.sponsor || '',
@@ -455,7 +445,7 @@ const removeSkin = (index: number) => {
 
 const handleSubmit = async () => {
   if (!form.name || !form.modelFile) {
-    toastError('Validasi Gagal', 'Nama karakter dan model 3D file wajib diisi!')
+    toastError('Validation Failed', 'Character name and 3D model file are required!')
     return
   }
 
@@ -465,16 +455,16 @@ const handleSubmit = async () => {
       method: 'PUT',
       body: form
     })
-    success('Berhasil!', `Karakter "${form.name}" berhasil diperbarui.`)
+    success('Success!', `Character "${form.name}" has been successfully updated.`)
     router.push('/admin/characters')
   } catch (err: any) {
-    toastError('Gagal Menyimpan', err?.data?.statusMessage || err?.message || 'Terjadi kesalahan saat memperbarui karakter.')
+    toastError('Save Failed', err?.data?.statusMessage || err?.message || 'An error occurred while updating the character.')
   } finally {
     isSubmitting.value = false
   }
 }
 
 useSeoMeta({
-  title: `Edit Karakter - ${form.name || id} - Cars CMS`
+  title: `Edit Character - ${form.name || id} - Cars CMS`
 })
 </script>

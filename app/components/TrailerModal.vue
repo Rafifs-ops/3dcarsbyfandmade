@@ -13,20 +13,20 @@
         </div>
 
         <h3 class="text-2xl sm:text-4xl font-russo text-pure-white tracking-wide leading-tight">
-          SAKSIKAN AKSI BALAP & SPIONASE PALING INTENS!
+          WITNESS THE MOST INTENSE RACING & SPY ACTION!
         </h3>
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <button @click="isOpen = true"
             class="btn-racing-skew px-6 py-3 rounded bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-white text-sm font-chakra font-bold tracking-wider uppercase flex items-center gap-2 shadow-[0_0_25px_rgba(225,29,42,0.6)] active:scale-95 transition-all">
             <BootstrapIcon name="play-circle-fill" class="text-lightning-yellow text-lg" />
-            <span>Tonton Trailer Fullscreen</span>
+            <span>Watch Trailer Fullscreen</span>
           </button>
 
           <NuxtLink to="/gameplay"
             class="px-5 py-3 rounded-lg bg-carbon-gray hover:bg-carbon-gray-light text-muted-silver hover:text-white text-sm font-chakra font-semibold border border-white/10 flex items-center gap-2 transition-all">
             <BootstrapIcon name="controller" class="text-dinoco-blue" />
-            <span>Semua Video Gameplay</span>
+            <span>All Gameplay Videos</span>
           </NuxtLink>
         </div>
       </div>
@@ -62,12 +62,12 @@
           <div class="p-4 bg-carbon-dark border-b border-white/10 flex items-center justify-between">
             <div class="flex items-center gap-2 text-pure-white font-chakra text-sm font-semibold">
               <BootstrapIcon name="youtube" class="text-rust-red text-lg" />
-              <span>Disney•Pixar Cars 2: The Video Game - Trailer Sinematik</span>
+              <span>Disney•Pixar Cars 2: The Video Game - Cinematic Trailer</span>
             </div>
 
             <button @click="isOpen = false"
               class="p-2 rounded-lg bg-white/10 hover:bg-rust-red text-white transition-colors"
-              aria-label="Tutup Video">
+              aria-label="Close Video">
               <BootstrapIcon name="x-lg" />
             </button>
           </div>
@@ -89,7 +89,7 @@
               rel="noopener noreferrer"
               class="px-4 py-2 rounded bg-rust-red hover:bg-rust-red-light text-white font-bold tracking-wider uppercase flex items-center gap-1.5 transition-all shadow-lg">
               <BootstrapIcon name="steam" />
-              <span>Dapatkan di Steam</span>
+              <span>Get it on Steam</span>
             </a>
           </div>
 

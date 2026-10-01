@@ -6,10 +6,10 @@
       <div>
         <h1 class="text-2xl sm:text-3xl font-russo text-white flex items-center gap-2">
           <BootstrapIcon name="flag-fill" class="text-emerald-400" />
-          <span>KELOLA SIRKUIT (TRACKS & ARENAS)</span>
+          <span>MANAGE TRACKS & ARENAS</span>
         </h1>
         <p class="text-xs sm:text-sm text-muted-silver font-inter">
-          Kelola lintasan balap ikonik, medan permukaan sirkuit, ambience warna, dan deskripsi WYSIWYG.
+          Manage iconic racing tracks, circuit surface terrain, ambient colors, and WYSIWYG descriptions.
         </p>
       </div>
 
@@ -18,7 +18,7 @@
         class="btn-racing-skew px-5 py-2.5 rounded-xl bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light text-white text-xs font-chakra font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg hover:shadow-rust-red/40 transition-all self-start sm:self-auto"
       >
         <BootstrapIcon name="plus-lg" />
-        <span>Tambah Sirkuit</span>
+        <span>Add Track</span>
       </NuxtLink>
     </div>
 
@@ -28,11 +28,11 @@
         <table class="w-full text-left text-xs font-chakra">
           <thead>
             <tr class="bg-black/50 border-b border-white/10 text-muted-silver uppercase tracking-wider">
-              <th class="py-3.5 px-4 w-20">Foto</th>
-              <th class="py-3.5 px-4">Nama Sirkuit & ID</th>
-              <th class="py-3.5 px-4">Tipe Permukaan</th>
-              <th class="py-3.5 px-4">Warna Ambience</th>
-              <th class="py-3.5 px-4 text-right">Aksi</th>
+              <th class="py-3.5 px-4 w-20">Photo</th>
+              <th class="py-3.5 px-4">Track Name & ID</th>
+              <th class="py-3.5 px-4">Surface Type</th>
+              <th class="py-3.5 px-4">Ambient Color</th>
+              <th class="py-3.5 px-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-white/5 text-white">
@@ -68,7 +68,7 @@
               <td class="py-3.5 px-4">
                 <div class="flex items-center gap-2">
                   <span
-                    class="w-4 h-4 rounded-full border border-white/20 shadow-xs inline-block"
+                    class="w-4 h-4 rounded-full border border-white/20 shadow-sm inline-block"
                     :style="{ backgroundColor: track.ambientColor || '#E11D2A' }"
                   />
                   <span class="font-mono text-xs uppercase">{{ track.ambientColor }}</span>
@@ -81,7 +81,7 @@
                   <NuxtLink
                     :to="`/admin/tracks/${track.id}`"
                     class="p-2 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 text-emerald-400 hover:text-white transition-colors"
-                    title="Edit Sirkuit"
+                    title="Edit Track"
                   >
                     <BootstrapIcon name="pencil-square" />
                   </NuxtLink>
@@ -89,7 +89,7 @@
                   <button
                     @click="confirmDelete(track)"
                     class="p-2 rounded-lg bg-white/5 hover:bg-rust-red text-muted-silver hover:text-white transition-colors"
-                    title="Hapus Sirkuit"
+                    title="Delete Track"
                   >
                     <BootstrapIcon name="trash-fill" />
                   </button>
@@ -100,7 +100,7 @@
             <tr v-if="tracksList.length === 0">
               <td colspan="5" class="py-12 text-center text-muted-silver">
                 <BootstrapIcon name="flag" class="text-3xl text-muted-silver/40 mb-2 block mx-auto" />
-                <p>Belum ada sirkuit terdaftar.</p>
+                <p>No tracks registered yet.</p>
               </td>
             </tr>
           </tbody>
@@ -111,14 +111,14 @@
     <!-- Delete Confirmation Modal -->
     <AdminModal
       v-model="deleteModal"
-      title="Hapus Sirkuit Balap"
-      confirm-text="Hapus Sirkuit"
+      title="Delete Racing Track"
+      confirm-text="Delete Track"
       confirm-type="danger"
       :loading="isDeleting"
       @confirm="handleDelete"
     >
       <p>
-        Apakah Anda yakin ingin menghapus sirkuit <strong class="text-white">"{{ selectedItem?.name }}"</strong>?
+        Are you sure you want to delete track <strong class="text-white">"{{ selectedItem?.name }}"</strong>?
       </p>
     </AdminModal>
 
@@ -151,17 +151,17 @@ const handleDelete = async () => {
     await $fetch(`/api/tracks/${selectedItem.value.id}`, {
       method: 'DELETE'
     })
-    success('Sirkuit Dihapus', `Sirkuit "${selectedItem.value.name}" berhasil dihapus.`)
+    success('Track Deleted', `Track "${selectedItem.value.name}" has been successfully deleted.`)
     deleteModal.value = false
     await refresh()
   } catch (err: any) {
-    toastError('Gagal Menghapus', err?.message || 'Terjadi kesalahan saat menghapus sirkuit.')
+    toastError('Delete Failed', err?.message || 'An error occurred while deleting the track.')
   } finally {
     isDeleting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Kelola Sirkuit - Disney Pixar Cars CMS'
+  title: 'Manage Tracks - Disney Pixar Cars CMS'
 })
 </script>

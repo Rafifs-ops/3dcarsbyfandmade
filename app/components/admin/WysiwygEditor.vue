@@ -222,7 +222,7 @@ const props = withDefaults(defineProps<{
   placeholder?: string
 }>(), {
   modelValue: '',
-  placeholder: 'Tulis konten lengkap di sini...'
+  placeholder: 'Write your full content here...'
 })
 
 const emit = defineEmits<{
@@ -283,7 +283,7 @@ const onRawHtmlInput = (event: Event) => {
 const promptLink = () => {
   if (!editor.value) return
   const previousUrl = editor.value.getAttributes('link').href
-  const url = window.prompt('Masukkan URL Link (misal: https://example.com):', previousUrl)
+  const url = window.prompt('Enter Link URL (e.g., https://example.com):', previousUrl)
 
   if (url === null) return
   if (url === '') {
@@ -295,7 +295,7 @@ const promptLink = () => {
 
 const promptImage = () => {
   if (!editor.value) return
-  const url = window.prompt('Masukkan URL Gambar (misal: https://.../image.jpg):')
+  const url = window.prompt('Enter Image URL (e.g., https://.../image.jpg):')
   if (url) {
     editor.value.chain().focus().setImage({ src: url }).run()
   }

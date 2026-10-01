@@ -12,8 +12,8 @@
           </div>
 
           <p class="text-sm leading-relaxed text-muted-silver/90 max-w-md">
-            Portal promosi interaktif resmi untuk game balap legendaris Disney•Pixar Cars (2006) dan Cars 2: The Video
-            Game (2011) di platform Steam. Nikmati aksi balap arcade kecepatan tinggi dan petualangan di Radiator
+            Official interactive promotional portal for the legendary Disney•Pixar Cars (2006) and Cars 2: The Video
+            Game (2011) on Steam. Experience high-speed arcade racing action and adventure in Radiator
             Springs.
           </p>
 
@@ -23,7 +23,7 @@
         <div>
           <h4
             class="text-pure-white font-chakra font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-rust-red pl-2.5">
-            Eksplorasi
+            Explore
           </h4>
           <ul class="space-y-2.5 text-sm font-chakra">
             <li>
@@ -35,7 +35,7 @@
             <li>
               <NuxtLink to="/characters" class="hover:text-lightning-yellow transition-colors flex items-center gap-2">
                 <BootstrapIcon name="chevron-right" class="text-[10px] text-rust-red" />
-                Daftar Karakter (20+)
+                Character Roster (20+)
               </NuxtLink>
             </li>
             <li>
@@ -47,13 +47,13 @@
             <li>
               <NuxtLink to="/news" class="hover:text-lightning-yellow transition-colors flex items-center gap-2">
                 <BootstrapIcon name="chevron-right" class="text-[10px] text-rust-red" />
-                Berita Komunitas
+                Community News
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/identity" class="hover:text-lightning-yellow transition-colors flex items-center gap-2">
+              <NuxtLink to="/game" class="hover:text-lightning-yellow transition-colors flex items-center gap-2">
                 <BootstrapIcon name="chevron-right" class="text-[10px] text-rust-red" />
-                Identitas 2 Game & Specs
+                Game Identity & Specs
               </NuxtLink>
             </li>
           </ul>
@@ -63,7 +63,7 @@
         <div>
           <h4
             class="text-pure-white font-chakra font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-lightning-yellow pl-2.5">
-            Karakter Ikonik
+            Iconic Characters
           </h4>
           <ul class="space-y-2.5 text-sm font-chakra">
             <li>
@@ -108,10 +108,10 @@
         <div>
           <h4
             class="text-pure-white font-chakra font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-dinoco-blue pl-2.5">
-            Komunitas
+            Community
           </h4>
           <p class="text-xs text-muted-silver mb-3">
-            Bergabung dengan ribuan pembalap Piston Cup di komunitas global untuk mabar & turnamen.
+            Join thousands of Piston Cup racers in the global community for multiplayer & tournaments.
           </p>
           <div class="flex items-center gap-3">
             <a href="https://discord.com" target="_blank" rel="noopener noreferrer"

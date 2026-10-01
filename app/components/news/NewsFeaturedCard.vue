@@ -16,7 +16,7 @@
         <BootstrapIcon name="calendar3" class="text-lightning-yellow" />
         <span>{{ featuredArticle.date }}</span>
         <span>•</span>
-        <span class="text-white font-medium">Oleh {{ featuredArticle.author }}</span>
+        <span class="text-white font-medium">By {{ featuredArticle.author }}</span>
       </div>
 
       <h2 class="text-2xl sm:text-3xl font-russo text-pure-white hover:text-lightning-yellow transition-colors leading-tight">
@@ -34,7 +34,7 @@
           :to="`/news/${featuredArticle.id}`"
           class="btn-racing-skew px-5 py-2.5 rounded bg-gradient-to-r from-rust-red to-rust-red-dark text-white text-xs font-chakra font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg hover:shadow-rust-red/50 transition-all"
         >
-          <span>Baca Selengkapnya</span>
+          <span>Read More</span>
           <BootstrapIcon name="arrow-right" />
         </NuxtLink>
       </div>

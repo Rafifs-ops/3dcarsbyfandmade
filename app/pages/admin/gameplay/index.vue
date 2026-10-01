@@ -6,10 +6,10 @@
       <div>
         <h1 class="text-2xl sm:text-3xl font-russo text-white flex items-center gap-2">
           <BootstrapIcon name="play-btn-fill" class="text-purple-400" />
-          <span>KELOLA VIDEO GAMEPLAY</span>
+          <span>MANAGE GAMEPLAY VIDEOS</span>
         </h1>
         <p class="text-xs sm:text-sm text-muted-silver font-inter">
-          Atur cuplikan video sinematik, rekaman balapan 4K 60FPS, eksplorasi open-world, dan battle arena.
+          Manage cinematic video clips, 4K 60FPS racing recordings, open-world exploration, and battle arena.
         </p>
       </div>
 
@@ -18,7 +18,7 @@
         class="btn-racing-skew px-5 py-2.5 rounded-xl bg-gradient-to-r from-rust-red to-rust-red-dark hover:from-rust-red-light text-white text-xs font-chakra font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg hover:shadow-rust-red/40 transition-all self-start sm:self-auto"
       >
         <BootstrapIcon name="plus-lg" />
-        <span>Tambah Video</span>
+        <span>Add Video</span>
       </NuxtLink>
     </div>
 
@@ -29,11 +29,11 @@
           <thead>
             <tr class="bg-black/50 border-b border-white/10 text-muted-silver uppercase tracking-wider">
               <th class="py-3.5 px-4 w-24">Preview</th>
-              <th class="py-3.5 px-4">Judul Video</th>
-              <th class="py-3.5 px-4">Kategori</th>
+              <th class="py-3.5 px-4">Video Title</th>
+              <th class="py-3.5 px-4">Category</th>
               <th class="py-3.5 px-4">Game</th>
-              <th class="py-3.5 px-4">Durasi</th>
-              <th class="py-3.5 px-4 text-right">Aksi</th>
+              <th class="py-3.5 px-4">Duration</th>
+              <th class="py-3.5 px-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-white/5 text-white">
@@ -57,9 +57,11 @@
               </td>
 
               <!-- Title & ID -->
-              <td class="py-3.5 px-4 max-w-sm">
-                <p class="font-bold text-sm text-pure-white truncate">{{ video.title }}</p>
-                <p class="text-[11px] font-mono text-lightning-yellow">{{ video.youtubeId }}</p>
+              <td class="py-3.5 px-4">
+                <div class="max-w-sm">
+                  <p class="font-bold text-sm text-pure-white truncate">{{ video.title }}</p>
+                  <p class="text-[11px] font-mono text-lightning-yellow">{{ video.youtubeId }}</p>
+                </div>
               </td>
 
               <!-- Category -->
@@ -86,7 +88,7 @@
                     :href="`https://www.youtube.com/watch?v=${video.youtubeId}`"
                     target="_blank"
                     class="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-muted-silver hover:text-white transition-colors"
-                    title="Buka di YouTube"
+                    title="Open on YouTube"
                   >
                     <BootstrapIcon name="youtube" class="text-rust-red" />
                   </a>
@@ -102,7 +104,7 @@
                   <button
                     @click="confirmDelete(video)"
                     class="p-2 rounded-lg bg-white/5 hover:bg-rust-red text-muted-silver hover:text-white transition-colors"
-                    title="Hapus Video"
+                    title="Delete Video"
                   >
                     <BootstrapIcon name="trash-fill" />
                   </button>
@@ -113,7 +115,7 @@
             <tr v-if="videosList.length === 0">
               <td colspan="6" class="py-12 text-center text-muted-silver">
                 <BootstrapIcon name="play-btn" class="text-3xl text-muted-silver/40 mb-2 block mx-auto" />
-                <p>Belum ada video gameplay terdaftar.</p>
+                <p>No gameplay videos registered yet.</p>
               </td>
             </tr>
           </tbody>
@@ -124,14 +126,14 @@
     <!-- Delete Confirmation Modal -->
     <AdminModal
       v-model="deleteModal"
-      title="Hapus Video Gameplay"
-      confirm-text="Hapus Video"
+      title="Delete Gameplay Video"
+      confirm-text="Delete Video"
       confirm-type="danger"
       :loading="isDeleting"
       @confirm="handleDelete"
     >
       <p>
-        Apakah Anda yakin ingin menghapus video <strong class="text-white">"{{ selectedItem?.title }}"</strong>?
+        Are you sure you want to delete video <strong class="text-white">"{{ selectedItem?.title }}"</strong>?
       </p>
     </AdminModal>
 
@@ -164,17 +166,17 @@ const handleDelete = async () => {
     await $fetch(`/api/gameplay/${selectedItem.value.id}`, {
       method: 'DELETE'
     })
-    success('Video Dihapus', `Video "${selectedItem.value.title}" berhasil dihapus.`)
+    success('Video Deleted', `Video "${selectedItem.value.title}" has been successfully deleted.`)
     deleteModal.value = false
     await refresh()
   } catch (err: any) {
-    toastError('Gagal Menghapus', err?.message || 'Terjadi kesalahan saat menghapus video.')
+    toastError('Delete Failed', err?.message || 'An error occurred while deleting the video.')
   } finally {
     isDeleting.value = false
   }
 }
 
 useSeoMeta({
-  title: 'Kelola Video Gameplay - Disney Pixar Cars CMS'
+  title: 'Manage Gameplay Videos - Disney Pixar Cars CMS'
 })
 </script>

@@ -4,7 +4,7 @@ import { circuitsData } from '../../../app/data/tracks'
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
   if (!id) {
-    throw createError({ statusCode: 400, statusMessage: 'ID Sirkuit diperlukan' })
+    throw createError({ statusCode: 400, statusMessage: 'Track ID is required' })
   }
 
   try {
@@ -17,11 +17,11 @@ export default defineEventHandler(async (event) => {
     const localItem = circuitsData.find(t => t.id === id)
     if (localItem) return localItem
 
-    throw createError({ statusCode: 404, statusMessage: 'Sirkuit tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Track not found' })
   } catch (error: any) {
     if (error.statusCode) throw error
     const localItem = circuitsData.find(t => t.id === id)
     if (localItem) return localItem
-    throw createError({ statusCode: 404, statusMessage: 'Sirkuit tidak ditemukan' })
+    throw createError({ statusCode: 404, statusMessage: 'Track not found' })
   }
 })

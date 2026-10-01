@@ -5,8 +5,9 @@
       :model-path="currentModelPath"
       :primary-color="character.primaryColor"
       :accent-color="character.accentColor"
-      :scale="character.scale || 1.0"
+      :scale="character.scale || 0.95"
       :position-offset="character.positionOffset || [0, 0, 0]"
+      :rotation-offset="character.rotationOffset || [0, 0, 0]"
     />
 
     <!-- Overlay Badge -->
@@ -18,7 +19,7 @@
         {{ character.racingNumber || '#' }}
       </span>
       <div>
-        <span class="text-[10px] font-chakra uppercase text-muted-silver block">Sponsor Utama</span>
+        <span class="text-[10px] font-chakra uppercase text-muted-silver block">Main Sponsor</span>
         <span class="text-xs font-chakra font-bold text-white">{{ character.sponsor }}</span>
       </div>
     </div>
