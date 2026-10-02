@@ -38,8 +38,8 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://carsgame.com',
-    name: 'Disney Pixar Cars Game Hub'
+    url: 'https://3dcarsbyfandmade.vercel.app',
+    name: '3D Cars Show by Fanmade'
   },
 
   runtimeConfig: {
