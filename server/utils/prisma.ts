@@ -5,9 +5,11 @@ import { createClient } from '@libsql/client'
 let prismaInstance: PrismaClient | null = null
 
 export function getPrisma(): PrismaClient {
+  const config = useRuntimeConfig()
+
   if (!prismaInstance) {
-    const url = process.env.TURSO_DATABASE_URL || 'file:./dev.db'
-    const authToken = process.env.TURSO_DATABASE_AUTH || process.env.TURSO_AUTH_TOKEN
+    const url = config.tursoDatabaseUrl
+    const authToken = config.tursoDatabaseAuth
 
     const libsql = createClient({
       url,

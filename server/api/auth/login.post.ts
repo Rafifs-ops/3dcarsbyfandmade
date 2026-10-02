@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
   // Set cookies with httpOnly and secure
   setCookie(event, 'access_token', accessToken, {
     httpOnly: true,
-    secure: isProduction,
+    secure: true,
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 60 * 24 // 1 day
@@ -67,7 +67,7 @@ export default defineEventHandler(async (event) => {
 
   setCookie(event, 'refresh_token', refreshToken, {
     httpOnly: true,
-    secure: isProduction,
+    secure: true,
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 60 * 24 * 7 // 7 days

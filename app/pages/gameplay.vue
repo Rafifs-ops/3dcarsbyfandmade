@@ -41,7 +41,7 @@ const videos = computed(() => fetchedVideos.value || gameplayVideos)
 const activeVideo = ref<GameplayVideo>(videos.value[0] || gameplayVideos[0]!)
 
 useSeoMeta({
-  title: 'Gameplay Videos & In-Game Footage - Disney Pixar Cars Steam',
+  title: 'Gameplay Videos & In-Game Footage - 3D Cars Show by Fanmade',
   description: 'Watch 4K 60FPS racing gameplay of Disney Pixar Cars & Cars 2 on Steam featuring Piston Cup mode, C.H.R.O.M.E. spy missions, and multiplayer.',
   ogTitle: 'Disney Pixar Cars - Gameplay Showcase'
 })

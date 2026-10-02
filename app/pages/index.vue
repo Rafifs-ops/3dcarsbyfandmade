@@ -48,8 +48,8 @@ import HomeGameOverview from '~/components/home/HomeGameOverview.vue'
 import HomeCtaBanner from '~/components/home/HomeCtaBanner.vue'
 
 useSeoMeta({
-  title: 'Disney Pixar Cars - Official Steam Game Showcase & 3D Showroom',
-  ogTitle: 'Disney Pixar Cars & Cars 2 - Steam Video Game Hub',
+  title: '3D Cars Show by Fanmade',
+  ogTitle: '3D Cars Show by Fanmade',
   description: 'Official promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Experience the interactive 3D Lightning McQueen 360° showcase, iconic engine audio, cinematic trailers, and more.',
   ogDescription: '360° virtual 3D showcase of Lightning McQueen, Tow Mater, Cruz Ramirez, and Jackson Storm. Download Cars on Steam now!',
   ogImage: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',

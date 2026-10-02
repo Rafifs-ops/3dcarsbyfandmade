@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative overflow-hidden min-h-[90vh] flex items-center justify-center pt-28 sm:pt-36 mt-3 pb-16 px-4 sm:px-6 lg:px-8">
+    class="relative overflow-hidden min-h-[90vh] flex items-center justify-center pt-28 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8">
 
     <!-- Background Ambient Glow & Racing Elements -->
     <div
@@ -35,23 +35,22 @@
         <div class="flex flex-wrap items-center gap-4 pt-2">
 
           <!-- Steam CTA Button Cars 2 -->
-           <NuxtLink to="/game"
-             rel="noopener noreferrer"
-             class="btn-racing-skew px-7 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.55)] border border-rust-red-light/50 flex items-center gap-2.5 group transition-all cursor-pointer">
-             <BootstrapIcon name="steam" class="text-xl" />
-             <span>Get The Games On Steam</span>
-             <BootstrapIcon name="arrow-right" class="group-hover:translate-x-1 transition-transform" />
-           </NuxtLink>
+          <NuxtLink to="/game" rel="noopener noreferrer"
+            class="btn-racing-skew px-7 py-4 rounded bg-gradient-to-r from-rust-red via-rust-red to-rust-red-dark hover:from-rust-red-light hover:to-rust-red text-pure-white font-chakra font-extrabold text-sm tracking-wider uppercase shadow-[0_0_30px_rgba(225,29,42,0.55)] border border-rust-red-light/50 flex items-center gap-2.5 group transition-all cursor-pointer">
+            <BootstrapIcon name="steam" class="text-xl" />
+            <span>Get The Games On Steam</span>
+            <BootstrapIcon name="arrow-right" class="group-hover:translate-x-1 transition-transform" />
+          </NuxtLink>
         </div>
 
         <!-- Feature Pills -->
         <div class="pt-4 grid grid-cols-2 gap-4 border-t border-white/10 max-w-xl text-left">
           <div>
-            <BootstrapIcon name="steam" class="text-4xl sm:text-[50px] text-white" />
+            <BootstrapIcon name="steam" class="text-white" :size="40" />
             <div class="text-xs font-chakra text-muted-silver mt-2">Available on Steam</div>
           </div>
           <div>
-            <BootstrapIcon name="playstation" class="text-4xl sm:text-[50px] text-white" />
+            <BootstrapIcon name="playstation" class="text-white" :size="40" />
             <div class="text-xs font-chakra text-muted-silver mt-2">Available on Playstation</div>
           </div>
         </div>
@@ -98,12 +97,11 @@
 
             <!-- HUD Loading Badge (Overlay when 3D model is downloading) -->
             <Transition name="fade">
-              <div
-                v-if="isLoading"
-                class="absolute top-3 left-4 z-10 pointer-events-none flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-2.5 py-1 rounded-lg shadow-lg"
-              >
+              <div v-if="isLoading"
+                class="absolute top-3 left-4 z-10 pointer-events-none flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-2.5 py-1 rounded-lg shadow-lg">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lightning-yellow opacity-75" />
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lightning-yellow opacity-75" />
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-lightning-yellow" />
                 </span>
                 <span class="text-[10px] font-chakra font-bold text-white tracking-wider">
@@ -131,22 +129,15 @@
                       <GLTFModel path="/models/mcqueen.glb" :scale="1.0" :position="[0, 0, 0]" cast-shadow />
                     </template>
                     <template #fallback>
-                      <CarSkeleton3D
-                        primary-color="#E11D2A"
-                        accent-color="#FFC700"
-                        :scale="1.0"
-                        :position-offset="[0, 0, 0]"
-                      />
+                      <CarSkeleton3D primary-color="#E11D2A" accent-color="#FFC700" :scale="1.0"
+                        :position-offset="[0, 0, 0]" />
                     </template>
                   </Suspense>
                 </TresGroup>
               </TresCanvas>
               <template #fallback>
-                <CarSkeletonLoader
-                  primary-color="#E11D2A"
-                  accent-color="#FFC700"
-                  title="LOADING LIGHTNING MCQUEEN..."
-                />
+                <CarSkeletonLoader primary-color="#E11D2A" accent-color="#FFC700"
+                  title="LOADING LIGHTNING MCQUEEN..." />
               </template>
             </ClientOnly>
 

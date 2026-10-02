@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
+const config = useRuntimeConfig()
 
-const JWT_SECRET = process.env.JWT_SECRET || 'aretha'
+const JWT_SECRET = config.jwtSecret || 'aretha'
 
 export interface JwtUserPayload {
   id: string

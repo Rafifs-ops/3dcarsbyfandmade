@@ -33,7 +33,7 @@ export default defineEventHandler((event) => {
       const newAccessToken = signAccessToken(userPayload)
       setCookie(event, 'access_token', newAccessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         sameSite: 'lax',
         path: '/',
         maxAge: 60 * 60 * 24

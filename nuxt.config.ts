@@ -40,5 +40,11 @@ export default defineNuxtConfig({
   site: {
     url: 'https://carsgame.com',
     name: 'Disney Pixar Cars Game Hub'
+  },
+
+  runtimeConfig: {
+    jwtSecret: process.env.JWT_SECRET,
+    tursoDatabaseAuth: process.env.TURSO_DATABASE_AUTH,
+    tursoDatabaseUrl: process.env.TURSO_DATABASE_URL,
   }
 })

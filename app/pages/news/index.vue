@@ -1,24 +1,15 @@
 <template>
   <div class="pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-    
+
     <!-- Page Header & Filters -->
-    <NewsFilterBar
-      v-model:search="searchQuery"
-    />
+    <NewsFilterBar v-model:search="searchQuery" />
 
     <!-- Featured Top Article -->
-    <NewsFeaturedCard
-      v-if="featuredArticle && searchQuery === ''"
-      :featured-article="featuredArticle"
-    />
+    <NewsFeaturedCard v-if="featuredArticle && searchQuery === ''" :featured-article="featuredArticle" />
 
     <!-- News Grid -->
     <div v-if="filteredNews.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <NewsCard
-        v-for="item in filteredNews"
-        :key="item.id"
-        :item="item"
-      />
+      <NewsCard v-for="item in filteredNews" :key="item.id" :item="item" />
     </div>
 
     <!-- Empty State -->
@@ -57,7 +48,7 @@ const filteredNews = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Community News & Updates - Disney Pixar Cars Steam',
+  title: 'Community News & Updates - 3D Cars Show by Fanmade',
   description: 'Latest updates on Piston Cup tournaments, HD 4K texture mods, Steam Deck 60FPS guides, and community news for Disney Pixar Cars on Steam.',
   ogTitle: 'Disney Pixar Cars Community News'
 })

@@ -61,7 +61,7 @@ const cars2 = computed(() => {
 })
 
 useSeoMeta({
-  title: '2 Game Identity & PC Specs - Disney Pixar Cars vs Cars 2',
+  title: '3D Cars Show by Fanmade',
   description: 'Comparison table of minimum and recommended PC specifications for Disney Pixar Cars and Cars 2 on Steam, with official Steam Store links.',
   ogTitle: 'Disney Pixar Cars - Game Identity & PC Requirements'
 })

@@ -1,36 +1,23 @@
 <template>
   <div class="pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
-    
+
     <!-- Page Header & Filters -->
-    <CharacterFilterBar
-      :categories="categories"
-      :get-count="getCategoryCount"
-      v-model:search="searchQuery"
-      v-model:category="activeCategory"
-    />
+    <CharacterFilterBar :categories="categories" :get-count="getCategoryCount" v-model:search="searchQuery"
+      v-model:category="activeCategory" />
 
     <!-- Characters Grid -->
-    <div v-if="!isLoading && filteredCharacters.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <CharacterCard
-        v-for="character in filteredCharacters"
-        :key="character.id"
-        :character="character"
-      />
+    <div v-if="!isLoading && filteredCharacters.length > 0"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <CharacterCard v-for="character in filteredCharacters" :key="character.id" :character="character" />
     </div>
 
     <!-- Characters Skeleton Loading -->
     <div v-else-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <CharacterCardSkeleton
-        v-for="(item, index) in Array(8)"
-        :key="index"
-      />
+      <CharacterCardSkeleton v-for="(item, index) in Array(8)" :key="index" />
     </div>
 
     <!-- Empty State -->
-    <CharacterEmptyState
-      v-else
-      @reset="resetFilters"
-    />
+    <CharacterEmptyState v-else @reset="resetFilters" />
 
   </div>
 </template>
@@ -72,7 +59,7 @@ const getCategoryCount = (catId: string) => {
 const filteredCharacters = computed(() => {
   return characterList.value.filter(char => {
     const matchesCat = activeCategory.value === 'all' || char.category === activeCategory.value
-    const matchesSearch = searchQuery.value.trim() === '' || 
+    const matchesSearch = searchQuery.value.trim() === '' ||
       char.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       char.sponsor.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       char.categoryLabel.toLowerCase().includes(searchQuery.value.toLowerCase())
@@ -86,7 +73,7 @@ const resetFilters = () => {
 }
 
 useSeoMeta({
-  title: 'Disney Pixar Cars Character Catalog - 20+ 3D Model Roster',
+  title: '3D Cars Character Catalog',
   description: 'Complete roster of 20+ Disney Pixar Cars & Cars 2 characters on Steam with 360° 3D inspection, speed specs, and iconic engine audio.',
   ogTitle: 'Disney Pixar Cars - Character Roster Showcase'
 })
