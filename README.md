@@ -15,6 +15,7 @@ A cinematic promotional landing page for Disney Pixar Cars & Cars 2 on Steam. Fe
 - [File Upload System](#file-upload-system)
 - [Auth System](#auth-system)
 - [Environment Variables](#environment-variables)
+- [Credits & Attribution](#credits--attribution)
 
 ---
 
@@ -606,6 +607,36 @@ Key relationships:
 - **Global middleware** (`app/middleware/auth.global.ts`) checks session on every navigation
 - **Admin layout** (`app/layouts/admin.vue`) wraps all admin pages with sidebar + header
 - **Default credentials:** `admin` / `admin123`
+
+---
+
+## Credits & Attribution
+
+This project uses third-party assets. Full attribution is displayed on the site (inside every 3D viewer and in the footer).
+
+### 3D Models
+
+| Field | Info |
+|-------|------|
+| **Creator** | DinseyPixarCarsModel |
+| **Publisher** | Sketchfab |
+| **Link** | <https://sketchfab.com/DinseyPixarCarsModels> |
+
+All `.glb` car models under `public/models/` were sourced from the Sketchfab profile above.
+Models are auto-normalized on load by `ModelViewer3D.vue` (`Box3` center + uniform scale) to ensure consistent framing regardless of the original pivot/scale exported from Sketchfab.
+
+### Sound Effects
+
+| Field | Info |
+|-------|------|
+| **Name** | V8 Sound |
+| **Publisher** | Pixabay |
+| **Link** | <https://pixabay.com/id/sound-effects/search/v8/> |
+
+All engine rev and horn audio files under `public/audio/` were sourced from Pixabay's free sound-effects library.
+Playback is handled by `app/composables/useCarAudio.ts`.
+
+> **Note:** Both attributions are rendered directly in the UI — as interactive badge overlays in every 3D model viewport (`ModelViewer3D.vue`, `ShowroomCanvas.vue`) and as linked credit cards in the site footer (`Footer.vue`).
 
 ---
 

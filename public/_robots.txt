@@ -1,2 +1,13 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Allow: /$
+Disallow: /characters
+Disallow: /characters/
+Disallow: /gameplay
+Disallow: /news
+Disallow: /news/
+Disallow: /game
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://carsgame.fanmade.id/sitemap.xml

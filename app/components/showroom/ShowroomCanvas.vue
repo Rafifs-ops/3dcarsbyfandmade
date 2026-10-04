@@ -5,10 +5,8 @@
 
     <!-- HUD Loading Badge (Overlay when 3D model is downloading) -->
     <Transition name="fade">
-      <div
-        v-if="isLoading"
-        class="absolute top-4 left-4 z-10 pointer-events-none flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg"
-      >
+      <div v-if="isLoading"
+        class="absolute top-4 left-4 z-10 pointer-events-none flex items-center gap-2 bg-black/80 border border-lightning-yellow/50 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lightning-yellow opacity-75" />
           <span class="relative inline-flex rounded-full h-2 w-2 bg-lightning-yellow" />
@@ -49,24 +47,44 @@
                 :position="activeCharacter.positionOffset || [0, 0, 0]" cast-shadow />
             </template>
             <template #fallback>
-              <CarSkeleton3D
-                :primary-color="activeCharacter.primaryColor"
-                :accent-color="activeCharacter.accentColor"
-                :scale="activeCharacter.scale || 1"
-                :position-offset="activeCharacter.positionOffset || [0, 0, 0]"
-              />
+              <CarSkeleton3D :primary-color="activeCharacter.primaryColor" :accent-color="activeCharacter.accentColor"
+                :scale="activeCharacter.scale || 1" :position-offset="activeCharacter.positionOffset || [0, 0, 0]" />
             </template>
           </Suspense>
         </TresGroup>
       </TresCanvas>
       <template #fallback>
-        <CarSkeletonLoader
-          :primary-color="activeCharacter.primaryColor"
-          :accent-color="activeCharacter.accentColor"
-          :title="`LOADING ${activeCharacter?.name?.toUpperCase() || 'CAR'}...`"
-        />
+        <CarSkeletonLoader :primary-color="activeCharacter.primaryColor" :accent-color="activeCharacter.accentColor"
+          :title="`LOADING ${activeCharacter?.name?.toUpperCase() || 'CAR'}...`" />
       </template>
     </ClientOnly>
+
+    <!-- Copyright Attribution Badges -->
+    <div class="absolute bottom-3 right-3 z-10 flex flex-col items-end gap-1.5">
+      <!-- 3D Model Credit -->
+      <a href="https://sketchfab.com/DinseyPixarCarsModels" target="_blank" rel="noopener noreferrer"
+        class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 border border-white/10 hover:border-lightning-yellow/40 backdrop-blur-md px-2.5 py-1.5 rounded-lg transition-all duration-200 group"
+        title="3D Model by DinseyPixarCarsModel on Sketchfab">
+        <BootstrapIcon name="box"
+          class="text-lightning-yellow/70 group-hover:text-lightning-yellow text-[10px] transition-colors" />
+        <span class="font-chakra text-[9px] text-white/50 group-hover:text-white/80 transition-colors leading-tight">
+          3D © <span class="text-lightning-yellow/80 group-hover:text-lightning-yellow">DinseyPixarCarsModel</span><br>
+          <span class="text-white/30">from Sketchfab</span>
+        </span>
+      </a>
+      <!-- Audio Credit -->
+      <a href="https://pixabay.com/id/sound-effects/search/v8/" target="_blank" rel="noopener noreferrer"
+        class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 border border-white/10 hover:border-rust-red/40 backdrop-blur-md px-2.5 py-1.5 rounded-lg transition-all duration-200 group"
+        title="V8 Sound by Pixabay">
+        <BootstrapIcon name="volume-up-fill"
+          class="text-rust-red/70 group-hover:text-rust-red text-[10px] transition-colors" />
+        <span class="font-chakra text-[9px] text-white/50 group-hover:text-white/80 transition-colors leading-tight">
+          🔊 © <span class="text-rust-red/80 group-hover:text-rust-red">V8 Sound</span><br>
+          <span class="text-white/30">from Pixabay</span>
+        </span>
+      </a>
+    </div>
+
   </div>
 </template>
 

@@ -111,6 +111,53 @@
 
       </div>
 
+      <!-- Credits / Attribution Section -->
+      <div class="py-8 border-b border-white/[0.07]">
+        <h4 class="relative inline-block text-pure-white font-chakra font-bold text-[11px] tracking-[0.2em] uppercase pb-2 mb-5">
+          Assets &amp; Credits
+          <span class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-dinoco-blue to-transparent rounded-full" />
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+          <!-- 3D Model Credit -->
+          <a
+            href="https://sketchfab.com/DinseyPixarCarsModels"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] hover:border-lightning-yellow/30 backdrop-blur-sm p-3.5 transition-all duration-300"
+          >
+            <div class="w-8 h-8 rounded-lg bg-lightning-yellow/10 border border-lightning-yellow/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <BootstrapIcon name="box" class="text-lightning-yellow text-sm" />
+            </div>
+            <div class="min-w-0">
+              <p class="text-[10px] font-inter text-muted-silver/50 uppercase tracking-wider">3D Model</p>
+              <p class="text-xs font-chakra font-bold text-pure-white group-hover:text-lightning-yellow transition-colors duration-200 truncate">DinseyPixarCarsModel</p>
+              <p class="text-[10px] font-inter text-muted-silver/40">Sketchfab — sketchfab.com</p>
+            </div>
+            <BootstrapIcon name="box-arrow-up-right" class="text-muted-silver/30 group-hover:text-lightning-yellow/70 text-[10px] ml-auto shrink-0 transition-colors duration-200" />
+          </a>
+
+          <!-- Audio Credit -->
+          <a
+            href="https://pixabay.com/id/sound-effects/search/v8/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] hover:border-rust-red/30 backdrop-blur-sm p-3.5 transition-all duration-300"
+          >
+            <div class="w-8 h-8 rounded-lg bg-rust-red/10 border border-rust-red/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <BootstrapIcon name="volume-up-fill" class="text-rust-red text-sm" />
+            </div>
+            <div class="min-w-0">
+              <p class="text-[10px] font-inter text-muted-silver/50 uppercase tracking-wider">V8 Sound Effects</p>
+              <p class="text-xs font-chakra font-bold text-pure-white group-hover:text-rust-red transition-colors duration-200 truncate">V8 Sound</p>
+              <p class="text-[10px] font-inter text-muted-silver/40">Pixabay — pixabay.com</p>
+            </div>
+            <BootstrapIcon name="box-arrow-up-right" class="text-muted-silver/30 group-hover:text-rust-red/70 text-[10px] ml-auto shrink-0 transition-colors duration-200" />
+          </a>
+
+        </div>
+      </div>
+
       <!-- Bottom Bar -->
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-[11px] font-inter text-muted-silver/40 tracking-wide">
