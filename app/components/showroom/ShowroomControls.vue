@@ -53,7 +53,7 @@
         </button>
 
         <!-- Voice Quote Button -->
-        <button @click="$emit('triggerVoice')"
+        <button @click="$emit('triggerVoice', activeCharacter.soundEffect as string)"
           class="px-3.5 py-2 rounded bg-carbon-gray hover:bg-carbon-gray-light text-pure-white text-xs font-chakra font-semibold tracking-wider flex items-center gap-2 border border-white/10 hover:border-lightning-yellow/50 transition-all cursor-pointer">
           <BootstrapIcon name="megaphone-fill" class="text-lightning-yellow" />
           <span>Iconic Voice</span>
@@ -95,7 +95,7 @@ defineEmits<{
   (e: 'selectCharacter', char: Character): void
   (e: 'selectSkin', skin: CharacterSkin): void
   (e: 'triggerRev'): void
-  (e: 'triggerVoice'): void
+  (e: 'triggerVoice', audioUrl: string): void
   (e: 'triggerHorn'): void
 }>()
 </script>

@@ -5,14 +5,14 @@ export function formatCharacter(char: any) {
   if (char.positionOffset) {
     try {
       positionOffset = typeof char.positionOffset === 'string' ? JSON.parse(char.positionOffset) : char.positionOffset
-    } catch {}
+    } catch { }
   }
 
   let rotationOffset = undefined
   if (char.rotationOffset) {
     try {
       rotationOffset = typeof char.rotationOffset === 'string' ? JSON.parse(char.rotationOffset) : char.rotationOffset
-    } catch {}
+    } catch { }
   }
 
   const skins = (char.skins || []).map((s: any) => ({
@@ -46,6 +46,7 @@ export function formatCharacter(char: any) {
     sponsor: char.sponsor,
     engineType: char.engineType,
     voiceQuote: char.voiceQuote,
+    soundEffect: char.soundEffect,
     bio: char.bio,
     funFact: char.funFact,
     primaryColor: char.primaryColor,

@@ -31,6 +31,7 @@ export interface Character {
   sponsor: string
   engineType: string
   voiceQuote?: string
+  soundEffect?: string
   bio: string
   funFact: string
   primaryColor: string

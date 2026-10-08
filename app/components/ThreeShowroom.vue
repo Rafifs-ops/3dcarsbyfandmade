@@ -1,32 +1,18 @@
 <template>
-  <div class="relative w-full rounded-2xl overflow-hidden carbon-card border border-white/10 shadow-2xl bg-gradient-to-b from-[#1C1F26] via-[#14171E] to-[#0A0C0F]">
-    
+  <div
+    class="relative w-full rounded-2xl overflow-hidden carbon-card border border-white/10 shadow-2xl bg-gradient-to-b from-[#1C1F26] via-[#14171E] to-[#0A0C0F]">
+
     <!-- Top HUD Header -->
-    <ShowroomHudHeader
-      :active-character="activeCharacter"
-      :active-skin="activeSkin"
-      :live-rpm="liveRpm"
-      :is-revving="isRevving"
-    />
+    <ShowroomHudHeader :active-character="activeCharacter" :active-skin="activeSkin" :live-rpm="liveRpm"
+      :is-revving="isRevving" />
 
     <!-- 3D Canvas Container -->
-    <ShowroomCanvas
-      :current-model-path="currentModelPath"
-      :active-character="activeCharacter"
-    />
+    <ShowroomCanvas :current-model-path="currentModelPath" :active-character="activeCharacter" />
 
     <!-- Bottom Controls & Interactivity Bar -->
-    <ShowroomControls
-      :showcase-characters="showcaseCharacters"
-      :active-character="activeCharacter"
-      :active-skin="activeSkin"
-      :is-revving="isRevving"
-      @select-character="selectCharacter"
-      @select-skin="selectSkin"
-      @trigger-rev="triggerRev"
-      @trigger-voice="triggerVoice"
-      @trigger-horn="triggerHorn"
-    />
+    <ShowroomControls :showcase-characters="showcaseCharacters" :active-character="activeCharacter"
+      :active-skin="activeSkin" :is-revving="isRevving" @select-character="selectCharacter" @select-skin="selectSkin"
+      @trigger-rev="triggerRev" @trigger-voice="triggerVoice" @trigger-horn="triggerHorn" />
 
   </div>
 </template>
@@ -49,7 +35,7 @@ const allCharacters = computed(() => fetchedChars.value || charactersData)
 // Filter featured showroom characters: McQueen, Mater, Cruz, Jackson Storm
 const showcaseCharacters = computed(() => {
   const list = allCharacters.value
-  const featured = list.filter(c => 
+  const featured = list.filter(c =>
     ['lightning-mcqueen', 'tow-mater', 'cruz-ramirez', 'jackson-storm'].includes(c.id)
   )
   return featured.length > 0 ? featured : list.slice(0, 4)
@@ -58,6 +44,7 @@ const showcaseCharacters = computed(() => {
 const activeCharacter = ref<Character>(
   showcaseCharacters.value[0] ?? (charactersData[0] as Character)
 )
+
 const activeSkin = ref<CharacterSkin | null>(activeCharacter.value?.skins?.[0] || null)
 
 watch(showcaseCharacters, (chars) => {
@@ -97,8 +84,8 @@ const triggerRev = () => {
   revEngine()
 }
 
-const triggerVoice = () => {
-  playSound('/audio/ka-chow.mp3')
+const triggerVoice = (audioUrl: string) => {
+  playSound(audioUrl)
 }
 
 const triggerHorn = () => {
