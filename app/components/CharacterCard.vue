@@ -14,9 +14,9 @@
 
         <!-- Category Tag -->
         <span
-            class="text-[10px] font-chakra tracking-widest uppercase px-2 py-0.5 rounded-md bg-white/5 text-muted-silver border border-white/10">
-            {{ character.categoryLabel }}
-          </span>
+          class="text-[10px] font-chakra tracking-widest uppercase px-2 py-0.5 rounded-md bg-white/5 text-muted-silver border border-white/10">
+          {{ character.categoryLabel }}
+        </span>
       </div>
 
       <!-- Character Cover Image Container -->
@@ -40,7 +40,7 @@
         <div v-else class="relative z-10 flex flex-col items-center justify-center text-center gap-2 text-muted-silver">
           <BootstrapIcon name="car-front-fill" class="text-3xl text-lightning-yellow/80" />
           <span class="text-[11px] font-chakra uppercase tracking-wider text-muted-silver/80">{{ character.name
-          }}</span>
+            }}</span>
         </div>
 
         <!-- Speed Badge Overlay -->
@@ -69,7 +69,7 @@
           <span class="text-white font-medium truncate max-w-[180px]">{{ character.sponsor }}</span>
         </div>
         <div class="flex justify-between items-center text-[11px]">
-           <span class="text-muted-silver/60">Engine:</span>
+          <span class="text-muted-silver/60">Engine:</span>
           <span class="text-muted-silver font-medium truncate max-w-[180px]">{{ character.engineType }}</span>
         </div>
       </div>

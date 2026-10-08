@@ -1,6 +1,6 @@
 <template>
   <div class="carbon-card rounded-2xl overflow-hidden border border-white/15 p-6 sm:p-10 space-y-6">
-    
+
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
       <div>
         <div class="flex items-center gap-2 text-xs font-chakra text-lightning-yellow uppercase tracking-widest mb-1">
@@ -10,11 +10,6 @@
         <h3 class="text-2xl sm:text-3xl font-russo text-pure-white">
           SYSTEM SPECS TABLE (MINIMUM SPECS)
         </h3>
-      </div>
-
-      <div class="flex items-center gap-2 bg-black/60 px-3.5 py-1.5 rounded-xl border border-white/10 text-xs font-chakra text-muted-silver">
-        <BootstrapIcon name="shield-check" class="text-emerald-400" />
-        <span>Tested & Compatible Specs</span>
       </div>
     </div>
 
@@ -29,7 +24,7 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-white/5 text-pure-white">
-          
+
           <tr class="hover:bg-white/5 transition-colors">
             <td class="py-4 px-4 font-bold text-muted-silver">
               <div class="flex items-center gap-2">

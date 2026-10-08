@@ -31,9 +31,7 @@
     </div>
 
     <!-- SYSTEM REQUIREMENTS COMPARISON TABLE -->
-    <GameSpecTable :cars1="cars1" :cars2="cars2">
-      <GameCompatibilityBadge />
-    </GameSpecTable>
+    <GameSpecTable :cars1="cars1" :cars2="cars2" />
 
   </div>
 </template>

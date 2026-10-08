@@ -18,16 +18,18 @@
     </div>
 
     <!-- Featured Main Video Player Embed -->
-    <GameplayVideoPlayer :active-video="activeVideo" />
+    <div ref="playerSectionRef" id="gameplay-player" class="scroll-mt-24 sm:scroll-mt-28">
+      <GameplayVideoPlayer :active-video="activeVideo" />
+    </div>
 
     <!-- Video Selection Grid -->
-    <GameplayVideoPlaylist :videos="videos" v-model="activeVideo" />
+    <GameplayVideoPlaylist :videos="videos" v-model="activeVideo" @select="scrollToPlayer" />
 
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { gameplayVideos } from '~/data/gameInfo'
 import type { GameplayVideo } from '~/types'
 import GameplayVideoPlayer from '~/components/gameplay/GameplayVideoPlayer.vue'
@@ -39,6 +41,30 @@ const { data: fetchedVideos } = await useFetch<GameplayVideo[]>('/api/gameplay',
 
 const videos = computed(() => fetchedVideos.value || gameplayVideos)
 const activeVideo = ref<GameplayVideo>(videos.value[0] || gameplayVideos[0]!)
+const playerSectionRef = ref<HTMLElement | null>(null)
+
+const scrollToPlayer = () => {
+  if (!import.meta.client) return
+
+  nextTick(() => {
+    if (playerSectionRef.value) {
+      // Navbar height is 80px (h-20) + 20px padding
+      const navbarOffset = 100
+      const elementPosition = playerSectionRef.value.getBoundingClientRect().top
+      const targetPosition = elementPosition + window.scrollY - navbarOffset
+
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: 'smooth'
+      })
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+  })
+}
 
 useSeoMeta({
   title: 'Gameplay Videos & In-Game Footage - 3D Cars Show by Fanmade',

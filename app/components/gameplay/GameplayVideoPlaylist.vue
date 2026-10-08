@@ -6,7 +6,7 @@
     </h3>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div v-for="video in videos" :key="video.id" @click="activeVideo = video"
+      <div v-for="video in videos" :key="video.id" @click="selectVideo(video)"
         class="carbon-card carbon-card-hover rounded-xl overflow-hidden border p-3 cursor-pointer transition-all"
         :class="activeVideo?.id === video.id ? 'border-lightning-yellow ring-2 ring-lightning-yellow/30' : 'border-white/10'">
         <div class="relative aspect-video rounded-lg overflow-hidden bg-black mb-2.5">
@@ -17,6 +17,11 @@
               <BootstrapIcon name="play-fill" class="ml-0.5" />
             </div>
           </div>
+          <span v-if="activeVideo?.id === video.id"
+            class="absolute top-2 left-2 px-2 py-0.5 rounded bg-lightning-yellow text-asphalt-black text-[10px] font-chakra font-bold uppercase tracking-wider flex items-center gap-1 shadow-md">
+            <BootstrapIcon name="play-circle-fill" class="text-xs" />
+            Playing
+          </span>
           <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/80 text-[10px] font-mono text-white">
             {{ video.duration }}
           </span>
@@ -40,5 +45,14 @@ defineProps<{
   videos: GameplayVideo[]
 }>()
 
+const emit = defineEmits<{
+  select: [video: GameplayVideo]
+}>()
+
 const activeVideo = defineModel<GameplayVideo>()
+
+const selectVideo = (video: GameplayVideo) => {
+  activeVideo.value = video
+  emit('select', video)
+}
 </script>
