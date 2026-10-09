@@ -83,6 +83,17 @@
           <span class="text-white/30">from Pixabay</span>
         </span>
       </a>
+      <!-- Character Voice Credit -->
+      <a href="https://sounds.spriters-resource.com/playstation_3/cars3driventowin/#section-60460" target="_blank" rel="noopener noreferrer"
+        class="flex items-center gap-1.5 bg-black/70 hover:bg-black/90 border border-white/10 hover:border-dinoco-blue/40 backdrop-blur-md px-2.5 py-1.5 rounded-lg transition-all duration-200 group"
+        title="Iconic Character Voices by Sound Resource">
+        <BootstrapIcon name="megaphone-fill"
+          class="text-dinoco-blue/70 group-hover:text-dinoco-blue text-[10px] transition-colors" />
+        <span class="font-chakra text-[9px] text-white/50 group-hover:text-white/80 transition-colors leading-tight">
+          🎙️ © <span class="text-dinoco-blue/90 group-hover:text-dinoco-blue">Sound Resource</span><br>
+          <span class="text-white/30">Cars 3: Driven to Win</span>
+        </span>
+      </a>
     </div>
 
   </div>

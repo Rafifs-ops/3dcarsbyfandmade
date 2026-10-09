@@ -636,7 +636,18 @@ Models are auto-normalized on load by `ModelViewer3D.vue` (`Box3` center + unifo
 All engine rev and horn audio files under `public/audio/` were sourced from Pixabay's free sound-effects library.
 Playback is handled by `app/composables/useCarAudio.ts`.
 
-> **Note:** Both attributions are rendered directly in the UI — as interactive badge overlays in every 3D model viewport (`ModelViewer3D.vue`, `ShowroomCanvas.vue`) and as linked credit cards in the site footer (`Footer.vue`).
+### Character Voice Lines
+
+| Field | Info |
+|-------|------|
+| **Name** | Sound Resource |
+| **Publisher** | The Sounds Resource |
+| **Game** | Cars 3: Driven to Win (PlayStation 3) |
+| **Link** | <https://sounds.spriters-resource.com/playstation_3/cars3driventowin/#section-60460> |
+
+All iconic character voice lines were sourced from The Sounds Resource (Cars 3: Driven to Win PlayStation 3 audio rip).
+
+> **Note:** All attributions are rendered directly in the UI — as interactive badge overlays in the 3D model viewport (`ShowroomCanvas.vue`), in the showroom interactive controls (`ShowroomControls.vue`), and as linked credit cards in the site footer (`Footer.vue`).
 
 ---
 

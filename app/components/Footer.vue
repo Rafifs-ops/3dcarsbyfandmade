@@ -123,7 +123,7 @@
           <span
             class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-dinoco-blue to-transparent rounded-full" />
         </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
           <!-- 3D Model Credit -->
           <a href="https://sketchfab.com/DinseyPixarCarsModels" target="_blank" rel="noopener noreferrer"
@@ -159,6 +159,25 @@
             </div>
             <BootstrapIcon name="box-arrow-up-right"
               class="text-muted-silver/30 group-hover:text-rust-red/70 text-[10px] ml-auto shrink-0 transition-colors duration-200" />
+          </a>
+
+          <!-- Character Voice Audio Credit -->
+          <a href="https://sounds.spriters-resource.com/playstation_3/cars3driventowin/#section-60460" target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] hover:border-dinoco-blue/30 backdrop-blur-sm p-3.5 transition-all duration-300">
+            <div
+              class="w-8 h-8 rounded-lg bg-dinoco-blue/10 border border-dinoco-blue/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <BootstrapIcon name="megaphone-fill" class="text-dinoco-blue text-sm" />
+            </div>
+            <div class="min-w-0">
+              <p class="text-[10px] font-inter text-muted-silver/50 uppercase tracking-wider">Iconic Character Voices</p>
+              <p
+                class="text-xs font-chakra font-bold text-pure-white group-hover:text-dinoco-blue transition-colors duration-200 truncate">
+                Sound Resource</p>
+              <p class="text-[10px] font-inter text-muted-silver/40 truncate">Sounds Resource — Cars 3: Driven to Win</p>
+            </div>
+            <BootstrapIcon name="box-arrow-up-right"
+              class="text-muted-silver/30 group-hover:text-dinoco-blue/70 text-[10px] ml-auto shrink-0 transition-colors duration-200" />
           </a>
 
         </div>
