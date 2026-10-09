@@ -16,6 +16,10 @@
   --muted-silver: #94A3B8;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #0F1115;
   color: #F8FAFC;
@@ -223,4 +227,76 @@ body {
 
 .animate-shake {
   animation: shake 0.4s ease-in-out;
+}
+
+/* Nuxt Page & Layout Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.22s ease-out, transform 0.22s ease-out;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.2s ease-out;
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}
+
+/* Grid Filter Transitions */
+.grid-fade-enter-active,
+.grid-fade-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.grid-fade-enter-from,
+.grid-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+/* Refined AOS Displacement for Natural Scroll Reveals */
+[data-aos="fade-up"] {
+  transform: translate3d(0, 24px, 0);
+}
+
+[data-aos="fade-down"] {
+  transform: translate3d(0, -24px, 0);
+}
+
+[data-aos="fade-right"] {
+  transform: translate3d(-24px, 0, 0);
+}
+
+[data-aos="fade-left"] {
+  transform: translate3d(24px, 0, 0);
+}
+
+[data-aos^="fade"].aos-animate {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Accessibility: Honor reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-aos] {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

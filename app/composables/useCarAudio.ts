@@ -1,3 +1,6 @@
+import { useState } from '#app'
+import { onMounted, onBeforeUnmount } from 'vue'
+
 let audioCtx: AudioContext | null = null
 let currentRevAudio: HTMLAudioElement | null = null
 let rpmInterval: ReturnType<typeof setInterval> | null = null
@@ -7,14 +10,29 @@ export const useCarAudio = () => {
   const isRevving = useState<boolean>('car_is_revving', () => false)
   const rpm = useState<number>('car_rpm_telemetry', () => 850)
 
+  // Inisialisasi Audio secara aman di sisi Client (Browser)
+  onMounted(() => {
+    if (typeof window !== 'undefined' && !currentRevAudio) {
+      currentRevAudio = new Audio('/audio/v8.mp3')
+      currentRevAudio.preload = 'auto' // Paksa browser mengunduh data lebih awal
+      currentRevAudio.load()
+    }
+  })
+
+  // Bersihkan interval jika komponen hancur
+  onBeforeUnmount(() => {
+    if (rpmInterval) clearInterval(rpmInterval)
+  })
+
   const getAudioContext = () => {
     if (typeof window === 'undefined') return null
     if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext
       if (AudioContextClass) {
         audioCtx = new AudioContextClass()
       }
     }
+    // Vercel / HTTPS mengharuskan resume dipicu langsung oleh interaksi user murni
     if (audioCtx && audioCtx.state === 'suspended') {
       audioCtx.resume()
     }
@@ -28,26 +46,27 @@ export const useCarAudio = () => {
       const audio = new Audio(soundUrl)
       audio.volume = 0.85
       audio.play().catch(err => {
-        console.warn('Audio play prevented or interrupted:', err)
+        // Ubah ke console.error agar terdeteksi jika Vercel memblokirnya
+        console.error('Vercel Audio Blocked:', err)
       })
     } catch (e) {
-      console.warn('Error playing audio file:', e)
+      console.error('Error playing audio file:', e)
     }
   }
 
   // Authentic V8 Engine Rev using public/audio/v8.mp3
   const revEngine = (_durationMs?: number) => {
-    if (isMuted.value || typeof window === 'undefined') return
+    if (isMuted.value || typeof window === 'undefined' || !currentRevAudio) return
 
     try {
-      if (currentRevAudio) {
-        currentRevAudio.pause()
-        currentRevAudio.currentTime = 0
-      } else {
-        currentRevAudio = new Audio('/audio/v8.mp3')
-      }
+      // Aktifkan kembali AudioContext jika horn/nitro sempat dipakai
+      getAudioContext()
 
+      // Reset audio yang sudah ter-preload sebelumnya
+      currentRevAudio.pause()
+      currentRevAudio.currentTime = 0
       currentRevAudio.volume = 0.95
+
       isRevving.value = true
       rpm.value = 7500
 
@@ -82,19 +101,19 @@ export const useCarAudio = () => {
       }
 
       currentRevAudio.onerror = (e) => {
-        console.warn('Error playing /audio/v8.mp3:', e)
+        console.error('Error playing /audio/v8.mp3 on Vercel server:', e)
         cleanup()
       }
 
       const playPromise = currentRevAudio.play()
       if (playPromise !== undefined) {
         playPromise.catch((err) => {
-          console.warn('Audio play prevented or interrupted:', err)
+          console.error('Vercel strictly prevented asynchrous play:', err)
           cleanup()
         })
       }
     } catch (e) {
-      console.warn('Error executing revEngine:', e)
+      console.error('Error executing revEngine:', e)
       isRevving.value = false
       rpm.value = 850
       if (rpmInterval) {
@@ -112,8 +131,7 @@ export const useCarAudio = () => {
 
     const now = ctx.currentTime
     const duration = 0.45
-
-    const freqs = [349.23, 440.0] // F4 and A4 dual horn tone
+    const freqs = [349.23, 440.0]
 
     freqs.forEach(freq => {
       const osc = ctx.createOscillator()
@@ -133,46 +151,6 @@ export const useCarAudio = () => {
       osc.start(now)
       osc.stop(now + duration)
     })
-  }
-
-  // Nitro Boost Sound effect
-  const playNitro = () => {
-    if (isMuted.value || typeof window === 'undefined') return
-    const ctx = getAudioContext()
-    if (!ctx) return
-
-    const now = ctx.currentTime
-    const duration = 1.0
-
-    // White noise generator
-    const bufferSize = ctx.sampleRate * duration
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
-    const data = buffer.getChannelData(0)
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = Math.random() * 2 - 1
-    }
-
-    const noise = ctx.createBufferSource()
-    noise.buffer = buffer
-
-    const filter = ctx.createBiquadFilter()
-    filter.type = 'bandpass'
-    filter.frequency.setValueAtTime(800, now)
-    filter.frequency.exponentialRampToValueAtTime(3200, now + duration * 0.4)
-    filter.frequency.exponentialRampToValueAtTime(400, now + duration)
-    filter.Q.setValueAtTime(3.0, now)
-
-    const gain = ctx.createGain()
-    gain.gain.setValueAtTime(0.01, now)
-    gain.gain.linearRampToValueAtTime(0.25, now + 0.1)
-    gain.gain.exponentialRampToValueAtTime(0.001, now + duration)
-
-    noise.connect(filter)
-    filter.connect(gain)
-    gain.connect(ctx.destination)
-
-    noise.start(now)
-    noise.stop(now + duration)
   }
 
   const toggleMute = () => {
@@ -198,7 +176,6 @@ export const useCarAudio = () => {
     playSound,
     revEngine,
     playHorn,
-    playNitro,
     toggleMute
   }
 }

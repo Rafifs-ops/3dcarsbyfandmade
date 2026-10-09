@@ -1,7 +1,7 @@
 <template>
   <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
-    <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+    <div class="text-center max-w-3xl mx-auto mb-12 space-y-3" data-aos="fade-up">
       <div
         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dinoco-blue/10 border border-dinoco-blue/30 text-dinoco-blue text-xs font-chakra tracking-widest uppercase">
         <BootstrapIcon name="collection-play-fill" />
@@ -17,7 +17,8 @@
 
       <!-- Game 1: Cars (2006) -->
       <div
-        class="rounded-2xl overflow-hidden carbon-card border border-white/10 p-8 flex flex-col justify-between hover:border-lightning-yellow/40 transition-all duration-300">
+        class="rounded-2xl overflow-hidden carbon-card border border-white/10 p-8 flex flex-col justify-between hover:border-lightning-yellow/40 transition-all duration-300"
+        data-aos="fade-up" data-aos-delay="100">
         <div>
           <!-- Header Tag & Developer -->
           <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -67,7 +68,8 @@
 
       <!-- Game 2: Cars 2: The Video Game (2011) -->
       <div
-        class="rounded-2xl overflow-hidden carbon-card border border-rust-red/30 p-8 flex flex-col justify-between hover:border-rust-red transition-all duration-300 shadow-[0_0_30px_rgba(225,29,42,0.15)]">
+        class="rounded-2xl overflow-hidden carbon-card border border-rust-red/30 p-8 flex flex-col justify-between hover:border-rust-red transition-all duration-300 shadow-[0_0_30px_rgba(225,29,42,0.15)]"
+        data-aos="fade-up" data-aos-delay="200">
         <div>
           <!-- Header Tag & Developer -->
           <div class="flex flex-wrap items-center justify-between gap-2 mb-4">

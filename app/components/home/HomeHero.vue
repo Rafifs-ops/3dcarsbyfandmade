@@ -5,13 +5,11 @@
     <!-- Background Ambient Glow & Racing Elements -->
     <div
       class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-rust-red/15 rounded-full blur-[140px] pointer-events-none" />
-    <div
-      class="absolute top-1/3 -right-40 w-[500px] h-[400px] bg-dinoco-blue/10 rounded-full blur-[120px] pointer-events-none" />
 
     <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
 
       <!-- Left Hero Text (7 cols) -->
-      <div class="lg:col-span-7 space-y-6 text-left">
+      <div class="lg:col-span-7 space-y-6 text-left" data-aos="fade-up">
 
         <!-- Main Racing Headline -->
         <h1
@@ -44,7 +42,8 @@
         </div>
 
         <!-- Feature Pills -->
-        <div class="pt-4 grid grid-cols-2 gap-4 border-t border-white/10 max-w-xl text-left">
+        <div class="pt-4 grid grid-cols-2 gap-4 border-t border-white/10 max-w-xl text-left" data-aos="fade-up"
+          data-aos-delay="100">
           <div>
             <BootstrapIcon name="steam" class="text-white" :size="40" />
             <div class="text-xs font-chakra text-muted-silver mt-2">Available on Steam</div>
@@ -58,7 +57,7 @@
       </div>
 
       <!-- Right Column: Interactive 3D Model Card (5 cols) -->
-      <div class="lg:col-span-5 relative">
+      <div class="lg:col-span-5 relative" data-aos="fade-left" data-aos-delay="50">
         <div
           class="relative rounded-2xl overflow-hidden carbon-card border border-rust-red/30 shadow-[0_0_40px_rgba(225,29,42,0.2)] flex flex-col justify-between">
 

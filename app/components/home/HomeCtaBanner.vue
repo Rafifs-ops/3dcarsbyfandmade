@@ -1,7 +1,8 @@
 <template>
   <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div
-      class="relative rounded-3xl overflow-hidden carbon-card border border-rust-red/40 p-8 sm:p-14 text-center space-y-6 shadow-[0_0_50px_rgba(225,29,42,0.25)]">
+      class="relative rounded-3xl overflow-hidden carbon-card border border-rust-red/40 p-8 sm:p-14 text-center space-y-6 shadow-[0_0_50px_rgba(225,29,42,0.25)]"
+      data-aos="fade-up">
 
       <!-- Background Accents -->
       <div

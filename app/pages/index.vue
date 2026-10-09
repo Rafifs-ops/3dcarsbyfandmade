@@ -8,7 +8,7 @@
     <section id="showroom" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
 
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+      <div class="text-center max-w-3xl mx-auto mb-10 space-y-3" data-aos="fade-up">
         <h2 class="text-3xl sm:text-5xl font-russo text-pure-white tracking-wide">
           VIRTUAL 3D SHOWROOM
         </h2>
@@ -19,17 +19,19 @@
       </div>
 
       <!-- 3D Showroom Component -->
-      <ThreeShowroom />
+      <div data-aos="fade-up" data-aos-delay="100">
+        <ThreeShowroom />
+      </div>
 
     </section>
 
     <!-- SECTION 2: LEGENDARY TRACKS CAROUSEL -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-aos="fade-up">
       <TrackCarousel />
     </section>
 
     <!-- SECTION 3: CINEMATIC TRAILER & IN-GAME FOOTAGE -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-aos="fade-up">
       <TrailerModal />
     </section>
 

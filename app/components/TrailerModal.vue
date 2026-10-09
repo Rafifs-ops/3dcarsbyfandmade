@@ -5,7 +5,7 @@
       class="relative w-full rounded-2xl overflow-hidden carbon-card border border-white/10 p-6 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
 
       <!-- Text Info & Highlights -->
-      <div class="space-y-4 max-w-xl text-left">
+      <div class="space-y-4 max-w-xl text-left" data-aos="fade-right">
         <div
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rust-red/20 border border-rust-red/40 text-pure-white text-xs font-chakra tracking-widest uppercase">
           <BootstrapIcon name="camera-reels-fill" class="text-lightning-yellow" />
@@ -33,7 +33,8 @@
 
       <!-- Video Thumbnail Preview Card with Glowing Play Button -->
       <div @click="isOpen = true"
-        class="relative w-full lg:w-[480px] h-[260px] sm:h-[300px] rounded-xl overflow-hidden border border-white/20 shadow-2xl cursor-pointer group select-none">
+        class="relative w-full lg:w-[480px] h-[260px] sm:h-[300px] rounded-xl overflow-hidden border border-white/20 shadow-2xl cursor-pointer group select-none"
+        data-aos="fade-left" data-aos-delay="100">
         <img src="https://img.youtube.com/vi/dx0oDJqy77A/hqdefault.jpg" alt="Cars Video Game Cinematic Trailer"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

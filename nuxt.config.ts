@@ -16,7 +16,16 @@ export default defineNuxtConfig({
     '~/assets/css/main.css'
   ],
 
+  aos: {
+    duration: 650,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 50
+  },
+
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
       title: 'Disney Pixar Cars | Official Steam Game Promotional Hub',
       meta: [
