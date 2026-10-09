@@ -67,6 +67,7 @@ async function main() {
       sponsor TEXT NOT NULL,
       engineType TEXT NOT NULL,
       voiceQuote TEXT,
+      soundEffect TEXT,
       bio TEXT NOT NULL,
       funFact TEXT NOT NULL,
       primaryColor TEXT NOT NULL DEFAULT '#E11D2A',
