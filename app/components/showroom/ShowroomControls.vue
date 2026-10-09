@@ -78,26 +78,6 @@
         </NuxtLink>
       </div>
     </div>
-
-    <!-- Copyright & Audio Source Attribution -->
-    <div
-      class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/5 text-[11px] font-chakra text-muted-silver/60">
-      <div class="flex items-center gap-1.5 flex-wrap">
-        <BootstrapIcon name="info-circle-fill" class="text-lightning-yellow/80 text-xs shrink-0" />
-        <span>Suara ikonik karakter bersumber dari:</span>
-        <a href="https://sounds.spriters-resource.com/playstation_3/cars3driventowin/#section-60460"
-          target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 text-lightning-yellow hover:text-white transition-colors font-semibold group/link">
-          <span>Sound Resource</span>
-          <span class="text-muted-silver/40 font-normal hidden sm:inline">(Cars 3: Driven to Win)</span>
-          <BootstrapIcon name="box-arrow-up-right" class="text-[9px] opacity-70 group-hover/link:opacity-100" />
-        </a>
-      </div>
-      <div class="text-[10px] text-muted-silver/40 flex items-center gap-1">
-        <span>© Disney•Pixar</span>
-        <span class="hidden sm:inline">• The Sounds Resource</span>
-      </div>
-    </div>
   </div>
 </template>
 
